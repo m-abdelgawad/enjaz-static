@@ -5,107 +5,35 @@ let projects = [
         id: 1,
         name: "Website Redesign",
         description: "Complete overhaul of company website with modern design and improved UX",
-        area: "work",
-        status: "in_progress",
+        category: "work",
+        status: "active",
         priority: "high",
-        start_date: "2024-01-01",
-        due_date: "2024-02-15",
-        notes: "Need to focus on mobile responsiveness and accessibility",
-        created_at: "2023-12-15T10:30:00",
-        updated_at: "2024-01-05T14:22:00",
+        dueDate: "2024-02-15",
         stories: [
             {
                 id: 1,
                 title: "User Research and Analysis",
                 description: "Conduct user interviews and analyze current website performance",
-                status: "completed",
+                status: "done",
+                points: 5,
                 priority: "high",
-                start_date: "2024-01-01",
-                due_date: "2024-01-10",
-                notes: "Completed ahead of schedule",
-                created_at: "2023-12-16T09:15:00",
-                updated_at: "2024-01-10T16:30:00",
                 tasks: [
-                    { 
-                        id: 1, 
-                        title: "Create user survey", 
-                        status: "completed",
-                        priority: "medium",
-                        start_date: "2024-01-01",
-                        due_date: "2024-01-03", 
-                        notes: "Used Google Forms",
-                        created_at: "2023-12-18T11:20:00",
-                        updated_at: "2024-01-03T15:45:00"
-                    },
-                    { 
-                        id: 2, 
-                        title: "Conduct 10 user interviews", 
-                        status: "completed",
-                        priority: "high",
-                        start_date: "2024-01-04",
-                        due_date: "2024-01-07",
-                        notes: "Recorded all sessions",
-                        created_at: "2023-12-20T14:10:00",
-                        updated_at: "2024-01-07T17:30:00"
-                    },
-                    { 
-                        id: 3, 
-                        title: "Analyze current analytics", 
-                        status: "completed",
-                        priority: "medium", 
-                        start_date: "2024-01-08",
-                        due_date: "2024-01-10",
-                        notes: "Used Google Analytics data",
-                        created_at: "2024-01-02T10:45:00",
-                        updated_at: "2024-01-10T13:15:00"
-                    }
+                    { id: 1, title: "Create user survey", status: "done" },
+                    { id: 2, title: "Conduct 10 user interviews", status: "done" },
+                    { id: 3, title: "Analyze current analytics", status: "done" }
                 ]
             },
             {
                 id: 2,
                 title: "Design System Creation",
                 description: "Create a comprehensive design system for the new website",
-                status: "in_progress",
+                status: "in-progress",
+                points: 8,
                 priority: "high",
-                start_date: "2024-01-11",
-                due_date: "2024-01-25",
-                notes: "Following Material Design principles",
-                created_at: "2024-01-05T09:30:00",
-                updated_at: "2024-01-15T11:45:00",
                 tasks: [
-                    { 
-                        id: 4, 
-                        title: "Define color palette", 
-                        status: "completed",
-                        priority: "medium",
-                        start_date: "2024-01-11",
-                        due_date: "2024-01-13",
-                        notes: "Selected brand colors plus complementary palette",
-                        created_at: "2024-01-10T14:20:00",
-                        updated_at: "2024-01-13T16:30:00"
-                    },
-                    { 
-                        id: 5, 
-                        title: "Create typography scale", 
-                        status: "in_progress",
-                        priority: "medium",
-                        start_date: "2024-01-14",
-                        due_date: "2024-01-18",
-                        notes: "Using system fonts for better performance",
-                        created_at: "2024-01-13T10:15:00",
-                        updated_at: "2024-01-16T11:20:00"
-                    },
-                    { 
-                        id: 6, 
-                        title: "Design component library", 
-                        status: "backlog",
-                        priority: "high",
-                        start_date: "2024-01-19",
-                        due_date: "2024-01-25",
-                        notes: "Will use Figma for components",
-                        created_at: "2024-01-14T09:45:00",
-                        updated_at: "2024-01-14T09:45:00"
-                    }
+                    { id: 4, title: "Define color palette", status: "done" },
+                    { id: 5, title: "Create typography scale", status: "in-progress" },
+                    { id: 6, title: "Design component library", status: "todo" }
                 ]
             }
         ]
@@ -114,26 +42,18 @@ let projects = [
         id: 2,
         name: "Mobile App Development",
         description: "Native iOS and Android app for customer engagement",
-        area: "work",
-        status: "not_started",
+        category: "work",
+        status: "planning",
         priority: "medium",
-        start_date: "2024-03-01",
-        due_date: "2024-04-30",
-        notes: "Need to hire an iOS developer",
-        created_at: "2023-12-20T16:45:00",
-        updated_at: "2024-01-10T09:30:00",
+        dueDate: "2024-04-30",
         stories: [
             {
                 id: 3,
                 title: "Technical Architecture",
                 description: "Define the technical stack and architecture",
                 status: "backlog",
+                points: 13,
                 priority: "high",
-                start_date: null,
-                due_date: null,
-                notes: "Considering React Native vs native development",
-                created_at: "2024-01-05T11:20:00",
-                updated_at: "2024-01-05T11:20:00",
                 tasks: []
             }
         ]
@@ -142,74 +62,32 @@ let projects = [
         id: 3,
         name: "API Documentation",
         description: "Comprehensive documentation for our REST API",
-        area: "work",
-        status: "in_progress",
+        category: "work",
+        status: "active",
         priority: "medium",
-        start_date: "2024-01-05",
-        due_date: "2024-01-20",
-        notes: "Use Swagger for interactive documentation",
-        created_at: "2023-12-28T10:15:00",
-        updated_at: "2024-01-06T14:30:00",
+        dueDate: "2024-01-20",
         stories: []
     },
     {
         id: 4,
         name: "Learn Spanish",
         description: "Achieve conversational fluency in Spanish",
-        area: "personal",
-        status: "in_progress",
+        category: "personal",
+        status: "active",
         priority: "medium",
-        start_date: "2024-01-01",
-        due_date: "2024-06-01",
-        notes: "Practice daily for at least 30 minutes",
-        created_at: "2023-12-30T18:20:00",
-        updated_at: "2024-01-02T19:45:00",
+        dueDate: "2024-06-01",
         stories: [
             {
                 id: 4,
                 title: "Complete Duolingo Course",
                 description: "Finish the entire Spanish course on Duolingo",
-                status: "in_progress",
+                status: "in-progress",
+                points: 8,
                 priority: "medium",
-                start_date: "2024-01-01",
-                due_date: "2024-03-31",
-                notes: "Currently on Unit 2",
-                created_at: "2023-12-30T18:25:00",
-                updated_at: "2024-01-10T20:15:00",
                 tasks: [
-                    { 
-                        id: 7, 
-                        title: "Complete Unit 1", 
-                        status: "completed",
-                        priority: "medium",
-                        start_date: "2024-01-01", 
-                        due_date: "2024-01-15",
-                        notes: "Finished basic greetings and introductions",
-                        created_at: "2023-12-30T18:30:00",
-                        updated_at: "2024-01-15T21:10:00"
-                    },
-                    { 
-                        id: 8, 
-                        title: "Complete Unit 2", 
-                        status: "in_progress",
-                        priority: "medium",
-                        start_date: "2024-01-16",
-                        due_date: "2024-02-15",
-                        notes: "Working on food vocabulary and restaurant phrases",
-                        created_at: "2024-01-15T21:15:00",
-                        updated_at: "2024-01-20T19:40:00"
-                    },
-                    { 
-                        id: 9, 
-                        title: "Complete Unit 3", 
-                        status: "backlog",
-                        priority: "medium",
-                        start_date: "2024-02-16",
-                        due_date: "2024-03-31",
-                        notes: "Will focus on travel vocabulary",
-                        created_at: "2024-01-15T21:20:00",
-                        updated_at: "2024-01-15T21:20:00"
-                    }
+                    { id: 7, title: "Complete Unit 1", status: "done" },
+                    { id: 8, title: "Complete Unit 2", status: "in-progress" },
+                    { id: 9, title: "Complete Unit 3", status: "todo" }
                 ]
             }
         ]
@@ -218,14 +96,70 @@ let projects = [
         id: 5,
         name: "Home Gym Setup",
         description: "Create a functional home gym space",
-        area: "fitness",
-        status: "not_started",
+        category: "personal",
+        status: "planning",
         priority: "low",
-        start_date: "2024-02-01",
-        due_date: "2024-03-01",
-        notes: "Budget: $1,500",
-        created_at: "2024-01-05T08:45:00",
-        updated_at: "2024-01-05T08:45:00",
+        dueDate: "2024-03-01",
+        stories: []
+    },
+    {
+        id: 6,
+        name: "E-commerce Website",
+        description: "Build custom e-commerce solution for client",
+        category: "freelance",
+        status: "active",
+        priority: "high",
+        dueDate: "2024-02-28",
+        stories: [
+            {
+                id: 5,
+                title: "Payment Integration",
+                description: "Integrate Stripe payment processing",
+                status: "ready",
+                points: 5,
+                priority: "high",
+                tasks: []
+            }
+        ]
+    },
+    {
+        id: 7,
+        name: "Financial Planning",
+        description: "Create comprehensive financial plan for 2024",
+        category: "life",
+        status: "active",
+        priority: "high",
+        dueDate: "2024-01-31",
+        stories: []
+    },
+    {
+        id: 8,
+        name: "Health & Fitness",
+        description: "Maintain healthy lifestyle and fitness goals",
+        category: "life",
+        status: "active",
+        priority: "medium",
+        dueDate: "2024-12-31",
+        stories: []
+    },
+    {
+        id: 9,
+        name: "Travel Planning",
+        description: "Plan and book summer vacation to Europe",
+        category: "life",
+        status: "planning",
+        priority: "low",
+        dueDate: "2024-07-01",
+        stories: []
+    },
+    {
+        id: 10,
+        name: "Skill Development",
+        description: "Learn new technologies and improve existing skills",
+        category: "life",
+        status: "active",
+        priority: "medium",
+        dueDate: "2024-12-31",
         stories: []
     }
 ];
@@ -243,181 +177,6 @@ document.addEventListener('DOMContentLoaded', function() {
     updateNavigationBadges();
     populateProjectOptions();
 });
-
-// API Utilities for future Django REST API integration
-const API = {
-    baseUrl: '/api/v1',
-    
-    // Projects
-    async getProjects() {
-        // In future, this will fetch from the Django API
-        // return await fetch(`${this.baseUrl}/projects/`).then(res => res.json());
-        return projects;
-    },
-    
-    async getProject(id) {
-        // return await fetch(`${this.baseUrl}/projects/${id}/`).then(res => res.json());
-        return projects.find(p => p.id === id);
-    },
-    
-    async createProject(projectData) {
-        // In future, this will post to the Django API
-        /*
-        return await fetch(`${this.baseUrl}/projects/`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(projectData)
-        }).then(res => res.json());
-        */
-        
-        const newProject = {
-            id: projectIdCounter++,
-            ...projectData,
-            stories: [],
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString()
-        };
-        
-        projects.push(newProject);
-        return newProject;
-    },
-    
-    async updateProject(id, projectData) {
-        // In future, this will patch to the Django API
-        /*
-        return await fetch(`${this.baseUrl}/projects/${id}/`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(projectData)
-        }).then(res => res.json());
-        */
-        
-        const project = projects.find(p => p.id === id);
-        if (project) {
-            Object.assign(project, projectData, { updated_at: new Date().toISOString() });
-            return project;
-        }
-        return null;
-    },
-    
-    // Stories
-    async createStory(storyData) {
-        // In future, this will post to the Django API
-        /*
-        return await fetch(`${this.baseUrl}/stories/`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(storyData)
-        }).then(res => res.json());
-        */
-        
-        const newStory = {
-            id: storyIdCounter++,
-            ...storyData,
-            tasks: [],
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString()
-        };
-        
-        const project = projects.find(p => p.id === storyData.project_id);
-        if (project) {
-            project.stories.push(newStory);
-            return newStory;
-        }
-        return null;
-    },
-    
-    async updateStory(id, storyData) {
-        // In future, this will patch to the Django API
-        /*
-        return await fetch(`${this.baseUrl}/stories/${id}/`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(storyData)
-        }).then(res => res.json());
-        */
-        
-        let updatedStory = null;
-        
-        projects.forEach(project => {
-            const story = project.stories.find(s => s.id === id);
-            if (story) {
-                Object.assign(story, storyData, { updated_at: new Date().toISOString() });
-                updatedStory = story;
-            }
-        });
-        
-        return updatedStory;
-    },
-    
-    // Tasks
-    async createTask(taskData) {
-        // In future, this will post to the Django API
-        /*
-        return await fetch(`${this.baseUrl}/tasks/`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(taskData)
-        }).then(res => res.json());
-        */
-        
-        const newTask = {
-            id: taskIdCounter++,
-            ...taskData,
-            created_at: new Date().toISOString(),
-            updated_at: new Date().toISOString()
-        };
-        
-        let taskAdded = false;
-        
-        projects.forEach(project => {
-            const story = project.stories.find(s => s.id === taskData.story_id);
-            if (story) {
-                story.tasks.push(newTask);
-                taskAdded = true;
-            }
-        });
-        
-        return taskAdded ? newTask : null;
-    },
-    
-    async updateTask(id, taskData) {
-        // In future, this will patch to the Django API
-        /*
-        return await fetch(`${this.baseUrl}/tasks/${id}/`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(taskData)
-        }).then(res => res.json());
-        */
-        
-        let updatedTask = null;
-        
-        projects.forEach(project => {
-            project.stories.forEach(story => {
-                const task = story.tasks.find(t => t.id === id);
-                if (task) {
-                    Object.assign(task, taskData, { updated_at: new Date().toISOString() });
-                    updatedTask = task;
-                }
-            });
-        });
-        
-        return updatedTask;
-    }
-};
 
 // Navigation functionality
 document.querySelectorAll('.nav-link[data-category]').forEach(link => {
@@ -438,9 +197,9 @@ document.querySelectorAll('.nav-link[data-category]').forEach(link => {
 function updateCategoryTitle() {
     const categoryNames = {
         work: 'Work Projects',
-        personal: 'Personal Projects',
-        freelance: 'Freelancing Projects',
-        fitness: 'Fitness Goals'
+        personal: 'Personal',
+        freelance: 'Freelancing',
+        life: 'Life & Goals'
     };
     
     document.querySelector('.current-category').textContent = categoryNames[currentCategory];
@@ -448,10 +207,10 @@ function updateCategoryTitle() {
 
 function updateNavigationBadges() {
     const categoryCounts = {
-        work: projects.filter(p => p.area === 'work').length,
-        personal: projects.filter(p => p.area === 'personal').length,
-        freelance: projects.filter(p => p.area === 'freelance').length,
-        fitness: projects.filter(p => p.area === 'fitness').length
+        work: projects.filter(p => p.category === 'work').length,
+        personal: projects.filter(p => p.category === 'personal').length,
+        freelance: projects.filter(p => p.category === 'freelance').length,
+        life: projects.filter(p => p.category === 'life').length
     };
     
     Object.keys(categoryCounts).forEach(category => {
@@ -468,7 +227,7 @@ function updateNavigationBadges() {
 // Project rendering
 function renderProjects() {
     const grid = document.getElementById('projectsGrid');
-    const filteredProjects = projects.filter(p => p.area === currentCategory);
+    const filteredProjects = projects.filter(p => p.category === currentCategory);
     
     if (filteredProjects.length === 0) {
         grid.innerHTML = `
@@ -489,14 +248,14 @@ function renderProjects() {
     grid.innerHTML = filteredProjects.map(project => {
         const totalTasks = project.stories.reduce((sum, story) => sum + story.tasks.length, 0);
         const completedTasks = project.stories.reduce((sum, story) => 
-            sum + story.tasks.filter(task => task.status === 'completed').length, 0);
+            sum + story.tasks.filter(task => task.status === 'done').length, 0);
         const progress = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
         
         return `
             <div class="project-card priority-${project.priority}" onclick="openProject(${project.id})">
                 <div class="project-header">
                     <h3 class="project-title">${project.name}</h3>
-                    <span class="project-status status-${project.status}">${formatStatus(project.status)}</span>
+                    <span class="project-status status-${project.status}">${project.status}</span>
                 </div>
                 <p class="project-description">${project.description}</p>
                 <div class="project-stats">
@@ -510,33 +269,15 @@ function renderProjects() {
                     </div>
                     <div class="stat-item">
                         <i class="fas fa-flag"></i>
-                        <span>${formatPriority(project.priority)}</span>
+                        <span>${project.priority}</span>
                     </div>
                 </div>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: ${progress}%"></div>
                 </div>
-                <div class="meta-info">
-                    Created: ${formatDate(project.created_at)} | Updated: ${formatDate(project.updated_at)}
-                </div>
             </div>
         `;
     }).join('');
-}
-
-// Format utilities
-function formatStatus(status) {
-    return status.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-}
-
-function formatPriority(priority) {
-    return priority.charAt(0).toUpperCase() + priority.slice(1);
-}
-
-function formatDate(dateString) {
-    if (!dateString) return 'N/A';
-    const date = new Date(dateString);
-    return date.toLocaleDateString();
 }
 
 // Project modal functionality
@@ -550,9 +291,7 @@ function openProject(projectId) {
     // Update project info
     document.getElementById('projectStatus').value = currentProject.status;
     document.getElementById('projectPriority').value = currentProject.priority;
-    document.getElementById('projectStartDate').value = currentProject.start_date || '';
-    document.getElementById('projectDueDate').value = currentProject.due_date || '';
-    document.getElementById('projectNotes').value = currentProject.notes || '';
+    document.getElementById('projectDueDate').value = currentProject.dueDate || '';
     
     // Render stories
     renderStories();
@@ -578,12 +317,9 @@ function renderStories() {
         <div class="story-item" onclick="openStory(${story.id})">
             <div class="story-title">${story.title}</div>
             <div class="story-meta">
-                <span class="story-priority">${formatPriority(story.priority)}</span>
-                <span>Status: ${formatStatus(story.status)}</span>
+                <span class="story-points">${story.points} pts</span>
+                <span>Status: ${story.status}</span>
                 <span>${story.tasks.length} tasks</span>
-            </div>
-            <div class="meta-info">
-                Due: ${formatDate(story.due_date)}
             </div>
         </div>
     `).join('');
@@ -598,12 +334,9 @@ function openStory(storyId) {
     document.querySelector('#storyModal .modal-title').textContent = currentStory.title;
     
     // Update story info
-    document.getElementById('storyTitle').value = currentStory.title;
-    document.getElementById('storyStatus').value = currentStory.status;
+    document.getElementById('storyPoints').value = currentStory.points;
     document.getElementById('storyPriority').value = currentStory.priority;
-    document.getElementById('storyStartDate').value = currentStory.start_date || '';
-    document.getElementById('storyDueDate').value = currentStory.due_date || '';
-    document.getElementById('storyNotes').value = currentStory.notes || '';
+    document.getElementById('storyStatus').value = currentStory.status;
     
     // Render tasks
     renderTasks();
@@ -625,27 +358,28 @@ function renderTasks() {
     currentStory.tasks.forEach(task => {
         const taskElement = createTaskElement(task);
         
-        if (task.status === 'completed') {
-            doneTasks.appendChild(taskElement);
-        } else if (task.status === 'in_progress') {
-            inProgressTasks.appendChild(taskElement);
-        } else {
-            todoTasks.appendChild(taskElement);
+        switch(task.status) {
+            case 'todo':
+                todoTasks.appendChild(taskElement);
+                break;
+            case 'in-progress':
+                inProgressTasks.appendChild(taskElement);
+                break;
+            case 'done':
+                doneTasks.appendChild(taskElement);
+                break;
         }
     });
 }
 
 function createTaskElement(task) {
     const div = document.createElement('div');
-    div.className = `task-item priority-${task.priority}`;
+    div.className = 'task-item';
     div.draggable = true;
     div.dataset.taskId = task.id;
     div.innerHTML = `
         <div class="task-title">${task.title}</div>
-        <div class="task-meta">
-            <span>Priority: ${formatPriority(task.priority)}</span>
-            ${task.due_date ? `<span>Due: ${formatDate(task.due_date)}</span>` : ''}
-        </div>
+        <div class="task-meta">Task #${task.id}</div>
     `;
     
     // Add drag event listeners
@@ -680,7 +414,7 @@ function drop(e) {
     // Update task status
     const task = currentStory.tasks.find(t => t.id === taskId);
     if (task) {
-        API.updateTask(task.id, { status: newStatus });
+        task.status = newStatus;
         renderTasks();
         
         // Save to localStorage (in a real app, this would be an API call)
@@ -690,10 +424,10 @@ function drop(e) {
 
 function getStatusFromDropZone(dropZoneId) {
     switch(dropZoneId) {
-        case 'todoTasks': return 'backlog';
-        case 'inProgressTasks': return 'in_progress';
-        case 'doneTasks': return 'completed';
-        default: return 'backlog';
+        case 'todoTasks': return 'todo';
+        case 'inProgressTasks': return 'in-progress';
+        case 'doneTasks': return 'done';
+        default: return 'todo';
     }
 }
 
@@ -712,27 +446,14 @@ document.addEventListener('dragleave', function(e) {
 
 // Modal functions
 function showAddProjectModal() {
-    // Set default area to current category
+    // Set default category to current category
     document.getElementById('newProjectCategory').value = currentCategory;
-    document.getElementById('newProjectStatus').value = 'not_started';
-    document.getElementById('newProjectPriority').value = 'medium';
-    
     new bootstrap.Modal(document.getElementById('addProjectModal')).show();
 }
 
 function showAddStoryModal() {
     populateProjectOptions();
-    document.getElementById('newStoryStatus').value = 'backlog';
-    document.getElementById('newStoryPriority').value = 'medium';
-    
     new bootstrap.Modal(document.getElementById('addStoryModal')).show();
-}
-
-function showAddTaskModal() {
-    document.getElementById('newTaskStatus').value = 'backlog';
-    document.getElementById('newTaskPriority').value = 'medium';
-    
-    new bootstrap.Modal(document.getElementById('addTaskModal')).show();
 }
 
 function populateProjectOptions() {
@@ -750,18 +471,18 @@ function populateProjectOptions() {
 function createProject(e) {
     e.preventDefault();
     
-    const projectData = {
+    const newProject = {
+        id: projectIdCounter++,
         name: document.getElementById('newProjectName').value,
         description: document.getElementById('newProjectDescription').value,
-        area: document.getElementById('newProjectCategory').value,
-        status: document.getElementById('newProjectStatus').value,
+        category: document.getElementById('newProjectCategory').value,
+        status: 'planning',
         priority: document.getElementById('newProjectPriority').value,
-        start_date: document.getElementById('newProjectStartDate').value || null,
-        due_date: document.getElementById('newProjectDueDate').value || null,
-        notes: document.getElementById('newProjectNotes').value
+        dueDate: '',
+        stories: []
     };
     
-    API.createProject(projectData);
+    projects.push(newProject);
     
     // Update UI
     renderProjects();
@@ -779,21 +500,25 @@ function createProject(e) {
 function createStory(e) {
     e.preventDefault();
     
-    const storyData = {
-        project_id: parseInt(document.getElementById('newStoryProject').value),
+    const projectId = parseInt(document.getElementById('newStoryProject').value);
+    const project = projects.find(p => p.id === projectId);
+    
+    if (!project) return;
+    
+    const newStory = {
+        id: storyIdCounter++,
         title: document.getElementById('newStoryTitle').value,
         description: document.getElementById('newStoryDescription').value,
-        status: document.getElementById('newStoryStatus').value,
-        priority: document.getElementById('newStoryPriority').value,
-        start_date: document.getElementById('newStoryStartDate').value || null,
-        due_date: document.getElementById('newStoryDueDate').value || null,
-        notes: document.getElementById('newStoryNotes').value
+        status: 'backlog',
+        points: parseInt(document.getElementById('newStoryPoints').value),
+        priority: 'medium',
+        tasks: []
     };
     
-    API.createStory(storyData);
+    project.stories.push(newStory);
     
     // Update UI if this is the current project
-    if (currentProject && currentProject.id === storyData.project_id) {
+    if (currentProject && currentProject.id === projectId) {
         renderStories();
     }
     
@@ -807,36 +532,22 @@ function createStory(e) {
     localStorage.setItem('projects', JSON.stringify(projects));
 }
 
-// Create new task
-function createTask(e) {
-    e.preventDefault();
+// Add new task
+function addTask() {
+    const taskTitle = prompt('Enter task title:');
+    if (!taskTitle) return;
     
-    if (!currentStory) return;
-    
-    const taskData = {
-        story_id: currentStory.id,
-        title: document.getElementById('newTaskTitle').value,
-        status: document.getElementById('newTaskStatus').value,
-        priority: document.getElementById('newTaskPriority').value,
-        start_date: document.getElementById('newTaskStartDate').value || null,
-        due_date: document.getElementById('newTaskDueDate').value || null,
-        notes: document.getElementById('newTaskNotes').value
+    const newTask = {
+        id: taskIdCounter++,
+        title: taskTitle,
+        status: 'todo'
     };
     
-    API.createTask(taskData);
+    currentStory.tasks.push(newTask);
     renderTasks();
-    
-    // Close modal and reset form
-    bootstrap.Modal.getInstance(document.getElementById('addTaskModal')).hide();
-    e.target.reset();
     
     // Save to localStorage
     localStorage.setItem('projects', JSON.stringify(projects));
-}
-
-// Add new task (quick version for the button in the story modal)
-function addTask() {
-    showAddTaskModal();
 }
 
 // Sidebar toggle for mobile
@@ -860,7 +571,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Save project info changes
 document.getElementById('projectStatus').addEventListener('change', function() {
     if (currentProject) {
-        API.updateProject(currentProject.id, { status: this.value });
+        currentProject.status = this.value;
         renderProjects();
         localStorage.setItem('projects', JSON.stringify(projects));
     }
@@ -868,45 +579,23 @@ document.getElementById('projectStatus').addEventListener('change', function() {
 
 document.getElementById('projectPriority').addEventListener('change', function() {
     if (currentProject) {
-        API.updateProject(currentProject.id, { priority: this.value });
+        currentProject.priority = this.value;
         renderProjects();
-        localStorage.setItem('projects', JSON.stringify(projects));
-    }
-});
-
-document.getElementById('projectStartDate').addEventListener('change', function() {
-    if (currentProject) {
-        API.updateProject(currentProject.id, { start_date: this.value });
         localStorage.setItem('projects', JSON.stringify(projects));
     }
 });
 
 document.getElementById('projectDueDate').addEventListener('change', function() {
     if (currentProject) {
-        API.updateProject(currentProject.id, { due_date: this.value });
-        localStorage.setItem('projects', JSON.stringify(projects));
-    }
-});
-
-document.getElementById('projectNotes').addEventListener('change', function() {
-    if (currentProject) {
-        API.updateProject(currentProject.id, { notes: this.value });
+        currentProject.dueDate = this.value;
         localStorage.setItem('projects', JSON.stringify(projects));
     }
 });
 
 // Save story info changes
-document.getElementById('storyTitle').addEventListener('change', function() {
+document.getElementById('storyPoints').addEventListener('change', function() {
     if (currentStory) {
-        API.updateStory(currentStory.id, { title: this.value });
-        renderStories();
-        localStorage.setItem('projects', JSON.stringify(projects));
-    }
-});
-
-document.getElementById('storyStatus').addEventListener('change', function() {
-    if (currentStory) {
-        API.updateStory(currentStory.id, { status: this.value });
+        currentStory.points = parseInt(this.value);
         renderStories();
         localStorage.setItem('projects', JSON.stringify(projects));
     }
@@ -914,29 +603,16 @@ document.getElementById('storyStatus').addEventListener('change', function() {
 
 document.getElementById('storyPriority').addEventListener('change', function() {
     if (currentStory) {
-        API.updateStory(currentStory.id, { priority: this.value });
+        currentStory.priority = this.value;
         renderStories();
         localStorage.setItem('projects', JSON.stringify(projects));
     }
 });
 
-document.getElementById('storyStartDate').addEventListener('change', function() {
+document.getElementById('storyStatus').addEventListener('change', function() {
     if (currentStory) {
-        API.updateStory(currentStory.id, { start_date: this.value });
-        localStorage.setItem('projects', JSON.stringify(projects));
-    }
-});
-
-document.getElementById('storyDueDate').addEventListener('change', function() {
-    if (currentStory) {
-        API.updateStory(currentStory.id, { due_date: this.value });
-        localStorage.setItem('projects', JSON.stringify(projects));
-    }
-});
-
-document.getElementById('storyNotes').addEventListener('change', function() {
-    if (currentStory) {
-        API.updateStory(currentStory.id, { notes: this.value });
+        currentStory.status = this.value;
+        renderStories();
         localStorage.setItem('projects', JSON.stringify(projects));
     }
 });

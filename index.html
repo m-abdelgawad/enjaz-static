@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProjectFlow - Manage Your Life</title>
+    <title>LifeHub - Manage Your Projects</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -14,15 +14,15 @@
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <h3><i class="fas fa-rocket me-2"></i>ProjectFlow</h3>
+            <h3><i class="fas fa-layer-group me-2"></i>LifeHub</h3>
         </div>
         
         <nav class="sidebar-nav">
             <div class="nav-section">
-                <h6 class="nav-section-title">WORKSPACES</h6>
+                <h6 class="nav-section-title">AREAS</h6>
                 <a href="#" class="nav-link active" data-category="work">
                     <i class="fas fa-briefcase"></i>
-                    <span>Work Projects</span>
+                    <span>Work</span>
                     <span class="badge">3</span>
                 </a>
                 <a href="#" class="nav-link" data-category="personal">
@@ -35,9 +35,9 @@
                     <span>Freelancing</span>
                     <span class="badge">1</span>
                 </a>
-                <a href="#" class="nav-link" data-category="life">
-                    <i class="fas fa-heart"></i>
-                    <span>Life & Goals</span>
+                <a href="#" class="nav-link" data-category="fitness">
+                    <i class="fas fa-dumbbell"></i>
+                    <span>Fitness</span>
                     <span class="badge">4</span>
                 </a>
             </div>
@@ -110,10 +110,12 @@
                                 <div class="info-item">
                                     <label>Status</label>
                                     <select class="form-select form-select-sm" id="projectStatus">
-                                        <option value="planning">Planning</option>
-                                        <option value="active">Active</option>
+                                        <option value="backlog">Backlog</option>
+                                        <option value="not_started">Not Started</option>
+                                        <option value="in_progress">In Progress</option>
+                                        <option value="on_hold">On Hold</option>
+                                        <option value="blocked">Blocked</option>
                                         <option value="completed">Completed</option>
-                                        <option value="on-hold">On Hold</option>
                                     </select>
                                 </div>
                                 <div class="info-item">
@@ -126,8 +128,16 @@
                                     </select>
                                 </div>
                                 <div class="info-item">
+                                    <label>Start Date</label>
+                                    <input type="date" class="form-control form-control-sm" id="projectStartDate">
+                                </div>
+                                <div class="info-item">
                                     <label>Due Date</label>
                                     <input type="date" class="form-control form-control-sm" id="projectDueDate">
+                                </div>
+                                <div class="info-item">
+                                    <label>Notes</label>
+                                    <textarea class="form-control form-control-sm" id="projectNotes" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -181,8 +191,19 @@
                             <div class="story-info">
                                 <h6>Story Info</h6>
                                 <div class="info-item">
-                                    <label>Story Points</label>
-                                    <input type="number" class="form-control form-control-sm" id="storyPoints" min="1" max="13">
+                                    <label>Title</label>
+                                    <input type="text" class="form-control form-control-sm" id="storyTitle">
+                                </div>
+                                <div class="info-item">
+                                    <label>Status</label>
+                                    <select class="form-select form-select-sm" id="storyStatus">
+                                        <option value="backlog">Backlog</option>
+                                        <option value="not_started">Not Started</option>
+                                        <option value="in_progress">In Progress</option>
+                                        <option value="on_hold">On Hold</option>
+                                        <option value="blocked">Blocked</option>
+                                        <option value="completed">Completed</option>
+                                    </select>
                                 </div>
                                 <div class="info-item">
                                     <label>Priority</label>
@@ -194,14 +215,16 @@
                                     </select>
                                 </div>
                                 <div class="info-item">
-                                    <label>Status</label>
-                                    <select class="form-select form-select-sm" id="storyStatus">
-                                        <option value="backlog">Backlog</option>
-                                        <option value="ready">Ready</option>
-                                        <option value="in-progress">In Progress</option>
-                                        <option value="review">Review</option>
-                                        <option value="done">Done</option>
-                                    </select>
+                                    <label>Start Date</label>
+                                    <input type="date" class="form-control form-control-sm" id="storyStartDate">
+                                </div>
+                                <div class="info-item">
+                                    <label>Due Date</label>
+                                    <input type="date" class="form-control form-control-sm" id="storyDueDate">
+                                </div>
+                                <div class="info-item">
+                                    <label>Notes</label>
+                                    <textarea class="form-control form-control-sm" id="storyNotes" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -223,19 +246,30 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="form-label">Project Name</label>
-                            <input type="text" class="form-control" id="newProjectName" required>
+                            <input type="text" class="form-control" id="newProjectName" maxlength="120" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Description</label>
                             <textarea class="form-control" id="newProjectDescription" rows="3"></textarea>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Category</label>
+                            <label class="form-label">Area</label>
                             <select class="form-select" id="newProjectCategory" required>
-                                <option value="work">Work Projects</option>
+                                <option value="work">Work</option>
                                 <option value="personal">Personal</option>
                                 <option value="freelance">Freelancing</option>
-                                <option value="life">Life & Goals</option>
+                                <option value="fitness">Fitness</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" id="newProjectStatus">
+                                <option value="backlog">Backlog</option>
+                                <option value="not_started">Not Started</option>
+                                <option value="in_progress">In Progress</option>
+                                <option value="on_hold">On Hold</option>
+                                <option value="blocked">Blocked</option>
+                                <option value="completed">Completed</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -246,6 +280,18 @@
                                 <option value="high">High</option>
                                 <option value="urgent">Urgent</option>
                             </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Start Date</label>
+                            <input type="date" class="form-control" id="newProjectStartDate">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Due Date</label>
+                            <input type="date" class="form-control" id="newProjectDueDate">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Notes</label>
+                            <textarea class="form-control" id="newProjectNotes" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -269,7 +315,7 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="form-label">Story Title</label>
-                            <input type="text" class="form-control" id="newStoryTitle" required>
+                            <input type="text" class="form-control" id="newStoryTitle" maxlength="180" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Description</label>
@@ -282,20 +328,97 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Story Points</label>
-                            <select class="form-select" id="newStoryPoints">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3" selected>3</option>
-                                <option value="5">5</option>
-                                <option value="8">8</option>
-                                <option value="13">13</option>
+                            <label class="form-label">Status</label>
+                            <select class="form-select" id="newStoryStatus">
+                                <option value="backlog">Backlog</option>
+                                <option value="not_started">Not Started</option>
+                                <option value="in_progress">In Progress</option>
+                                <option value="on_hold">On Hold</option>
+                                <option value="blocked">Blocked</option>
+                                <option value="completed">Completed</option>
                             </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Priority</label>
+                            <select class="form-select" id="newStoryPriority">
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                                <option value="high">High</option>
+                                <option value="urgent">Urgent</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Start Date</label>
+                            <input type="date" class="form-control" id="newStoryStartDate">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Due Date</label>
+                            <input type="date" class="form-control" id="newStoryDueDate">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Notes</label>
+                            <textarea class="form-control" id="newStoryNotes" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                         <button type="submit" class="btn btn-primary">Create Story</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Task Modal -->
+    <div class="modal fade" id="addTaskModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create New Task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form onsubmit="createTask(event)">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Task Title</label>
+                            <input type="text" class="form-control" id="newTaskTitle" maxlength="180" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" id="newTaskStatus">
+                                <option value="backlog">Backlog</option>
+                                <option value="not_started">Not Started</option>
+                                <option value="in_progress">In Progress</option>
+                                <option value="on_hold">On Hold</option>
+                                <option value="blocked">Blocked</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Priority</label>
+                            <select class="form-select" id="newTaskPriority">
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                                <option value="high">High</option>
+                                <option value="urgent">Urgent</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Start Date</label>
+                            <input type="date" class="form-control" id="newTaskStartDate">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Due Date</label>
+                            <input type="date" class="form-control" id="newTaskDueDate">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Notes</label>
+                            <textarea class="form-control" id="newTaskNotes" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Create Task</button>
                     </div>
                 </form>
             </div>

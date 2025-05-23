@@ -15,157 +15,232 @@ function toggleSidebar() {
 async function fetchProjects() {
     // In a real application, this would fetch from your Django API
     try {
-        // const response = await fetch(`${apiBaseUrl}/api/projects/`);
-        // const data = await response.json();
-        // projects = data;
-        // return data;
-        console.log('Fetching projects - API call would happen here');
+        const response = await fetch(`${apiBaseUrl}/api/projects/`);
+        const data = await response.json();
+        projects = data;
+        return data;
     } catch (error) {
         console.error('Error fetching projects:', error);
+        return [];
+    }
+}
+
+async function fetchProject(id) {
+    // In a real application, this would fetch from your Django API
+    try {
+        const response = await fetch(`${apiBaseUrl}/api/projects/${id}/`);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(`Error fetching project ${id}:`, error);
+        return null;
+    }
+}
+
+async function fetchStory(id) {
+    // In a real application, this would fetch from your Django API
+    try {
+        const response = await fetch(`${apiBaseUrl}/api/stories/${id}/`);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(`Error fetching story ${id}:`, error);
+        return null;
+    }
+}
+
+async function fetchTask(id) {
+    // In a real application, this would fetch from your Django API
+    try {
+        const response = await fetch(`${apiBaseUrl}/api/tasks/${id}/`);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(`Error fetching task ${id}:`, error);
+        return null;
     }
 }
 
 async function createProject(project) {
     // In a real application, this would post to your Django API
     try {
-        // const response = await fetch(`${apiBaseUrl}/api/projects/`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(project)
-        // });
-        // const data = await response.json();
-        // return data;
-        console.log('Creating project - API call would happen here', project);
+        const response = await fetch(`${apiBaseUrl}/api/projects/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(project)
+        });
+        const data = await response.json();
+        return data;
     } catch (error) {
         console.error('Error creating project:', error);
+        throw error;
     }
 }
 
 async function updateProject(id, project) {
     // In a real application, this would put to your Django API
     try {
-        // const response = await fetch(`${apiBaseUrl}/api/projects/${id}/`, {
-        //     method: 'PUT',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(project)
-        // });
-        // const data = await response.json();
-        // return data;
-        console.log(`Updating project ${id} - API call would happen here`, project);
+        const response = await fetch(`${apiBaseUrl}/api/projects/${id}/`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(project)
+        });
+        const data = await response.json();
+        return data;
     } catch (error) {
         console.error('Error updating project:', error);
+        throw error;
     }
 }
 
 async function deleteProject(id) {
     // In a real application, this would delete from your Django API
     try {
-        // await fetch(`${apiBaseUrl}/api/projects/${id}/`, {
-        //     method: 'DELETE'
-        // });
-        console.log(`Deleting project ${id} - API call would happen here`);
+        await fetch(`${apiBaseUrl}/api/projects/${id}/`, {
+            method: 'DELETE'
+        });
+        return true;
     } catch (error) {
         console.error('Error deleting project:', error);
+        throw error;
     }
 }
 
 async function createStory(story) {
     // In a real application, this would post to your Django API
     try {
-        // const response = await fetch(`${apiBaseUrl}/api/projects/${story.project_id}/stories/`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(story)
-        // });
-        // const data = await response.json();
-        // return data;
-        console.log('Creating story - API call would happen here', story);
+        const response = await fetch(`${apiBaseUrl}/api/stories/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(story)
+        });
+        const data = await response.json();
+        return data;
     } catch (error) {
         console.error('Error creating story:', error);
+        throw error;
     }
 }
 
 async function updateStory(id, story) {
     // In a real application, this would put to your Django API
     try {
-        // const response = await fetch(`${apiBaseUrl}/api/stories/${id}/`, {
-        //     method: 'PUT',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(story)
-        // });
-        // const data = await response.json();
-        // return data;
-        console.log(`Updating story ${id} - API call would happen here`, story);
+        const response = await fetch(`${apiBaseUrl}/api/stories/${id}/`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(story)
+        });
+        const data = await response.json();
+        return data;
     } catch (error) {
         console.error('Error updating story:', error);
+        throw error;
     }
 }
 
 async function deleteStory(id) {
     // In a real application, this would delete from your Django API
     try {
-        // await fetch(`${apiBaseUrl}/api/stories/${id}/`, {
-        //     method: 'DELETE'
-        // });
-        console.log(`Deleting story ${id} - API call would happen here`);
+        await fetch(`${apiBaseUrl}/api/stories/${id}/`, {
+            method: 'DELETE'
+        });
+        return true;
     } catch (error) {
         console.error('Error deleting story:', error);
+        throw error;
     }
 }
 
 async function createTask(task) {
     // In a real application, this would post to your Django API
     try {
-        // const response = await fetch(`${apiBaseUrl}/api/stories/${task.story_id}/tasks/`, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(task)
-        // });
-        // const data = await response.json();
-        // return data;
-        console.log('Creating task - API call would happen here', task);
+        const response = await fetch(`${apiBaseUrl}/api/tasks/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(task)
+        });
+        const data = await response.json();
+        return data;
     } catch (error) {
         console.error('Error creating task:', error);
+        throw error;
     }
 }
 
 async function updateTask(id, task) {
     // In a real application, this would put to your Django API
     try {
-        // const response = await fetch(`${apiBaseUrl}/api/tasks/${id}/`, {
-        //     method: 'PUT',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify(task)
-        // });
-        // const data = await response.json();
-        // return data;
-        console.log(`Updating task ${id} - API call would happen here`, task);
+        const response = await fetch(`${apiBaseUrl}/api/tasks/${id}/`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(task)
+        });
+        const data = await response.json();
+        return data;
     } catch (error) {
         console.error('Error updating task:', error);
+        throw error;
     }
 }
 
 async function deleteTask(id) {
     // In a real application, this would delete from your Django API
     try {
-        // await fetch(`${apiBaseUrl}/api/tasks/${id}/`, {
-        //     method: 'DELETE'
-        // });
-        console.log(`Deleting task ${id} - API call would happen here`);
+        await fetch(`${apiBaseUrl}/api/tasks/${id}/`, {
+            method: 'DELETE'
+        });
+        return true;
     } catch (error) {
         console.error('Error deleting task:', error);
+        throw error;
+    }
+}
+
+async function updateStoriesOrder(projectId, storiesOrder) {
+    // In a real application, this would make an API call to update the stories order
+    try {
+        const response = await fetch(`${apiBaseUrl}/api/projects/${projectId}/stories/reorder/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ order: storiesOrder })
+        });
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error updating stories order:', error);
+        throw error;
+    }
+}
+
+async function updateTasksOrder(storyId, tasksOrder) {
+    // In a real application, this would make an API call to update the tasks order
+    try {
+        const response = await fetch(`${apiBaseUrl}/api/stories/${storyId}/tasks/reorder/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ order: tasksOrder })
+        });
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error updating tasks order:', error);
+        throw error;
     }
 }
 
@@ -189,10 +264,15 @@ function handleAddProjectForm() {
         };
         
         try {
-            await createProject(project);
+            const newProject = await createProject(project);
             alert('Project created successfully!');
-            bootstrap.Modal.getInstance(document.getElementById('addProjectModal')).hide();
-            // In a real app, refresh the page or update the UI
+            
+            // Close the modal if it exists
+            const modal = bootstrap.Modal.getInstance(document.getElementById('addProjectModal'));
+            if (modal) modal.hide();
+            
+            // In a real app, redirect to the project details page
+            window.location.href = `project-view.html?id=${newProject.id}`;
         } catch (error) {
             console.error('Error creating project:', error);
             alert('Failed to create project. Please try again.');
@@ -215,16 +295,15 @@ function handleEditProjectForm() {
             priority: document.getElementById('editProjectPriority').value,
             start_date: document.getElementById('editProjectStartDate').value || null,
             due_date: document.getElementById('editProjectDueDate').value || null,
-            notes: document.getElementById('editProjectNotes').value || '',
-            // In a real app, you would gather the stories as well
-            stories: []
+            notes: document.getElementById('editProjectNotes').value || ''
         };
         
         try {
             await updateProject(projectId, project);
             alert('Project updated successfully!');
-            bootstrap.Modal.getInstance(document.getElementById('editProjectModal')).hide();
-            // In a real app, refresh the page or update the UI
+            
+            // Redirect to project view page
+            window.location.href = `project-view.html?id=${projectId}`;
         } catch (error) {
             console.error('Error updating project:', error);
             alert('Failed to update project. Please try again.');
@@ -240,22 +319,24 @@ function handleAddStoryForm() {
         
         const story = {
             title: document.getElementById('newStoryTitle').value,
-            project: document.getElementById('newStoryProject').value,
+            project: document.getElementById('storyProjectId').value,
             status: document.getElementById('newStoryStatus').value,
-            priority: document.getElementById('newStoryPri'+
-
-            'ority').value,
+            priority: document.getElementById('newStoryPriority').value,
             start_date: document.getElementById('newStoryStartDate').value || null,
             due_date: document.getElementById('newStoryDueDate').value || null,
-            notes: document.getElementById('newStoryNotes').value || '',
-            tasks: []
+            notes: document.getElementById('newStoryNotes').value || ''
         };
         
         try {
-            await createStory(story);
+            const newStory = await createStory(story);
             alert('Story created successfully!');
-            bootstrap.Modal.getInstance(document.getElementById('addStoryModal')).hide();
-            // In a real app, refresh the page or update the UI
+            
+            // Close the modal if it exists
+            const modal = bootstrap.Modal.getInstance(document.getElementById('addStoryModal'));
+            if (modal) modal.hide();
+            
+            // Redirect to story view page
+            window.location.href = `story-view.html?id=${newStory.id}`;
         } catch (error) {
             console.error('Error creating story:', error);
             alert('Failed to create story. Please try again.');
@@ -271,22 +352,21 @@ function handleEditStoryForm() {
         
         const storyId = document.getElementById('editStoryId').value;
         const story = {
-            title: document.getElementById('editStoryTitle').value,
-            project: document.getElementById('editStoryProject').value,
-            status: document.getElementById('editStoryStatus').value,
-            priority: document.getElementById('editStoryPriority').value,
-            start_date: document.getElementById('editStoryStartDate').value || null,
-            due_date: document.getElementById('editStoryDueDate').value || null,
-            notes: document.getElementById('editStoryNotes').value || '',
-            // In a real app, you would gather the tasks as well
-            tasks: []
+            title: document.getElementById('storyTitle').value,
+            project: document.getElementById('storyProject').value,
+            status: document.getElementById('storyStatus').value,
+            priority: document.getElementById('storyPriority').value,
+            start_date: document.getElementById('storyStartDate').value || null,
+            due_date: document.getElementById('storyDueDate').value || null,
+            notes: document.getElementById('storyNotes').value || ''
         };
         
         try {
             await updateStory(storyId, story);
             alert('Story updated successfully!');
-            bootstrap.Modal.getInstance(document.getElementById('editStoryModal')).hide();
-            // In a real app, refresh the page or update the UI
+            
+            // Redirect to story view page
+            window.location.href = `story-view.html?id=${storyId}`;
         } catch (error) {
             console.error('Error updating story:', error);
             alert('Failed to update story. Please try again.');
@@ -302,7 +382,7 @@ function handleAddTaskForm() {
         
         const task = {
             title: document.getElementById('newTaskTitle').value,
-            story: document.getElementById('newTaskStory').value,
+            story: document.getElementById('taskStoryId').value,
             status: document.getElementById('newTaskStatus').value,
             priority: document.getElementById('newTaskPriority').value,
             start_date: document.getElementById('newTaskStartDate').value || null,
@@ -311,10 +391,15 @@ function handleAddTaskForm() {
         };
         
         try {
-            await createTask(task);
+            const newTask = await createTask(task);
             alert('Task created successfully!');
-            bootstrap.Modal.getInstance(document.getElementById('addTaskModal')).hide();
-            // In a real app, refresh the page or update the UI
+            
+            // Close the modal if it exists
+            const modal = bootstrap.Modal.getInstance(document.getElementById('addTaskModal'));
+            if (modal) modal.hide();
+            
+            // Redirect to task view page
+            window.location.href = `task-view.html?id=${newTask.id}`;
         } catch (error) {
             console.error('Error creating task:', error);
             alert('Failed to create task. Please try again.');
@@ -328,22 +413,24 @@ function handleEditTaskForm() {
     document.getElementById('editTaskForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         
-        const taskId = document.getElementById('editTaskId').value;
+        const taskId = document.getElementById('taskId').value;
         const task = {
-            title: document.getElementById('editTaskTitle').value,
-            story: document.getElementById('editTaskStory').value,
-            status: document.getElementById('editTaskStatus').value,
-            priority: document.getElementById('editTaskPriority').value,
-            start_date: document.getElementById('editTaskStartDate').value || null,
-            due_date: document.getElementById('editTaskDueDate').value || null,
-            notes: document.getElementById('editTaskNotes').value || ''
+            title: document.getElementById('taskTitle').value,
+            story: document.getElementById('taskStory').value,
+            project: document.getElementById('taskProject').value,
+            status: document.getElementById('taskStatus').value,
+            priority: document.getElementById('taskPriority').value,
+            start_date: document.getElementById('taskStartDate').value || null,
+            due_date: document.getElementById('taskDueDate').value || null,
+            notes: document.getElementById('taskNotes').value || ''
         };
         
         try {
             await updateTask(taskId, task);
             alert('Task updated successfully!');
-            bootstrap.Modal.getInstance(document.getElementById('editTaskModal')).hide();
-            // In a real app, refresh the page or update the UI
+            
+            // Redirect to task view page
+            window.location.href = `task-view.html?id=${taskId}`;
         } catch (error) {
             console.error('Error updating task:', error);
             alert('Failed to update task. Please try again.');
@@ -351,72 +438,139 @@ function handleEditTaskForm() {
     });
 }
 
-// Confirmation functions
-function confirmDeleteProject() {
-    if (confirm('Are you sure you want to delete this project? This will also delete all associated stories and tasks.')) {
-        const projectId = document.getElementById('editProjectId').value;
-        deleteProject(projectId)
-            .then(() => {
-                alert('Project deleted successfully!');
-                bootstrap.Modal.getInstance(document.getElementById('editProjectModal')).hide();
-                // In a real app, refresh the page or update the UI
-            })
-            .catch(error => {
-                console.error('Error deleting project:', error);
-                alert('Failed to delete project. Please try again.');
-            });
+// Helper functions
+function getStatusBadgeClass(status) {
+    switch(status) {
+        case 'Completed': return 'bg-success';
+        case 'In Progress': return 'bg-primary';
+        case 'On Hold': return 'bg-warning';
+        case 'Blocked': return 'bg-danger';
+        case 'Not Started': return 'bg-info';
+        default: return 'bg-secondary';
     }
 }
 
-function confirmDeleteStory() {
-    if (confirm('Are you sure you want to delete this story? This will also delete all associated tasks.')) {
-        const storyId = document.getElementById('editStoryId').value;
-        deleteStory(storyId)
-            .then(() => {
-                alert('Story deleted successfully!');
-                bootstrap.Modal.getInstance(document.getElementById('editStoryModal')).hide();
-                // In a real app, refresh the page or update the UI
-            })
-            .catch(error => {
-                console.error('Error deleting story:', error);
-                alert('Failed to delete story. Please try again.');
-            });
-    }
+function updateStatusStyles(elementId, status) {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+    
+    // Remove all existing status classes
+    element.classList.remove('bg-success', 'bg-primary', 'bg-warning', 'bg-danger', 'bg-info', 'bg-secondary');
+    
+    // Add the appropriate class
+    element.classList.add(getStatusBadgeClass(status));
 }
 
-function confirmDeleteTask() {
-    if (confirm('Are you sure you want to delete this task?')) {
-        const taskId = document.getElementById('editTaskId').value;
-        deleteTask(taskId)
-            .then(() => {
-                alert('Task deleted successfully!');
-                bootstrap.Modal.getInstance(document.getElementById('editTaskModal')).hide();
-                // In a real app, refresh the page or update the UI
-            })
-            .catch(error => {
-                console.error('Error deleting task:', error);
-                alert('Failed to delete task. Please try again.');
-            });
-    }
+function formatDate(dateString) {
+    if (!dateString) return 'Not set';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
-// Status change functions
-function moveTaskStatus(id, newStatus) {
-    // In a real app, this would update the task's status via API
-    updateTask(id, { status: newStatus })
-        .then(() => {
-            alert(`Task ${id} moved to ${newStatus}`);
-            // In a real app, refresh the page or update the UI
+// Populate dropdowns
+function populateProjectDropdown(selectId, selectedValue = null) {
+    const select = document.getElementById(selectId);
+    if (!select) return;
+    
+    // Clear existing options
+    select.innerHTML = '';
+    
+    // In a real app, this would fetch from API
+    fetchProjects()
+        .then(projects => {
+            projects.forEach(project => {
+                const option = document.createElement('option');
+                option.value = project.id;
+                option.textContent = project.name;
+                select.appendChild(option);
+            });
+            
+            if (selectedValue) {
+                select.value = selectedValue;
+            }
+            
+            // Trigger change event to populate story dropdown if needed
+            if (selectId === 'taskProject') {
+                select.dispatchEvent(new Event('change'));
+            }
         })
         .catch(error => {
-            console.error('Error updating task status:', error);
-            alert('Failed to update task status. Please try again.');
+            console.error('Error populating project dropdown:', error);
+            
+            // Add some sample data for demonstration
+            const sampleProjects = [
+                { id: '1', name: 'Website Redesign' },
+                { id: '2', name: 'Mobile App Development' },
+                { id: '3', name: 'Content Marketing Strategy' },
+                { id: '4', name: 'New Product Launch' }
+            ];
+            
+            sampleProjects.forEach(project => {
+                const option = document.createElement('option');
+                option.value = project.id;
+                option.textContent = project.name;
+                select.appendChild(option);
+            });
+            
+            if (selectedValue) {
+                select.value = selectedValue;
+            }
+            
+            // Trigger change event to populate story dropdown if needed
+            if (selectId === 'taskProject') {
+                select.dispatchEvent(new Event('change'));
+            }
         });
+}
+
+function populateStoryDropdown(selectId, projectId, selectedValue = null) {
+    const select = document.getElementById(selectId);
+    if (!select) return;
+    
+    // Clear existing options
+    select.innerHTML = '';
+    
+    if (!projectId) {
+        select.innerHTML = '<option value="">Select a project first</option>';
+        return;
+    }
+    
+    // In a real app, this would fetch stories for the selected project from API
+    // For now, use sample data
+    const sampleStories = [
+        { id: '101', title: 'Create landing page design', project_id: '1' },
+        { id: '102', title: 'Implement responsive navigation', project_id: '1' },
+        { id: '103', title: 'Optimize for SEO', project_id: '1' },
+        { id: '104', title: 'User authentication system', project_id: '2' },
+        { id: '105', title: 'Push notification service', project_id: '2' },
+        { id: '106', title: 'Content calendar creation', project_id: '3' },
+        { id: '107', title: 'Social media strategy', project_id: '3' },
+        { id: '108', title: 'Email marketing campaign', project_id: '4' },
+        { id: '109', title: 'Product pricing research', project_id: '4' }
+    ];
+    
+    // Filter stories by project
+    const filteredStories = sampleStories.filter(story => story.project_id === projectId);
+    
+    if (filteredStories.length === 0) {
+        select.innerHTML = '<option value="">No stories found for this project</option>';
+    } else {
+        filteredStories.forEach(story => {
+            const option = document.createElement('option');
+            option.value = story.id;
+            option.textContent = story.title;
+            select.appendChild(option);
+        });
+        
+        if (selectedValue) {
+            select.value = selectedValue;
+        }
+    }
 }
 
 // Initialize sortable for drag-and-drop
 function initSortable() {
-    // Initialize sortable for stories reordering if the element exists
+    // Initialize sortable for stories reordering
     const storiesList = document.getElementById('projectStoriesList');
     if (storiesList) {
         new Sortable(storiesList, {
@@ -424,14 +578,12 @@ function initSortable() {
             handle: '.reorder-handle',
             ghostClass: 'reorder-item-dragging',
             onEnd: function(evt) {
-                // In a real app, update story order via API
                 console.log('Story reordered', evt.oldIndex, evt.newIndex);
-                // Here you would make an API call to update the order
             }
         });
     }
 
-    // Initialize sortable for tasks reordering if the element exists
+    // Initialize sortable for tasks reordering
     const tasksList = document.getElementById('storyTasksList');
     if (tasksList) {
         new Sortable(tasksList, {
@@ -439,14 +591,12 @@ function initSortable() {
             handle: '.reorder-handle',
             ghostClass: 'reorder-item-dragging',
             onEnd: function(evt) {
-                // In a real app, update task order via API
                 console.log('Task reordered', evt.oldIndex, evt.newIndex);
-                // Here you would make an API call to update the order
             }
         });
     }
 
-    // Initialize sortable for kanban board if the elements exist
+    // Initialize sortable for kanban board
     const kanbanColumns = document.querySelectorAll('.kanban-tasks');
     if (kanbanColumns.length > 0) {
         kanbanColumns.forEach(column => {
@@ -457,56 +607,12 @@ function initSortable() {
                 onEnd: function(evt) {
                     // In a real app, update task status and order via API
                     const taskId = evt.item.getAttribute('data-task-id') || 
-                                    evt.item.onclick.toString().match(/editTask\((\d+)\)/)[1];
+                                  evt.item.getAttribute('data-id');
                     const newStatus = evt.to.id.replace('Tasks', '');
                     console.log(`Task ${taskId} moved to ${newStatus}, new position: ${evt.newIndex}`);
-                    // Here you would make an API call to update the status and order
                 }
             });
         });
-    }
-}
-
-// Helper function for stories dropdown
-function populateStoryDropdown() {
-    const storyDropdown = document.getElementById('newTaskStory');
-    if (!storyDropdown) return;
-
-    // In a real app, you would fetch stories from API and populate the dropdown
-    storyDropdown.innerHTML = '';
-    // Sample data for now
-    const sampleStories = [
-        { id: 101, title: 'Create landing page design' },
-        { id: 102, title: 'Implement responsive navigation' },
-        { id: 103, title: 'Backend development' },
-        { id: 104, title: 'Market analysis' }
-    ];
-    
-    sampleStories.forEach(story => {
-        storyDropdown.innerHTML += `<option value="${story.id}">${story.title}</option>`;
-    });
-}
-
-// Helper function for work stories dropdown
-function populateWorkStories() {
-    const projectSelect = document.getElementById('newTaskProject');
-    const storySelect = document.getElementById('newTaskStory');
-    if (!projectSelect || !storySelect) return;
-    
-    // Clear existing options
-    storySelect.innerHTML = '';
-    
-    // In a real app, this would fetch stories for the selected project from API
-    // For now, just add some sample options based on selected project
-    if (projectSelect.value === '1') { // Website Redesign
-        storySelect.innerHTML += `<option value="101">Create landing page design</option>`;
-        storySelect.innerHTML += `<option value="102">Implement responsive navigation</option>`;
-    } else if (projectSelect.value === '2') { // Mobile App Development
-        storySelect.innerHTML += `<option value="103">Backend development</option>`;
-        storySelect.innerHTML += `<option value="105">User interface design</option>`;
-    } else if (projectSelect.value === '4') { // New Product Launch
-        storySelect.innerHTML += `<option value="104">Market analysis</option>`;
-        storySelect.innerHTML += `<option value="106">Marketing campaign</option>`;
     }
 }
 
@@ -523,13 +629,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize sortables for drag and drop
     initSortable();
     
-    // Populate dropdowns
-    populateStoryDropdown();
-    
     // Ensure sidebar is scrollable
     const sidebar = document.getElementById('sidebar');
     if (sidebar) {
         sidebar.style.overflowY = 'auto';
+        sidebar.style.overflowX = 'hidden';
     }
     
     // Close sidebar when clicking outside on mobile
@@ -537,17 +641,55 @@ document.addEventListener('DOMContentLoaded', function() {
     if (sidebarBackdrop) {
         sidebarBackdrop.addEventListener('click', toggleSidebar);
     }
+    
+    // Setup project selection in add task form to update story options
+    const taskProjectSelect = document.getElementById('taskProject');
+    if (taskProjectSelect) {
+        taskProjectSelect.addEventListener('change', function() {
+            const projectId = this.value;
+            populateStoryDropdown('taskStory', projectId);
+        });
+    }
 });
 
 // Function to create a story and immediately open the add task modal
 function createStoryAndAddTask() {
+    // Get the form data
+    const storyData = {
+        title: document.getElementById('newStoryTitle').value,
+        project: document.getElementById('storyProjectId').value,
+        status: document.getElementById('newStoryStatus').value,
+        priority: document.getElementById('newStoryPriority').value,
+        start_date: document.getElementById('newStoryStartDate').value || null,
+        due_date: document.getElementById('newStoryDueDate').value || null,
+        notes: document.getElementById('newStoryNotes').value || ''
+    };
+    
     // In a real app, this would create the story first via API
-    // Then open the add task modal with the new story selected
-    alert('Creating story and preparing to add task');
-    // For demonstration, just hide the story modal and show the task modal
-    bootstrap.Modal.getInstance(document.getElementById('addStoryModal')).hide();
-    setTimeout(() => {
-        const modal = new bootstrap.Modal(document.getElementById('addTaskModal'));
-        modal.show();
-    }, 500);
+    createStory(storyData)
+        .then(newStory => {
+            // Close the story modal
+            bootstrap.Modal.getInstance(document.getElementById('addStoryModal')).hide();
+            
+            // Redirect to story edit page with flag to open add task modal
+            window.location.href = `story-view.html?id=${newStory.id}&addTask=true`;
+        })
+        .catch(error => {
+            console.error('Error creating story:', error);
+            alert('Failed to create story. Please try again.');
+        });
+}
+
+// Function to update the project card links
+function updateProjectLinks() {
+    const projectCards = document.querySelectorAll('.project-card');
+    if (projectCards.length === 0) return;
+
+    projectCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            e.preventDefault();
+            const projectId = this.getAttribute('data-id');
+            window.location.href = `project-view.html?id=${projectId}`;
+        });
+    });
 }

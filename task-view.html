@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeHub - Task Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <button class="sidebar-close" onclick="toggleSidebar()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="sidebar-header">
+            <h3><i class="fas fa-layer-group me-2"></i>LifeHub</h3>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <h6 class="nav-section-title">PAGES</h6>
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="projects.html" class="nav-link">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>Projects</span>
+                </a>
+                <a href="stories.html" class="nav-link">
+                    <i class="fas fa-bookmark"></i>
+                    <span>Stories</span>
+                </a>
+                <a href="tasks.html" class="nav-link">
+                    <i class="fas fa-tasks"></i>
+                    <span>Tasks</span>
+                </a>
+                <a href="completed.html" class="nav-link">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Completed</span>
+                </a>
+                <a href="work-center.html" class="nav-link">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Work Center</span>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <h6 class="nav-section-title">QUICK ACTIONS</h6>
+                <button class="nav-link" onclick="showAddProjectModal()">
+                    <i class="fas fa-plus"></i>
+                    <span>New Project</span>
+                </button>
+                <button class="nav-link" onclick="showAddStoryModal()">
+                    <i class="fas fa-bookmark"></i>
+                    <span>New Story</span>
+                </button>
+                <button class="nav-link" onclick="showAddTaskModal()">
+                    <i class="fas fa-check-square"></i>
+                    <span>New Task</span>
+                </button>
+                <a href="login.html" class="nav-link text-danger">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Exit</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-link sidebar-toggle d-lg-none" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="current-category">Task Details</h1>
+            </div>
+            <div class="header-actions">
+                <a href="#" id="backToStoryBtn" class="btn btn-outline-secondary me-2">
+                    <i class="fas fa-arrow-left me-1"></i>Back to Story
+                </a>
+                <a href="#" id="editTaskBtn" class="btn btn-primary">
+                    <i class="fas fa-edit me-1"></i>Edit Task
+                </a>
+            </div>
+        </header>
+
+        <!-- Task Details Content -->
+        <div class="content-area">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div>
+                                    <h2 id="taskTitle" class="fw-bold mb-2">Design wireframes</h2>
+                                    <div class="d-flex flex-wrap gap-3 mb-3">
+                                        <div class="task-meta-item">
+                                            <span class="text-muted">Story:</span>
+                                            <a href="#" id="taskStory" class="ms-1">Create landing page design</a>
+                                        </div>
+                                        <div class="task-meta-item">
+                                            <span class="text-muted">Project:</span>
+                                            <a href="#" id="taskProject" class="ms-1">Website Redesign</a>
+                                        </div>
+                                        <div class="task-meta-item">
+                                            <span class="text-muted">Status:</span>
+                                            <span id="taskStatus" class="badge bg-success ms-1">Completed</span>
+                                        </div>
+                                        <div class="task-meta-item">
+                                            <span class="text-muted">Priority:</span>
+                                            <span id="taskPriority" class="priority-high ms-1"><i class="fas fa-flag me-1"></i>High</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline-danger" onclick="confirmDeleteTask()">
+                                    <i class="fas fa-trash-alt me-1"></i>Delete
+                                </button>
+                            </div>
+                            
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="task-meta-item">
+                                        <span class="text-muted">Start Date:</span>
+                                        <span id="taskStartDate" class="ms-1">May 15, 2025</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="task-meta-item">
+                                        <span class="text-muted">Due Date:</span>
+                                        <span id="taskDueDate" class="ms-1">May 18, 2025</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="task-description">
+                                <h6>Notes:</h6>
+                                <p id="taskNotes">Create wireframes for all pages of the website, focusing on user flow and responsive design. Get approval from marketing team.</p>
+                            </div>
+
+                            <div class="d-flex justify-content-end mt-4">
+                                <button id="markCompleteBtn" class="btn btn-success" onclick="toggleTaskCompletion()">
+                                    <i class="fas fa-check me-1"></i>Mark Complete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="task-info">
+                        <h6>Task Information</h6>
+                        <div class="info-item">
+                            <label>Story</label>
+                            <div>Create landing page design</div>
+                        </div>
+                        <div class="info-item">
+                            <label>Project</label>
+                            <div>Website Redesign</div>
+                        </div>
+                        <div class="info-item">
+                            <label>Created</label>
+                            <div>May 15, 2025</div>
+                        </div>
+                        <div class="info-item">
+                            <label>Last Modified</label>
+                            <div>May 22, 2025</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        let taskId;
+        let storyId;
+        let projectId;
+        let taskData;
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('show');
+            document.getElementById('sidebarBackdrop').classList.toggle('show');
+        }
+
+        function showAddProjectModal() {
+            window.location.href = 'index.html';
+        }
+
+        function showAddStoryModal() {
+            window.location.href = 'stories.html';
+        }
+
+        function showAddTaskModal() {
+            window.location.href = 'tasks.html';
+        }
+
+        function confirmDeleteTask() {
+            if (confirm('Are you sure you want to delete this task?')) {
+                deleteTask(taskId);
+            }
+        }
+
+        async function deleteTask(id) {
+            console.log(`Deleting task ${id} - API call would happen here`);
+            alert('Task deleted successfully!');
+            window.location.href = `story-view.html?id=${storyId}`;
+        }
+
+        function toggleTaskCompletion() {
+            const btn = document.getElementById('markCompleteBtn');
+            const statusLabel = document.getElementById('taskStatus');
+            
+            // Toggle between Completed and Not Started
+            const newStatus = statusLabel.textContent.trim() === 'Completed' ? 'Not Started' : 'Completed';
+            
+            // Update the UI
+            updateStatusStyles('taskStatus', newStatus);
+            statusLabel.textContent = newStatus;
+            
+            // Update button text
+            if (newStatus === 'Completed') {
+                btn.innerHTML = '<i class="fas fa-undo me-1"></i>Mark Incomplete';
+                btn.classList.replace('btn-success', 'btn-warning');
+            } else {
+                btn.innerHTML = '<i class="fas fa-check me-1"></i>Mark Complete';
+                btn.classList.replace('btn-warning', 'btn-success');
+            }
+            
+            // In a real app, this would update the task via API
+            console.log(`Updating task ${taskId} status to ${newStatus} - API call would happen here`);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+            if (sidebarBackdrop) {
+                sidebarBackdrop.addEventListener('click', toggleSidebar);
+            }
+
+            // Get task ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            taskId = urlParams.get('id');
+            
+            if (taskId) {
+                // Set the edit button href
+                document.getElementById('editTaskBtn').href = `task-edit.html?id=${taskId}`;
+                
+                // Load task data (simulate API call in real app)
+                loadTaskData(taskId);
+            } else {
+                // Redirect to tasks list if no ID provided
+                window.location.href = 'tasks.html';
+            }
+        });
+
+        function loadTaskData(id) {
+            // In a real app, this would fetch data from the API
+            // For now, we'll use sample data
+            
+            // Example API call:
+            // fetch(`/api/tasks/${id}`)
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         populateTaskData(data);
+            //     })
+            //     .catch(error => console.error('Error loading task:', error));
+            
+            // Use sample data for now
+            const data = {
+                id: id,
+                title: 'Design wireframes',
+                story: {
+                    id: '101',
+                    title: 'Create landing page design'
+                },
+                project: {
+                    id: '1',
+                    name: 'Website Redesign'
+                },
+                status: 'Completed',
+                priority: 'High',
+                start_date: '2025-05-15',
+                due_date: '2025-05-18',
+                notes: 'Create wireframes for all pages of the website, focusing on user flow and responsive design. Get approval from marketing team.',
+                created_at: '2025-05-15',
+                updated_at: '2025-05-22'
+            };
+            
+            taskData = data;
+            populateTaskData(data);
+        }
+
+        function populateTaskData(data) {
+            document.getElementById('taskTitle').textContent = data.title;
+            document.getElementById('taskStory').textContent = data.story.title;
+            document.getElementById('taskStory').href = `story-view.html?id=${data.story.id}`;
+            document.getElementById('taskProject').textContent = data.project.name;
+            document.getElementById('taskProject').href = `project-view.html?id=${data.project.id}`;
+            document.getElementById('taskStatus').textContent = data.status;
+            document.getElementById('taskPriority').innerHTML = `<i class="fas fa-flag me-1"></i>${data.priority}`;
+            document.getElementById('taskPriority').className = `priority-${data.priority.toLowerCase()} ms-1`;
+            document.getElementById('taskStartDate').textContent = formatDate(data.start_date);
+            document.getElementById('taskDueDate').textContent = formatDate(data.due_date);
+            document.getElementById('taskNotes').textContent = data.notes;
+            
+            // Update status classes
+            updateStatusStyles('taskStatus', data.status);
+            
+            // Set the story and project IDs
+            storyId = data.story.id;
+            projectId = data.project.id;
+            
+            // Update the back button
+            document.getElementById('backToStoryBtn').href = `story-view.html?id=${storyId}`;
+            
+            // Update the complete/incomplete button
+            const btn = document.getElementById('markCompleteBtn');
+            if (data.status === 'Completed') {
+                btn.innerHTML = '<i class="fas fa-undo me-1"></i>Mark Incomplete';
+                btn.classList.replace('btn-success', 'btn-warning');
+            } else {
+                btn.innerHTML = '<i class="fas fa-check me-1"></i>Mark Complete';
+                btn.classList.replace('btn-warning', 'btn-success');
+            }
+        }
+
+        function formatDate(dateString) {
+            if (!dateString) return 'Not set';
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        }
+
+        function getStatusBadgeClass(status) {
+            switch(status) {
+                case 'Completed': return 'bg-success';
+                case 'In Progress': return 'bg-primary';
+                case 'On Hold': return 'bg-warning';
+                case 'Blocked': return 'bg-danger';
+                case 'Not Started': return 'bg-info';
+                default: return 'bg-secondary';
+            }
+        }
+
+        function updateStatusStyles(elementId, status) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+            
+            // Remove all existing status classes
+            element.classList.remove('bg-success', 'bg-primary', 'bg-warning', 'bg-danger', 'bg-info', 'bg-secondary');
+            
+            // Add the appropriate class
+            element.classList.add(getStatusBadgeClass(status));
+        }
+    </script>
+</body>
+</html>

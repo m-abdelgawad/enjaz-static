@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeHub - Manage Your Projects</title>
+    <title>LifeHub - Work Center</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
         <nav class="sidebar-nav">
             <div class="nav-section">
                 <h6 class="nav-section-title">PAGES</h6>
-                <a href="index.html" class="nav-link active">
+                <a href="index.html" class="nav-link">
                     <i class="fas fa-home"></i>
                     <span>Dashboard</span>
                 </a>
@@ -36,7 +36,7 @@
             
             <div class="nav-section">
                 <h6 class="nav-section-title">AREAS</h6>
-                <a href="work-center.html" class="nav-link">
+                <a href="work-center.html" class="nav-link active">
                     <i class="fas fa-briefcase"></i>
                     <span>Work Center</span>
                     <span class="badge">3</span>
@@ -60,13 +60,13 @@
             
             <div class="nav-section">
                 <h6 class="nav-section-title">QUICK ACTIONS</h6>
-                <a href="#" class="nav-link" onclick="showAddProjectModal()">
+                <a href="#" class="nav-link" onclick="showAddWorkProject()">
                     <i class="fas fa-plus"></i>
-                    <span>New Project</span>
+                    <span>New Work Project</span>
                 </a>
-                <a href="#" class="nav-link" onclick="showAddStoryModal()">
-                    <i class="fas fa-bookmark"></i>
-                    <span>New Story</span>
+                <a href="#" class="nav-link" onclick="showAddWorkTask()">
+                    <i class="fas fa-plus"></i>
+                    <span>New Work Task</span>
                 </a>
             </div>
         </nav>
@@ -80,49 +80,78 @@
                 <button class="btn btn-link sidebar-toggle d-lg-none" onclick="toggleSidebar()">
                     <i class="fas fa-bars"></i>
                 </button>
-                <h1 class="current-category">Dashboard</h1>
+                <h1 class="current-category">Work Center</h1>
             </div>
             <div class="header-actions">
-                <button class="btn btn-primary" onclick="showAddProjectModal()">
-                    <i class="fas fa-plus me-2"></i>New Project
+                <button class="btn btn-primary" onclick="showAddWorkProject()">
+                    <i class="fas fa-plus me-2"></i>New Work Project
                 </button>
             </div>
         </header>
 
-        <!-- Dashboard Content -->
+        <!-- Work Center Content -->
         <div class="content-area">
             <!-- Stats Overview -->
             <div class="dashboard-stats">
                 <div class="stat-card">
-                    <h4>Total Projects</h4>
-                    <div class="stat-value">10</div>
+                    <h4>Work Projects</h4>
+                    <div class="stat-value" id="workProjectsCount">3</div>
                 </div>
                 <div class="stat-card">
-                    <h4>Active Projects</h4>
-                    <div class="stat-value">6</div>
+                    <h4>Active Work Projects</h4>
+                    <div class="stat-value" id="activeWorkProjectsCount">2</div>
                 </div>
                 <div class="stat-card">
-                    <h4>Pending Tasks</h4>
-                    <div class="stat-value">24</div>
+                    <h4>Work Tasks</h4>
+                    <div class="stat-value" id="workTasksCount">12</div>
                 </div>
                 <div class="stat-card">
-                    <h4>Completed Tasks</h4>
-                    <div class="stat-value">18</div>
+                    <h4>Completed Work Tasks</h4>
+                    <div class="stat-value" id="completedWorkTasksCount">5</div>
                 </div>
             </div>
 
-            <!-- Recent Projects -->
+            <!-- Work Projects -->
             <div class="dashboard-section">
                 <div class="dashboard-section-header">
-                    <h2 class="dashboard-section-title">Recent Projects</h2>
-                    <a href="projects.html" class="btn btn-sm btn-outline-primary">View All</a>
+                    <h2 class="dashboard-section-title">Work Projects</h2>
+                    <button class="btn btn-sm btn-outline-primary" onclick="showAddWorkProject()">
+                        <i class="fas fa-plus me-1"></i>Add Project
+                    </button>
                 </div>
-                <div class="projects-grid">
-                    <!-- Recent projects will be dynamically inserted here -->
+                <div class="projects-grid" id="workProjectsGrid">
+                    <!-- Work projects will be dynamically inserted here -->
                 </div>
             </div>
 
-            <!-- Upcoming Deadlines -->
+            <!-- Work Tasks -->
+            <div class="dashboard-section">
+                <div class="dashboard-section-header">
+                    <h2 class="dashboard-section-title">Recent Work Tasks</h2>
+                    <button class="btn btn-sm btn-outline-primary" onclick="showAddWorkTask()">
+                        <i class="fas fa-plus me-1"></i>Add Task
+                    </button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Project</th>
+                                <th>Story</th>
+                                <th>Status</th>
+                                <th>Due Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="workTasksTable">
+                            <!-- Work tasks will be dynamically inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Upcoming Work Deadlines -->
             <div class="dashboard-section">
                 <div class="dashboard-section-header">
                     <h2 class="dashboard-section-title">Upcoming Deadlines</h2>
@@ -132,14 +161,15 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Area</th>
+                                <th>Type</th>
                                 <th>Due Date</th>
                                 <th>Status</th>
+                                <th>Priority</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody id="deadlinesTable">
-                            <!-- Deadlines will be dynamically inserted here -->
+                        <tbody id="workDeadlinesTable">
+                            <!-- Work deadlines will be dynamically inserted here -->
                         </tbody>
                     </table>
                 </div>
@@ -147,36 +177,27 @@
         </div>
     </div>
 
-    <!-- Add Project Modal -->
-    <div class="modal fade" id="addProjectModal" tabindex="-1">
+    <!-- Add Work Project Modal -->
+    <div class="modal fade" id="addWorkProjectModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Create New Project</h5>
+                    <h5 class="modal-title">Create New Work Project</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <form onsubmit="createProject(event)">
+                <form onsubmit="createWorkProject(event)">
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="form-label">Project Name</label>
-                            <input type="text" class="form-control" id="newProjectName" maxlength="120" required>
+                            <input type="text" class="form-control" id="newWorkProjectName" maxlength="120" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Description</label>
-                            <textarea class="form-control" id="newProjectDescription" rows="3"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Area</label>
-                            <select class="form-select" id="newProjectCategory" required>
-                                <option value="work">Work</option>
-                                <option value="personal">Personal</option>
-                                <option value="freelance">Freelancing</option>
-                                <option value="fitness">Fitness</option>
-                            </select>
+                            <textarea class="form-control" id="newWorkProjectDescription" rows="3"></textarea>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Status</label>
-                            <select class="form-select" id="newProjectStatus">
+                            <select class="form-select" id="newWorkProjectStatus">
                                 <option value="backlog">Backlog</option>
                                 <option value="not_started">Not Started</option>
                                 <option value="in_progress">In Progress</option>
@@ -187,7 +208,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Priority</label>
-                            <select class="form-select" id="newProjectPriority">
+                            <select class="form-select" id="newWorkProjectPriority">
                                 <option value="medium">Medium</option>
                                 <option value="low">Low</option>
                                 <option value="high">High</option>
@@ -196,53 +217,55 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="newProjectStartDate">
+                            <input type="date" class="form-control" id="newWorkProjectStartDate">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Due Date</label>
-                            <input type="date" class="form-control" id="newProjectDueDate">
+                            <input type="date" class="form-control" id="newWorkProjectDueDate">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Notes</label>
-                            <textarea class="form-control" id="newProjectNotes" rows="3"></textarea>
+                            <textarea class="form-control" id="newWorkProjectNotes" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Create Project</button>
+                        <button type="submit" class="btn btn-primary">Create Work Project</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- Add Story Modal -->
-    <div class="modal fade" id="addStoryModal" tabindex="-1">
+    <!-- Add Work Task Modal -->
+    <div class="modal fade" id="addWorkTaskModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Create New Story</h5>
+                    <h5 class="modal-title">Create New Work Task</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <form onsubmit="createStory(event)">
+                <form onsubmit="createWorkTask(event)">
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label class="form-label">Story Title</label>
-                            <input type="text" class="form-control" id="newStoryTitle" maxlength="180" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Description</label>
-                            <textarea class="form-control" id="newStoryDescription" rows="3"></textarea>
+                            <label class="form-label">Task Title</label>
+                            <input type="text" class="form-control" id="newWorkTaskTitle" maxlength="180" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Project</label>
-                            <select class="form-select" id="newStoryProject" required>
-                                <!-- Options will be populated dynamically -->
+                            <select class="form-select" id="newWorkTaskProject" onchange="populateWorkStories()">
+                                <!-- Options will be populated dynamically with Work projects -->
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Story</label>
+                            <select class="form-select" id="newWorkTaskStory">
+                                <!-- Options will be populated dynamically based on selected project -->
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Status</label>
-                            <select class="form-select" id="newStoryStatus">
+                            <select class="form-select" id="newWorkTaskStatus">
                                 <option value="backlog">Backlog</option>
                                 <option value="not_started">Not Started</option>
                                 <option value="in_progress">In Progress</option>
@@ -253,7 +276,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Priority</label>
-                            <select class="form-select" id="newStoryPriority">
+                            <select class="form-select" id="newWorkTaskPriority">
                                 <option value="medium">Medium</option>
                                 <option value="low">Low</option>
                                 <option value="high">High</option>
@@ -262,20 +285,20 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="newStoryStartDate">
+                            <input type="date" class="form-control" id="newWorkTaskStartDate">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Due Date</label>
-                            <input type="date" class="form-control" id="newStoryDueDate">
+                            <input type="date" class="form-control" id="newWorkTaskDueDate">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Notes</label>
-                            <textarea class="form-control" id="newStoryNotes" rows="3"></textarea>
+                            <textarea class="form-control" id="newWorkTaskNotes" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Create Story</button>
+                        <button type="submit" class="btn btn-primary">Create Work Task</button>
                     </div>
                 </form>
             </div>

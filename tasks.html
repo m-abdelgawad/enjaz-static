@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeHub - Manage Your Projects</title>
+    <title>LifeHub - Tasks</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -20,7 +20,7 @@
         <nav class="sidebar-nav">
             <div class="nav-section">
                 <h6 class="nav-section-title">PAGES</h6>
-                <a href="index.html" class="nav-link active">
+                <a href="index.html" class="nav-link">
                     <i class="fas fa-home"></i>
                     <span>Dashboard</span>
                 </a>
@@ -28,7 +28,7 @@
                     <i class="fas fa-project-diagram"></i>
                     <span>Projects</span>
                 </a>
-                <a href="tasks.html" class="nav-link">
+                <a href="tasks.html" class="nav-link active">
                     <i class="fas fa-tasks"></i>
                     <span>Tasks</span>
                 </a>
@@ -60,13 +60,9 @@
             
             <div class="nav-section">
                 <h6 class="nav-section-title">QUICK ACTIONS</h6>
-                <a href="#" class="nav-link" onclick="showAddProjectModal()">
+                <a href="#" class="nav-link" onclick="showAddTaskModal()">
                     <i class="fas fa-plus"></i>
-                    <span>New Project</span>
-                </a>
-                <a href="#" class="nav-link" onclick="showAddStoryModal()">
-                    <i class="fas fa-bookmark"></i>
-                    <span>New Story</span>
+                    <span>New Task</span>
                 </a>
             </div>
         </nav>
@@ -80,103 +76,64 @@
                 <button class="btn btn-link sidebar-toggle d-lg-none" onclick="toggleSidebar()">
                     <i class="fas fa-bars"></i>
                 </button>
-                <h1 class="current-category">Dashboard</h1>
+                <h1 class="current-category">All Tasks</h1>
             </div>
             <div class="header-actions">
-                <button class="btn btn-primary" onclick="showAddProjectModal()">
-                    <i class="fas fa-plus me-2"></i>New Project
+                <button class="btn btn-primary" onclick="showAddTaskModal()">
+                    <i class="fas fa-plus me-2"></i>New Task
                 </button>
             </div>
         </header>
 
-        <!-- Dashboard Content -->
+        <!-- Tasks Content -->
         <div class="content-area">
-            <!-- Stats Overview -->
-            <div class="dashboard-stats">
-                <div class="stat-card">
-                    <h4>Total Projects</h4>
-                    <div class="stat-value">10</div>
+            <!-- Kanban Board -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="kanban-column h-100">
+                        <h2 class="kanban-title">To Do</h2>
+                        <div class="kanban-tasks" id="todoTasks">
+                            <!-- Tasks will be inserted here -->
+                        </div>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <h4>Active Projects</h4>
-                    <div class="stat-value">6</div>
+                <div class="col-md-4">
+                    <div class="kanban-column h-100">
+                        <h2 class="kanban-title">In Progress</h2>
+                        <div class="kanban-tasks" id="inProgressTasks">
+                            <!-- Tasks will be inserted here -->
+                        </div>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <h4>Pending Tasks</h4>
-                    <div class="stat-value">24</div>
-                </div>
-                <div class="stat-card">
-                    <h4>Completed Tasks</h4>
-                    <div class="stat-value">18</div>
-                </div>
-            </div>
-
-            <!-- Recent Projects -->
-            <div class="dashboard-section">
-                <div class="dashboard-section-header">
-                    <h2 class="dashboard-section-title">Recent Projects</h2>
-                    <a href="projects.html" class="btn btn-sm btn-outline-primary">View All</a>
-                </div>
-                <div class="projects-grid">
-                    <!-- Recent projects will be dynamically inserted here -->
-                </div>
-            </div>
-
-            <!-- Upcoming Deadlines -->
-            <div class="dashboard-section">
-                <div class="dashboard-section-header">
-                    <h2 class="dashboard-section-title">Upcoming Deadlines</h2>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Area</th>
-                                <th>Due Date</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="deadlinesTable">
-                            <!-- Deadlines will be dynamically inserted here -->
-                        </tbody>
-                    </table>
+                <div class="col-md-4">
+                    <div class="kanban-column h-100">
+                        <h2 class="kanban-title">Completed</h2>
+                        <div class="kanban-tasks" id="completedTasks">
+                            <!-- Tasks will be inserted here -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Add Project Modal -->
-    <div class="modal fade" id="addProjectModal" tabindex="-1">
+    <!-- Task Modal -->
+    <div class="modal fade" id="taskModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Create New Project</h5>
+                    <h5 class="modal-title">Task Details</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <form onsubmit="createProject(event)">
-                    <div class="modal-body">
+                <div class="modal-body">
+                    <form id="editTaskForm">
                         <div class="mb-3">
-                            <label class="form-label">Project Name</label>
-                            <input type="text" class="form-control" id="newProjectName" maxlength="120" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Description</label>
-                            <textarea class="form-control" id="newProjectDescription" rows="3"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Area</label>
-                            <select class="form-select" id="newProjectCategory" required>
-                                <option value="work">Work</option>
-                                <option value="personal">Personal</option>
-                                <option value="freelance">Freelancing</option>
-                                <option value="fitness">Fitness</option>
-                            </select>
+                            <label class="form-label">Task Title</label>
+                            <input type="text" class="form-control" id="taskTitle" maxlength="180" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Status</label>
-                            <select class="form-select" id="newProjectStatus">
+                            <select class="form-select" id="taskStatus">
                                 <option value="backlog">Backlog</option>
                                 <option value="not_started">Not Started</option>
                                 <option value="in_progress">In Progress</option>
@@ -187,7 +144,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Priority</label>
-                            <select class="form-select" id="newProjectPriority">
+                            <select class="form-select" id="taskPriority">
                                 <option value="medium">Medium</option>
                                 <option value="low">Low</option>
                                 <option value="high">High</option>
@@ -195,54 +152,55 @@
                             </select>
                         </div>
                         <div class="mb-3">
+                            <label class="form-label">Story</label>
+                            <select class="form-select" id="taskStory">
+                                <!-- Options will be populated dynamically -->
+                            </select>
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="newProjectStartDate">
+                            <input type="date" class="form-control" id="taskStartDate">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Due Date</label>
-                            <input type="date" class="form-control" id="newProjectDueDate">
+                            <input type="date" class="form-control" id="taskDueDate">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Notes</label>
-                            <textarea class="form-control" id="newProjectNotes" rows="3"></textarea>
+                            <textarea class="form-control" id="taskNotes" rows="3"></textarea>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Create Project</button>
-                    </div>
-                </form>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary" id="updateTaskBtn">Update Task</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Add Story Modal -->
-    <div class="modal fade" id="addStoryModal" tabindex="-1">
+    <!-- Add Task Modal -->
+    <div class="modal fade" id="addTaskModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Create New Story</h5>
+                    <h5 class="modal-title">Create New Task</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <form onsubmit="createStory(event)">
+                <form onsubmit="createTask(event)">
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label class="form-label">Story Title</label>
-                            <input type="text" class="form-control" id="newStoryTitle" maxlength="180" required>
+                            <label class="form-label">Task Title</label>
+                            <input type="text" class="form-control" id="newTaskTitle" maxlength="180" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Description</label>
-                            <textarea class="form-control" id="newStoryDescription" rows="3"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Project</label>
-                            <select class="form-select" id="newStoryProject" required>
+                            <label class="form-label">Story</label>
+                            <select class="form-select" id="newTaskStory" required>
                                 <!-- Options will be populated dynamically -->
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Status</label>
-                            <select class="form-select" id="newStoryStatus">
+                            <select class="form-select" id="newTaskStatus">
                                 <option value="backlog">Backlog</option>
                                 <option value="not_started">Not Started</option>
                                 <option value="in_progress">In Progress</option>
@@ -253,7 +211,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Priority</label>
-                            <select class="form-select" id="newStoryPriority">
+                            <select class="form-select" id="newTaskPriority">
                                 <option value="medium">Medium</option>
                                 <option value="low">Low</option>
                                 <option value="high">High</option>
@@ -262,20 +220,20 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="newStoryStartDate">
+                            <input type="date" class="form-control" id="newTaskStartDate">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Due Date</label>
-                            <input type="date" class="form-control" id="newStoryDueDate">
+                            <input type="date" class="form-control" id="newTaskDueDate">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Notes</label>
-                            <textarea class="form-control" id="newStoryNotes" rows="3"></textarea>
+                            <textarea class="form-control" id="newTaskNotes" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Create Story</button>
+                        <button type="submit" class="btn btn-primary">Create Task</button>
                     </div>
                 </form>
             </div>

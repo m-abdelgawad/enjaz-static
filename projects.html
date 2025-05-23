@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeHub - Manage Your Projects</title>
+    <title>LifeHub - Projects</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -20,11 +20,11 @@
         <nav class="sidebar-nav">
             <div class="nav-section">
                 <h6 class="nav-section-title">PAGES</h6>
-                <a href="index.html" class="nav-link active">
+                <a href="index.html" class="nav-link">
                     <i class="fas fa-home"></i>
                     <span>Dashboard</span>
                 </a>
-                <a href="projects.html" class="nav-link">
+                <a href="projects.html" class="nav-link active">
                     <i class="fas fa-project-diagram"></i>
                     <span>Projects</span>
                 </a>
@@ -80,7 +80,7 @@
                 <button class="btn btn-link sidebar-toggle d-lg-none" onclick="toggleSidebar()">
                     <i class="fas fa-bars"></i>
                 </button>
-                <h1 class="current-category">Dashboard</h1>
+                <h1 class="current-category">All Projects</h1>
             </div>
             <div class="header-actions">
                 <button class="btn btn-primary" onclick="showAddProjectModal()">
@@ -89,59 +89,131 @@
             </div>
         </header>
 
-        <!-- Dashboard Content -->
+        <!-- Projects Content -->
         <div class="content-area">
-            <!-- Stats Overview -->
-            <div class="dashboard-stats">
-                <div class="stat-card">
-                    <h4>Total Projects</h4>
-                    <div class="stat-value">10</div>
+            <!-- Area Tabs -->
+            <ul class="nav nav-tabs" id="projectAreaTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-projects" type="button" role="tab" aria-selected="true">All</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="work-tab" data-bs-toggle="tab" data-bs-target="#work-projects" type="button" role="tab" aria-selected="false">Work</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="personal-tab" data-bs-toggle="tab" data-bs-target="#personal-projects" type="button" role="tab" aria-selected="false">Personal</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="freelance-tab" data-bs-toggle="tab" data-bs-target="#freelance-projects" type="button" role="tab" aria-selected="false">Freelancing</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="fitness-tab" data-bs-toggle="tab" data-bs-target="#fitness-projects" type="button" role="tab" aria-selected="false">Fitness</button>
+                </li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content" id="projectAreaTabsContent">
+                <!-- All Projects Tab -->
+                <div class="tab-pane fade show active" id="all-projects" role="tabpanel" aria-labelledby="all-tab">
+                    <div class="projects-grid" id="allProjectsGrid">
+                        <!-- Projects will be dynamically inserted here -->
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <h4>Active Projects</h4>
-                    <div class="stat-value">6</div>
+                
+                <!-- Work Projects Tab -->
+                <div class="tab-pane fade" id="work-projects" role="tabpanel" aria-labelledby="work-tab">
+                    <div class="projects-grid" id="workProjectsGrid">
+                        <!-- Work projects will be dynamically inserted here -->
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <h4>Pending Tasks</h4>
-                    <div class="stat-value">24</div>
+                
+                <!-- Personal Projects Tab -->
+                <div class="tab-pane fade" id="personal-projects" role="tabpanel" aria-labelledby="personal-tab">
+                    <div class="projects-grid" id="personalProjectsGrid">
+                        <!-- Personal projects will be dynamically inserted here -->
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <h4>Completed Tasks</h4>
-                    <div class="stat-value">18</div>
+                
+                <!-- Freelance Projects Tab -->
+                <div class="tab-pane fade" id="freelance-projects" role="tabpanel" aria-labelledby="freelance-tab">
+                    <div class="projects-grid" id="freelanceProjectsGrid">
+                        <!-- Freelance projects will be dynamically inserted here -->
+                    </div>
+                </div>
+                
+                <!-- Fitness Projects Tab -->
+                <div class="tab-pane fade" id="fitness-projects" role="tabpanel" aria-labelledby="fitness-tab">
+                    <div class="projects-grid" id="fitnessProjectsGrid">
+                        <!-- Fitness projects will be dynamically inserted here -->
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Recent Projects -->
-            <div class="dashboard-section">
-                <div class="dashboard-section-header">
-                    <h2 class="dashboard-section-title">Recent Projects</h2>
-                    <a href="projects.html" class="btn btn-sm btn-outline-primary">View All</a>
+    <!-- Project Modal -->
+    <div class="modal fade" id="projectModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Project Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="projects-grid">
-                    <!-- Recent projects will be dynamically inserted here -->
-                </div>
-            </div>
-
-            <!-- Upcoming Deadlines -->
-            <div class="dashboard-section">
-                <div class="dashboard-section-header">
-                    <h2 class="dashboard-section-title">Upcoming Deadlines</h2>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Area</th>
-                                <th>Due Date</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="deadlinesTable">
-                            <!-- Deadlines will be dynamically inserted here -->
-                        </tbody>
-                    </table>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="project-stories" id="projectStories">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h6>Stories</h6>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showAddStoryModal()">
+                                        <i class="fas fa-plus me-1"></i>Add Story
+                                    </button>
+                                </div>
+                                <div class="stories-list" id="storiesList">
+                                    <!-- Stories will be inserted here -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="project-info">
+                                <h6>Project Info</h6>
+                                <div class="info-item">
+                                    <label>Status</label>
+                                    <select class="form-select form-select-sm" id="projectStatus">
+                                        <option value="backlog">Backlog</option>
+                                        <option value="not_started">Not Started</option>
+                                        <option value="in_progress">In Progress</option>
+                                        <option value="on_hold">On Hold</option>
+                                        <option value="blocked">Blocked</option>
+                                        <option value="completed">Completed</option>
+                                    </select>
+                                </div>
+                                <div class="info-item">
+                                    <label>Priority</label>
+                                    <select class="form-select form-select-sm" id="projectPriority">
+                                        <option value="low">Low</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="high">High</option>
+                                        <option value="urgent">Urgent</option>
+                                    </select>
+                                </div>
+                                <div class="info-item">
+                                    <label>Start Date</label>
+                                    <input type="date" class="form-control form-control-sm" id="projectStartDate">
+                                </div>
+                                <div class="info-item">
+                                    <label>Due Date</label>
+                                    <input type="date" class="form-control form-control-sm" id="projectDueDate">
+                                </div>
+                                <div class="info-item">
+                                    <label>Notes</label>
+                                    <textarea class="form-control form-control-sm" id="projectNotes" rows="3"></textarea>
+                                </div>
+                                <div class="d-grid gap-2 mt-3">
+                                    <button class="btn btn-primary" id="updateProjectBtn">Update Project</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -125,7 +125,7 @@
                     <div class="kanban-row-header">
                         <h3 class="kanban-status-title">
                             <i class="fas fa-pause me-2"></i>Not Started
-                            <span class="badge bg-info ms-2">2</span>
+                            <span class="badge bg-info ms-2">3</span>
                         </h3>
                     </div>
                     <div class="kanban-row-content">
@@ -144,6 +144,15 @@
                                 <div class="task-card-meta">
                                     <span class="project-name"><i class="fas fa-project-diagram me-1"></i>Website Redesign</span>
                                     <span class="task-priority priority-medium"><i class="fas fa-flag me-1"></i>Medium</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task-card priority-low" onclick="openTaskEdit(22)">
+                            <div class="task-card-content">
+                                <h5 class="task-card-title">Update documentation</h5>
+                                <div class="task-card-meta">
+                                    <span class="project-name"><i class="fas fa-project-diagram me-1"></i>Content Marketing Strategy</span>
+                                    <span class="task-priority priority-low"><i class="fas fa-flag me-1"></i>Low</span>
                                 </div>
                             </div>
                         </div>
@@ -252,7 +261,7 @@
         </div>
     </div>
 
-    <!-- Add Task Modal -->
+    <!-- Add Task Modal with Project First -->
     <div class="modal fade" id="addTaskModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">

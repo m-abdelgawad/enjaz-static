@@ -88,6 +88,41 @@
 
         <!-- Stories Content -->
         <div class="content-area">
+            <!-- Filter Bar -->
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <select class="form-select" id="statusFilter">
+                        <option value="">All Statuses</option>
+                        <option value="Backlog">Backlog</option>
+                        <option value="Not Started">Not Started</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="On Hold">On Hold</option>
+                        <option value="Blocked">Blocked</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select" id="priorityFilter">
+                        <option value="">All Priorities</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                        <option value="Urgent">Urgent</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-select" id="projectFilter">
+                        <option value="">All Projects</option>
+                        <option value="1">Website Redesign</option>
+                        <option value="2">Mobile App Development</option>
+                        <option value="3">Content Marketing Strategy</option>
+                        <option value="4">New Product Launch</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search stories...">
+                </div>
+            </div>
+
             <!-- Stories Grid -->
             <div class="stories-grid">
                 <div class="story-card" onclick="openStoryEdit(101)">
@@ -159,6 +194,42 @@
                     </div>
                     <div class="progress-bar">
                         <div class="progress-fill" style="width: 17%;"></div>
+                    </div>
+                </div>
+
+                <div class="story-card" onclick="openStoryEdit(105)">
+                    <div class="story-header">
+                        <h3 class="story-title">User interface design</h3>
+                        <span class="story-status status-backlog">Backlog</span>
+                    </div>
+                    <div class="story-meta">
+                        <span class="story-project"><i class="fas fa-project-diagram me-1"></i>Mobile App Development</span>
+                        <span class="story-priority priority-medium"><i class="fas fa-flag me-1"></i>Medium</span>
+                    </div>
+                    <div class="story-stats">
+                        <span class="stat-item"><i class="fas fa-tasks me-1"></i>0/8 Tasks</span>
+                        <span class="stat-item"><i class="fas fa-calendar me-1"></i>Due: Jun 10</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="story-card" onclick="openStoryEdit(106)">
+                    <div class="story-header">
+                        <h3 class="story-title">Content strategy</h3>
+                        <span class="story-status status-in_progress">In Progress</span>
+                    </div>
+                    <div class="story-meta">
+                        <span class="story-project"><i class="fas fa-project-diagram me-1"></i>Content Marketing Strategy</span>
+                        <span class="story-priority priority-high"><i class="fas fa-flag me-1"></i>High</span>
+                    </div>
+                    <div class="story-stats">
+                        <span class="stat-item"><i class="fas fa-tasks me-1"></i>4/7 Tasks</span>
+                        <span class="stat-item"><i class="fas fa-calendar me-1"></i>Due: May 28</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 57%;"></div>
                     </div>
                 </div>
             </div>
@@ -266,6 +337,39 @@
                 alert('Story created!');
                 bootstrap.Modal.getInstance(document.getElementById('addStoryModal')).hide();
             });
+
+            // Filter functionality
+            function applyFilters() {
+                const statusFilter = document.getElementById('statusFilter').value;
+                const priorityFilter = document.getElementById('priorityFilter').value;
+                const projectFilter = document.getElementById('projectFilter').value;
+                const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+                const cards = document.querySelectorAll('.story-card');
+                
+                cards.forEach(card => {
+                    let show = true;
+                    
+                    if (statusFilter && !card.querySelector('.story-status').textContent.includes(statusFilter)) {
+                        show = false;
+                    }
+                    
+                    if (priorityFilter && !card.querySelector('.story-priority').textContent.includes(priorityFilter)) {
+                        show = false;
+                    }
+                    
+                    if (searchTerm && !card.querySelector('.story-title').textContent.toLowerCase().includes(searchTerm)) {
+                        show = false;
+                    }
+                    
+                    card.style.display = show ? 'block' : 'none';
+                });
+            }
+
+            document.getElementById('statusFilter').addEventListener('change', applyFilters);
+            document.getElementById('priorityFilter').addEventListener('change', applyFilters);
+            document.getElementById('projectFilter').addEventListener('change', applyFilters);
+            document.getElementById('searchInput').addEventListener('input', applyFilters);
         });
     </script>
 </body>

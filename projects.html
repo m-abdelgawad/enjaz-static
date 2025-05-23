@@ -13,6 +13,9 @@
 <body>
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
+        <button class="sidebar-close" onclick="toggleSidebar()">
+            <i class="fas fa-times"></i>
+        </button>
         <div class="sidebar-header">
             <h3><i class="fas fa-layer-group me-2"></i>LifeHub</h3>
         </div>
@@ -28,50 +31,38 @@
                     <i class="fas fa-project-diagram"></i>
                     <span>Projects</span>
                 </a>
+                <a href="stories.html" class="nav-link">
+                    <i class="fas fa-bookmark"></i>
+                    <span>Stories</span>
+                </a>
                 <a href="tasks.html" class="nav-link">
                     <i class="fas fa-tasks"></i>
                     <span>Tasks</span>
                 </a>
-            </div>
-            
-            <div class="nav-section">
-                <h6 class="nav-section-title">AREAS</h6>
+                <a href="completed.html" class="nav-link">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Completed</span>
+                </a>
                 <a href="work-center.html" class="nav-link">
                     <i class="fas fa-briefcase"></i>
                     <span>Work Center</span>
-                    <span class="badge">3</span>
-                </a>
-                <a href="personal-center.html" class="nav-link">
-                    <i class="fas fa-user"></i>
-                    <span>Personal Center</span>
-                    <span class="badge">2</span>
-                </a>
-                <a href="freelance-center.html" class="nav-link">
-                    <i class="fas fa-laptop-code"></i>
-                    <span>Freelancing</span>
-                    <span class="badge">1</span>
-                </a>
-                <a href="fitness-center.html" class="nav-link">
-                    <i class="fas fa-dumbbell"></i>
-                    <span>Fitness</span>
-                    <span class="badge">4</span>
                 </a>
             </div>
             
             <div class="nav-section">
                 <h6 class="nav-section-title">QUICK ACTIONS</h6>
-                <a href="#" class="nav-link" onclick="showAddProjectModal()">
+                <button class="nav-link" onclick="showAddProjectModal()">
                     <i class="fas fa-plus"></i>
                     <span>New Project</span>
-                </a>
-                <a href="#" class="nav-link" onclick="showAddStoryModal()">
+                </button>
+                <button class="nav-link" onclick="showAddStoryModal()">
                     <i class="fas fa-bookmark"></i>
                     <span>New Story</span>
-                </a>
-                <a href="#" class="nav-link" onclick="showAddTaskModal()">
+                </button>
+                <button class="nav-link" onclick="showAddTaskModal()">
                     <i class="fas fa-check-square"></i>
                     <span>New Task</span>
-                </a>
+                </button>
                 <a href="login.html" class="nav-link text-danger">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Exit</span>
@@ -79,6 +70,9 @@
             </div>
         </nav>
     </div>
+
+    <!-- Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
     <!-- Main Content -->
     <div class="main-content">
@@ -90,224 +84,147 @@
                 </button>
                 <h1 class="current-category">All Projects</h1>
             </div>
-            <div class="header-actions">
-                <div class="btn-group">
-                    <button class="btn btn-primary" onclick="showAddProjectModal()">
-                        <i class="fas fa-plus me-2"></i>New Project
-                    </button>
-                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="visually-hidden">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#" onclick="showAddStoryModal()"><i class="fas fa-bookmark me-2"></i>New Story</a></li>
-                        <li><a class="dropdown-item" href="#" onclick="showAddTaskModal()"><i class="fas fa-check-square me-2"></i>New Task</a></li>
-                    </ul>
-                </div>
-                <a href="login.html" class="btn btn-outline-danger ms-2">
-                    <i class="fas fa-sign-out-alt me-1"></i>Exit
-                </a>
-            </div>
         </header>
 
         <!-- Projects Content -->
         <div class="content-area">
-            <!-- Area Tabs -->
-            <ul class="nav nav-tabs" id="projectAreaTabs" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-projects" type="button" role="tab" aria-selected="true">All</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="work-tab" data-bs-toggle="tab" data-bs-target="#work-projects" type="button" role="tab" aria-selected="false">Work</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="personal-tab" data-bs-toggle="tab" data-bs-target="#personal-projects" type="button" role="tab" aria-selected="false">Personal</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="freelance-tab" data-bs-toggle="tab" data-bs-target="#freelance-projects" type="button" role="tab" aria-selected="false">Freelancing</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="fitness-tab" data-bs-toggle="tab" data-bs-target="#fitness-projects" type="button" role="tab" aria-selected="false">Fitness</button>
-                </li>
-            </ul>
-
-            <!-- Tab Content -->
-            <div class="tab-content" id="projectAreaTabsContent">
-                <!-- All Projects Tab -->
-                <div class="tab-pane fade show active" id="all-projects" role="tabpanel" aria-labelledby="all-tab">
-                    <div class="projects-grid" id="allProjectsGrid">
-                        <!-- Projects will be dynamically inserted here -->
-                    </div>
+            <!-- Filter Bar -->
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <select class="form-select" id="statusFilter">
+                        <option value="">All Statuses</option>
+                        <option value="Backlog">Backlog</option>
+                        <option value="Not Started">Not Started</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="On Hold">On Hold</option>
+                        <option value="Blocked">Blocked</option>
+                    </select>
                 </div>
-                
-                <!-- Work Projects Tab -->
-                <div class="tab-pane fade" id="work-projects" role="tabpanel" aria-labelledby="work-tab">
-                    <div class="projects-grid" id="workProjectsGrid">
-                        <!-- Work projects will be dynamically inserted here -->
-                    </div>
+                <div class="col-md-3">
+                    <select class="form-select" id="priorityFilter">
+                        <option value="">All Priorities</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                        <option value="Urgent">Urgent</option>
+                    </select>
                 </div>
-                
-                <!-- Personal Projects Tab -->
-                <div class="tab-pane fade" id="personal-projects" role="tabpanel" aria-labelledby="personal-tab">
-                    <div class="projects-grid" id="personalProjectsGrid">
-                        <!-- Personal projects will be dynamically inserted here -->
-                    </div>
+                <div class="col-md-3">
+                    <select class="form-select" id="areaFilter">
+                        <option value="">All Areas</option>
+                        <option value="Work">Work</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Freelancing">Freelancing</option>
+                        <option value="Fitness">Fitness</option>
+                    </select>
                 </div>
-                
-                <!-- Freelance Projects Tab -->
-                <div class="tab-pane fade" id="freelance-projects" role="tabpanel" aria-labelledby="freelance-tab">
-                    <div class="projects-grid" id="freelanceProjectsGrid">
-                        <!-- Freelance projects will be dynamically inserted here -->
-                    </div>
-                </div>
-                
-                <!-- Fitness Projects Tab -->
-                <div class="tab-pane fade" id="fitness-projects" role="tabpanel" aria-labelledby="fitness-tab">
-                    <div class="projects-grid" id="fitnessProjectsGrid">
-                        <!-- Fitness projects will be dynamically inserted here -->
-                    </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search projects...">
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Project Modal -->
-    <div class="modal fade" id="projectModal" tabindex="-1">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Project Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="project-stories mb-4">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h6>Stories</h6>
-                                    <button class="btn btn-sm btn-outline-primary" onclick="showAddStoryForProjectModal()">
-                                        <i class="fas fa-plus me-1"></i>Add Story
-                                    </button>
-                                </div>
-                                <div class="stories-list" id="storiesList">
-                                    <!-- Stories will be inserted here -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="project-info">
-                                <h6>Project Info</h6>
-                                <div class="info-item">
-                                    <label>Status</label>
-                                    <select class="form-select form-select-sm" id="projectStatus">
-                                        <option value="backlog">Backlog</option>
-                                        <option value="not_started">Not Started</option>
-                                        <option value="in_progress">In Progress</option>
-                                        <option value="on_hold">On Hold</option>
-                                        <option value="blocked">Blocked</option>
-                                        <option value="completed">Completed</option>
-                                    </select>
-                                </div>
-                                <div class="info-item">
-                                    <label>Priority</label>
-                                    <select class="form-select form-select-sm" id="projectPriority">
-                                        <option value="low">Low</option>
-                                        <option value="medium">Medium</option>
-                                        <option value="high">High</option>
-                                        <option value="urgent">Urgent</option>
-                                    </select>
-                                </div>
-                                <div class="info-item">
-                                    <label>Start Date</label>
-                                    <input type="date" class="form-control form-control-sm" id="projectStartDate">
-                                </div>
-                                <div class="info-item">
-                                    <label>Due Date</label>
-                                    <input type="date" class="form-control form-control-sm" id="projectDueDate">
-                                </div>
-                                <div class="info-item">
-                                    <label>Notes</label>
-                                    <textarea class="form-control form-control-sm" id="projectNotes" rows="3"></textarea>
-                                </div>
-                                <div class="d-grid gap-2 mt-3">
-                                    <button class="btn btn-primary" id="updateProjectBtn">Update Project</button>
-                                </div>
-                            </div>
-                        </div>
+            <!-- Projects Grid -->
+            <div class="projects-grid">
+                <!-- Enhanced Project Cards with Stories/Tasks Count -->
+                <div class="project-card" onclick="openProjectEdit(1)">
+                    <div class="project-header">
+                        <h3 class="project-title">Website Redesign</h3>
+                        <span class="project-status status-in_progress">In Progress</span>
+                    </div>
+                    <p class="project-description">Complete redesign of company website with modern UI/UX principles and responsive design.</p>
+                    <div class="project-stats">
+                        <span class="stat-item"><i class="fas fa-bookmark me-1"></i>Stories: 3/5</span>
+                        <span class="stat-item"><i class="fas fa-tasks me-1"></i>Tasks: 8/15</span>
+                        <span class="stat-item"><i class="fas fa-calendar me-1"></i>Due: Jun 30</span>
+                        <span class="stat-item"><i class="fas fa-flag me-1"></i>High Priority</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 53%;"></div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Story Modal -->
-    <div class="modal fade" id="storyModal" tabindex="-1">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Story Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <div class="project-card" onclick="openProjectEdit(2)">
+                    <div class="project-header">
+                        <h3 class="project-title">Mobile App Development</h3>
+                        <span class="project-status status-in_progress">In Progress</span>
+                    </div>
+                    <p class="project-description">Native mobile application for iOS and Android platforms with user authentication and data sync.</p>
+                    <div class="project-stats">
+                        <span class="stat-item"><i class="fas fa-bookmark me-1"></i>Stories: 2/4</span>
+                        <span class="stat-item"><i class="fas fa-tasks me-1"></i>Tasks: 5/12</span>
+                        <span class="stat-item"><i class="fas fa-calendar me-1"></i>Due: Aug 15</span>
+                        <span class="stat-item"><i class="fas fa-flag me-1"></i>Urgent</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 42%;"></div>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="story-tasks mb-4">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h6>Tasks</h6>
-                                    <button class="btn btn-sm btn-outline-primary" onclick="showAddTaskForStoryModal()">
-                                        <i class="fas fa-plus me-1"></i>Add Task
-                                    </button>
-                                </div>
-                                <div class="tasks-list" id="storyTasksList">
-                                    <!-- Tasks will be inserted here -->
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="story-info">
-                                <h6>Story Info</h6>
-                                <form id="editStoryForm">
-                                    <div class="info-item">
-                                        <label>Title</label>
-                                        <input type="text" class="form-control form-control-sm" id="storyTitle" maxlength="180">
-                                    </div>
-                                    <div class="info-item">
-                                        <label>Status</label>
-                                        <select class="form-select form-select-sm" id="storyStatus">
-                                            <option value="backlog">Backlog</option>
-                                            <option value="not_started">Not Started</option>
-                                            <option value="in_progress">In Progress</option>
-                                            <option value="on_hold">On Hold</option>
-                                            <option value="blocked">Blocked</option>
-                                            <option value="completed">Completed</option>
-                                        </select>
-                                    </div>
-                                    <div class="info-item">
-                                        <label>Priority</label>
-                                        <select class="form-select form-select-sm" id="storyPriority">
-                                            <option value="low">Low</option>
-                                            <option value="medium">Medium</option>
-                                            <option value="high">High</option>
-                                            <option value="urgent">Urgent</option>
-                                        </select>
-                                    </div>
-                                    <div class="info-item">
-                                        <label>Start Date</label>
-                                        <input type="date" class="form-control form-control-sm" id="storyStartDate">
-                                    </div>
-                                    <div class="info-item">
-                                        <label>Due Date</label>
-                                        <input type="date" class="form-control form-control-sm" id="storyDueDate">
-                                    </div>
-                                    <div class="info-item">
-                                        <label>Notes</label>
-                                        <textarea class="form-control form-control-sm" id="storyNotes" rows="3"></textarea>
-                                    </div>
-                                    <div class="d-grid gap-2 mt-3">
-                                        <button type="submit" class="btn btn-primary" id="updateStoryBtn">Update Story</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+
+                <div class="project-card" onclick="openProjectEdit(3)">
+                    <div class="project-header">
+                        <h3 class="project-title">Content Marketing Strategy</h3>
+                        <span class="project-status status-not_started">Not Started</span>
+                    </div>
+                    <p class="project-description">Comprehensive content marketing strategy including blog posts, social media, and email campaigns.</p>
+                    <div class="project-stats">
+                        <span class="stat-item"><i class="fas fa-bookmark me-1"></i>Stories: 0/6</span>
+                        <span class="stat-item"><i class="fas fa-tasks me-1"></i>Tasks: 0/18</span>
+                        <span class="stat-item"><i class="fas fa-calendar me-1"></i>Due: Jul 20</span>
+                        <span class="stat-item"><i class="fas fa-flag me-1"></i>Medium Priority</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openProjectEdit(4)">
+                    <div class="project-header">
+                        <h3 class="project-title">New Product Launch</h3>
+                        <span class="project-status status-on_hold">On Hold</span>
+                    </div>
+                    <p class="project-description">Launch campaign for new product line including market research, pricing strategy, and promotional materials.</p>
+                    <div class="project-stats">
+                        <span class="stat-item"><i class="fas fa-bookmark me-1"></i>Stories: 1/8</span>
+                        <span class="stat-item"><i class="fas fa-tasks me-1"></i>Tasks: 2/25</span>
+                        <span class="stat-item"><i class="fas fa-calendar me-1"></i>Due: Sep 10</span>
+                        <span class="stat-item"><i class="fas fa-flag me-1"></i>High Priority</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 8%;"></div>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openProjectEdit(5)">
+                    <div class="project-header">
+                        <h3 class="project-title">Office Relocation</h3>
+                        <span class="project-status status-backlog">Backlog</span>
+                    </div>
+                    <p class="project-description">Planning and execution of office move to new location including equipment setup and staff coordination.</p>
+                    <div class="project-stats">
+                        <span class="stat-item"><i class="fas fa-bookmark me-1"></i>Stories: 0/4</span>
+                        <span class="stat-item"><i class="fas fa-tasks me-1"></i>Tasks: 0/10</span>
+                        <span class="stat-item"><i class="fas fa-calendar me-1"></i>Due: Oct 1</span>
+                        <span class="stat-item"><i class="fas fa-flag me-1"></i>Medium Priority</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="project-card" onclick="openProjectEdit(6)">
+                    <div class="project-header">
+                        <h3 class="project-title">E-commerce Integration</h3>
+                        <span class="project-status status-in_progress">In Progress</span>
+                    </div>
+                    <p class="project-description">Integration of e-commerce functionality into existing website with payment gateway and inventory management.</p>
+                    <div class="project-stats">
+                        <span class="stat-item"><i class="fas fa-bookmark me-1"></i>Stories: 4/7</span>
+                        <span class="stat-item"><i class="fas fa-tasks me-1"></i>Tasks: 12/20</span>
+                        <span class="stat-item"><i class="fas fa-calendar me-1"></i>Due: Jul 5</span>
+                        <span class="stat-item"><i class="fas fa-flag me-1"></i>High Priority</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%;"></div>
                     </div>
                 </div>
             </div>
@@ -322,43 +239,39 @@
                     <h5 class="modal-title">Create New Project</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <form onsubmit="createProject(event)">
+                <form id="addProjectForm">
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="form-label">Project Name</label>
                             <input type="text" class="form-control" id="newProjectName" maxlength="120" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Description</label>
-                            <textarea class="form-control" id="newProjectDescription" rows="3"></textarea>
-                        </div>
-                        <div class="mb-3">
                             <label class="form-label">Area</label>
-                            <select class="form-select" id="newProjectCategory" required>
-                                <option value="work">Work</option>
-                                <option value="personal">Personal</option>
-                                <option value="freelance">Freelancing</option>
-                                <option value="fitness">Fitness</option>
+                            <select class="form-select" id="newProjectArea" required>
+                                <option value="Work">Work</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Freelancing">Freelancing</option>
+                                <option value="Fitness">Fitness</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Status</label>
                             <select class="form-select" id="newProjectStatus">
-                                <option value="backlog">Backlog</option>
-                                <option value="not_started">Not Started</option>
-                                <option value="in_progress">In Progress</option>
-                                <option value="on_hold">On Hold</option>
-                                <option value="blocked">Blocked</option>
-                                <option value="completed">Completed</option>
+                                <option value="Backlog">Backlog</option>
+                                <option value="Not Started">Not Started</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="On Hold">On Hold</option>
+                                <option value="Blocked">Blocked</option>
+                                <option value="Completed">Completed</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Priority</label>
                             <select class="form-select" id="newProjectPriority">
-                                <option value="medium">Medium</option>
-                                <option value="low">Low</option>
-                                <option value="high">High</option>
-                                <option value="urgent">Urgent</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
+                                <option value="High">High</option>
+                                <option value="Urgent">Urgent</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -377,140 +290,6 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                         <button type="submit" class="btn btn-primary">Create Project</button>
-                        <button type="button" class="btn btn-outline-primary" onclick="createProjectAndAddStory()">
-                            Create & Add Story
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add Story Modal -->
-    <div class="modal fade" id="addStoryModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Create New Story</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <form onsubmit="createStory(event)">
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label class="form-label">Story Title</label>
-                            <input type="text" class="form-control" id="newStoryTitle" maxlength="180" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Description</label>
-                            <textarea class="form-control" id="newStoryDescription" rows="3"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Project</label>
-                            <select class="form-select" id="newStoryProject" required>
-                                <!-- Options will be populated dynamically -->
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Status</label>
-                            <select class="form-select" id="newStoryStatus">
-                                <option value="backlog">Backlog</option>
-                                <option value="not_started">Not Started</option>
-                                <option value="in_progress">In Progress</option>
-                                <option value="on_hold">On Hold</option>
-                                <option value="blocked">Blocked</option>
-                                <option value="completed">Completed</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Priority</label>
-                            <select class="form-select" id="newStoryPriority">
-                                <option value="medium">Medium</option>
-                                <option value="low">Low</option>
-                                <option value="high">High</option>
-                                <option value="urgent">Urgent</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="newStoryStartDate">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Due Date</label>
-                            <input type="date" class="form-control" id="newStoryDueDate">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Notes</label>
-                            <textarea class="form-control" id="newStoryNotes" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Create Story</button>
-                        <button type="button" class="btn btn-outline-primary" onclick="createStoryAndAddTask()">
-                            Create & Add Task
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add Task Modal -->
-    <div class="modal fade" id="addTaskModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Create New Task</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <form onsubmit="createTask(event)">
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label class="form-label">Task Title</label>
-                            <input type="text" class="form-control" id="newTaskTitle" maxlength="180" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Story</label>
-                            <select class="form-select" id="newTaskStory" required>
-                                <!-- Options will be populated dynamically -->
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Status</label>
-                            <select class="form-select" id="newTaskStatus">
-                                <option value="backlog">Backlog</option>
-                                <option value="not_started">Not Started</option>
-                                <option value="in_progress">In Progress</option>
-                                <option value="on_hold">On Hold</option>
-                                <option value="blocked">Blocked</option>
-                                <option value="completed">Completed</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Priority</label>
-                            <select class="form-select" id="newTaskPriority">
-                                <option value="medium">Medium</option>
-                                <option value="low">Low</option>
-                                <option value="high">High</option>
-                                <option value="urgent">Urgent</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="newTaskStartDate">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Due Date</label>
-                            <input type="date" class="form-control" id="newTaskDueDate">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Notes</label>
-                            <textarea class="form-control" id="newTaskNotes" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Create Task</button>
                     </div>
                 </form>
             </div>
@@ -519,5 +298,74 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('show');
+            document.getElementById('sidebarBackdrop').classList.toggle('show');
+        }
+
+        function showAddProjectModal() {
+            const modal = new bootstrap.Modal(document.getElementById('addProjectModal'));
+            modal.show();
+        }
+
+        function showAddStoryModal() {
+            window.location.href = 'stories.html';
+        }
+
+        function showAddTaskModal() {
+            window.location.href = 'tasks.html';
+        }
+
+        function openProjectEdit(id) {
+            window.location.href = `project-edit.html?id=${id}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+            if (sidebarBackdrop) {
+                sidebarBackdrop.addEventListener('click', toggleSidebar);
+            }
+
+            document.getElementById('addProjectForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Project created!');
+                bootstrap.Modal.getInstance(document.getElementById('addProjectModal')).hide();
+            });
+
+            // Filter functionality
+            function applyFilters() {
+                const statusFilter = document.getElementById('statusFilter').value;
+                const priorityFilter = document.getElementById('priorityFilter').value;
+                const areaFilter = document.getElementById('areaFilter').value;
+                const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+                const cards = document.querySelectorAll('.project-card');
+                
+                cards.forEach(card => {
+                    let show = true;
+                    
+                    if (statusFilter && !card.querySelector('.project-status').textContent.includes(statusFilter)) {
+                        show = false;
+                    }
+                    
+                    if (priorityFilter && !card.textContent.includes(priorityFilter)) {
+                        show = false;
+                    }
+                    
+                    if (searchTerm && !card.querySelector('.project-title').textContent.toLowerCase().includes(searchTerm)) {
+                        show = false;
+                    }
+                    
+                    card.style.display = show ? 'block' : 'none';
+                });
+            }
+
+            document.getElementById('statusFilter').addEventListener('change', applyFilters);
+            document.getElementById('priorityFilter').addEventListener('change', applyFilters);
+            document.getElementById('areaFilter').addEventListener('change', applyFilters);
+            document.getElementById('searchInput').addEventListener('input', applyFilters);
+        });
+    </script>
 </body>
 </html>

@@ -64,6 +64,10 @@
                     <i class="fas fa-plus"></i>
                     <span>New Task</span>
                 </a>
+                <a href="login.html" class="nav-link text-danger">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Exit</span>
+                </a>
             </div>
         </nav>
     </div>
@@ -82,22 +86,33 @@
                 <button class="btn btn-primary" onclick="showAddTaskModal()">
                     <i class="fas fa-plus me-2"></i>New Task
                 </button>
+                <a href="login.html" class="btn btn-outline-danger ms-2">
+                    <i class="fas fa-sign-out-alt me-1"></i>Exit
+                </a>
             </div>
         </header>
 
         <!-- Tasks Content -->
         <div class="content-area">
             <!-- Kanban Board -->
-            <div class="row">
-                <div class="col-md-4">
+            <div class="row kanban-container">
+                <div class="col-md-2">
                     <div class="kanban-column h-100">
-                        <h2 class="kanban-title">To Do</h2>
-                        <div class="kanban-tasks" id="todoTasks">
+                        <h2 class="kanban-title">Backlog</h2>
+                        <div class="kanban-tasks" id="backlogTasks">
                             <!-- Tasks will be inserted here -->
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
+                    <div class="kanban-column h-100">
+                        <h2 class="kanban-title">Not Started</h2>
+                        <div class="kanban-tasks" id="notStartedTasks">
+                            <!-- Tasks will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
                     <div class="kanban-column h-100">
                         <h2 class="kanban-title">In Progress</h2>
                         <div class="kanban-tasks" id="inProgressTasks">
@@ -105,7 +120,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
+                    <div class="kanban-column h-100">
+                        <h2 class="kanban-title">On Hold</h2>
+                        <div class="kanban-tasks" id="onHoldTasks">
+                            <!-- Tasks will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="kanban-column h-100">
+                        <h2 class="kanban-title">Blocked</h2>
+                        <div class="kanban-tasks" id="blockedTasks">
+                            <!-- Tasks will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
                     <div class="kanban-column h-100">
                         <h2 class="kanban-title">Completed</h2>
                         <div class="kanban-tasks" id="completedTasks">

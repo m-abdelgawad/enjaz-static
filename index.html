@@ -68,6 +68,14 @@
                     <i class="fas fa-bookmark"></i>
                     <span>New Story</span>
                 </a>
+                <a href="#" class="nav-link" onclick="showAddTaskModal()">
+                    <i class="fas fa-check-square"></i>
+                    <span>New Task</span>
+                </a>
+                <a href="login.html" class="nav-link text-danger">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Exit</span>
+                </a>
             </div>
         </nav>
     </div>
@@ -83,9 +91,21 @@
                 <h1 class="current-category">Dashboard</h1>
             </div>
             <div class="header-actions">
-                <button class="btn btn-primary" onclick="showAddProjectModal()">
-                    <i class="fas fa-plus me-2"></i>New Project
-                </button>
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="showAddProjectModal()">
+                        <i class="fas fa-plus me-2"></i>New Project
+                    </button>
+                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#" onclick="showAddStoryModal()"><i class="fas fa-bookmark me-2"></i>New Story</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="showAddTaskModal()"><i class="fas fa-check-square me-2"></i>New Task</a></li>
+                    </ul>
+                </div>
+                <a href="login.html" class="btn btn-outline-danger ms-2">
+                    <i class="fas fa-sign-out-alt me-1"></i>Exit
+                </a>
             </div>
         </header>
 
@@ -102,36 +122,76 @@
                     <div class="stat-value">6</div>
                 </div>
                 <div class="stat-card">
-                    <h4>Pending Tasks</h4>
+                    <h4>Tasks In Progress</h4>
                     <div class="stat-value">24</div>
                 </div>
                 <div class="stat-card">
-                    <h4>Completed Tasks</h4>
-                    <div class="stat-value">18</div>
+                    <h4>On Hold Tasks</h4>
+                    <div class="stat-value">8</div>
                 </div>
             </div>
 
-            <!-- Recent Projects -->
+            <!-- Projects by Status -->
             <div class="dashboard-section">
                 <div class="dashboard-section-header">
-                    <h2 class="dashboard-section-title">Recent Projects</h2>
+                    <h2 class="dashboard-section-title">Projects In Progress</h2>
                     <a href="projects.html" class="btn btn-sm btn-outline-primary">View All</a>
                 </div>
-                <div class="projects-grid">
-                    <!-- Recent projects will be dynamically inserted here -->
+                <div class="projects-grid" id="inProgressProjects">
+                    <!-- Projects will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <div class="dashboard-section">
+                <div class="dashboard-section-header">
+                    <h2 class="dashboard-section-title">Projects On Hold</h2>
+                    <a href="projects.html" class="btn btn-sm btn-outline-primary">View All</a>
+                </div>
+                <div class="projects-grid" id="onHoldProjects">
+                    <!-- Projects will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <!-- Task Groups -->
+            <div class="dashboard-section">
+                <div class="dashboard-section-header">
+                    <h2 class="dashboard-section-title">Continue Working On These Tasks</h2>
+                    <a href="tasks.html" class="btn btn-sm btn-outline-primary">View All</a>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="inProgressTasksList" class="tasks-list">
+                            <!-- In-progress tasks will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-section">
+                <div class="dashboard-section-header">
+                    <h2 class="dashboard-section-title">Follow Up On These Pending Tasks</h2>
+                    <a href="tasks.html" class="btn btn-sm btn-outline-primary">View All</a>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="onHoldTasksList" class="tasks-list">
+                            <!-- On-hold tasks will be inserted here -->
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Upcoming Deadlines -->
             <div class="dashboard-section">
                 <div class="dashboard-section-header">
-                    <h2 class="dashboard-section-title">Upcoming Deadlines</h2>
+                    <h2 class="dashboard-section-title">Upcoming Deadlines (Next 2 Weeks)</h2>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>Name</th>
+                                <th>Type</th>
                                 <th>Area</th>
                                 <th>Due Date</th>
                                 <th>Status</th>
@@ -276,6 +336,71 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                         <button type="submit" class="btn btn-primary">Create Story</button>
+                        <button type="button" class="btn btn-outline-primary" onclick="createStoryAndAddTask()">
+                            Create & Add Task
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Task Modal -->
+    <div class="modal fade" id="addTaskModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create New Task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form onsubmit="createTask(event)">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Task Title</label>
+                            <input type="text" class="form-control" id="newTaskTitle" maxlength="180" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Story</label>
+                            <select class="form-select" id="newTaskStory" required>
+                                <!-- Options will be populated dynamically -->
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" id="newTaskStatus">
+                                <option value="backlog">Backlog</option>
+                                <option value="not_started">Not Started</option>
+                                <option value="in_progress">In Progress</option>
+                                <option value="on_hold">On Hold</option>
+                                <option value="blocked">Blocked</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Priority</label>
+                            <select class="form-select" id="newTaskPriority">
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                                <option value="high">High</option>
+                                <option value="urgent">Urgent</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Start Date</label>
+                            <input type="date" class="form-control" id="newTaskStartDate">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Due Date</label>
+                            <input type="date" class="form-control" id="newTaskDueDate">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Notes</label>
+                            <textarea class="form-control" id="newTaskNotes" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Create Task</button>
                     </div>
                 </form>
             </div>

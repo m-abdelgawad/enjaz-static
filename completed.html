@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeHub - Completed</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <button class="sidebar-close" onclick="toggleSidebar()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="sidebar-header">
+            <h3><i class="fas fa-layer-group me-2"></i>LifeHub</h3>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <h6 class="nav-section-title">PAGES</h6>
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="projects.html" class="nav-link">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>Projects</span>
+                </a>
+                <a href="tasks.html" class="nav-link">
+                    <i class="fas fa-tasks"></i>
+                    <span>Tasks</span>
+                </a>
+                <a href="completed.html" class="nav-link active">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Completed</span>
+                </a>
+                <a href="work-center.html" class="nav-link">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Work Center</span>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <h6 class="nav-section-title">QUICK ACTIONS</h6>
+                <button class="nav-link" onclick="showAddProjectModal()">
+                    <i class="fas fa-plus"></i>
+                    <span>New Project</span>
+                </button>
+                <button class="nav-link" onclick="showAddStoryModal()">
+                    <i class="fas fa-bookmark"></i>
+                    <span>New Story</span>
+                </button>
+                <button class="nav-link" onclick="showAddTaskModal()">
+                    <i class="fas fa-check-square"></i>
+                    <span>New Task</span>
+                </button>
+                <a href="login.html" class="nav-link text-danger">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Exit</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="d-flex align-items-center">
+                <button class="btn btn-link sidebar-toggle d-lg-none" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="current-category">Completed Items</h1>
+            </div>
+            <div class="header-actions">
+                <a href="login.html" class="btn btn-outline-danger ms-2">
+                    <i class="fas fa-sign-out-alt me-1"></i>Exit
+                </a>
+            </div>
+        </header>
+
+        <!-- Completed Content -->
+        <div class="content-area">
+            <!-- Stats -->
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <h4>Completed Projects</h4>
+                    <div class="stat-value">3</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Completed Stories</h4>
+                    <div class="stat-value">12</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Completed Tasks</h4>
+                    <div class="stat-value">28</div>
+                </div>
+                <div class="stat-card">
+                    <h4>Completion Rate</h4>
+                    <div class="stat-value">76%</div>
+                </div>
+            </div>
+
+            <!-- Completed Projects -->
+            <div class="dashboard-section">
+                <div class="dashboard-section-header">
+                    <h2 class="dashboard-section-title">Completed Projects</h2>
+                </div>
+                <div class="projects-grid" id="completedProjects">
+                    <!-- Sample Completed Projects -->
+                    <div class="project-card" onclick="editProject(6)">
+                        <div class="project-header">
+                            <h3 class="project-title">Annual Report Design</h3>
+                            <span class="project-status status-completed">Completed</span>
+                        </div>
+                        <p class="project-description">Design and publish the 2024 annual report for stakeholders.</p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-tasks"></i>
+                                <span>8 Tasks</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Completed Apr 15</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="project-card" onclick="editProject(7)">
+                        <div class="project-header">
+                            <h3 class="project-title">Social Media Campaign</h3>
+                            <span class="project-status status-completed">Completed</span>
+                        </div>
+                        <p class="project-description">Q1 social media campaign for product awareness.</p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-tasks"></i>
+                                <span>15 Tasks</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Completed Mar 31</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="project-card" onclick="editProject(8)">
+                        <div class="project-header">
+                            <h3 class="project-title">Employee Training Program</h3>
+                            <span class="project-status status-completed">Completed</span>
+                        </div>
+                        <p class="project-description">Develop and deliver training materials for new hires.</p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-tasks"></i>
+                                <span>10 Tasks</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Completed Feb 28</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Completed Stories -->
+            <div class="dashboard-section">
+                <div class="dashboard-section-header">
+                    <h2 class="dashboard-section-title">Completed Stories</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Story</th>
+                                        <th>Project</th>
+                                        <th>Completion Date</th>
+                                        <th>Tasks</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="#" onclick="editStory(201)">Create executive summary</a></td>
+                                        <td>Annual Report Design</td>
+                                        <td>Apr 10, 2025</td>
+                                        <td>3 tasks</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary" onclick="editStory(201)"><i class="fas fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#" onclick="editStory(202)">Financial statement layout</a></td>
+                                        <td>Annual Report Design</td>
+                                        <td>Apr 8, 2025</td>
+                                        <td>2 tasks</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary" onclick="editStory(202)"><i class="fas fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#" onclick="editStory(203)">Instagram campaign</a></td>
+                                        <td>Social Media Campaign</td>
+                                        <td>Mar 25, 2025</td>
+                                        <td>4 tasks</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary" onclick="editStory(203)"><i class="fas fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#" onclick="editStory(204)">LinkedIn content series</a></td>
+                                        <td>Social Media Campaign</td>
+                                        <td>Mar 29, 2025</td>
+                                        <td>5 tasks</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary" onclick="editStory(204)"><i class="fas fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Completed Tasks -->
+            <div class="dashboard-section">
+                <div class="dashboard-section-header">
+                    <h2 class="dashboard-section-title">Completed Tasks</h2>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Task</th>
+                                        <th>Project</th>
+                                        <th>Story</th>
+                                        <th>Completion Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="#" onclick="editTask(301)">Write CEO letter</a></td>
+                                        <td>Annual Report Design</td>
+                                        <td>Create executive summary</td>
+                                        <td>Apr 5, 2025</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary" onclick="editTask(301)"><i class="fas fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#" onclick="editTask(302)">Format financial tables</a></td>
+                                        <td>Annual Report Design</td>
+                                        <td>Financial statement layout</td>
+                                        <td>Apr 3, 2025</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary" onclick="editTask(302)"><i class="fas fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#" onclick="editTask(303)">Create Instagram story templates</a></td>
+                                        <td>Social Media Campaign</td>
+                                        <td>Instagram campaign</td>
+                                        <td>Mar 20, 2025</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary" onclick="editTask(303)"><i class="fas fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#" onclick="editTask(304)">Schedule all LinkedIn posts</a></td>
+                                        <td>Social Media Campaign</td>
+                                        <td>LinkedIn content series</td>
+                                        <td>Mar 27, 2025</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary" onclick="editTask(304)"><i class="fas fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="#" onclick="editTask(305)">Create onboarding presentation</a></td>
+                                        <td>Employee Training Program</td>
+                                        <td>Orientation materials</td>
+                                        <td>Feb 20, 2025</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary" onclick="editTask(305)"><i class="fas fa-edit"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Toggle sidebar function
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('show');
+            document.getElementById('sidebarBackdrop').classList.toggle('show');
+        }
+
+        // Modal handling functions
+        function showAddProjectModal() {
+            window.location.href = 'index.html';
+            setTimeout(() => {
+                const modal = new bootstrap.Modal(document.getElementById('addProjectModal'));
+                modal.show();
+            }, 500);
+        }
+
+        function showAddStoryModal() {
+            window.location.href = 'index.html';
+            setTimeout(() => {
+                const modal = new bootstrap.Modal(document.getElementById('addStoryModal'));
+                modal.show();
+            }, 500);
+        }
+
+        function showAddTaskModal() {
+            window.location.href = 'index.html';
+            setTimeout(() => {
+                const modal = new bootstrap.Modal(document.getElementById('addTaskModal'));
+                modal.show();
+            }, 500);
+        }
+
+        function editProject(id) {
+            // In a real app, fetch project data from API
+            alert('Editing project with ID: ' + id);
+            // Redirect to index page for now
+            window.location.href = 'index.html';
+        }
+
+        function editStory(id) {
+            // In a real app, fetch story data from API
+            alert('Editing story with ID: ' + id);
+            // Redirect to index page for now
+            window.location.href = 'index.html';
+        }
+
+        function editTask(id) {
+            // In a real app, fetch task data from API
+            alert('Editing task with ID: ' + id);
+            // Redirect to tasks page for now
+            window.location.href = 'tasks.html';
+        }
+    </script>
+</body>
+</html>

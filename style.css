@@ -28,30 +28,6 @@ body {
     margin-bottom: 1rem;
 }
 
-.login-divider {
-    position: relative;
-    text-align: center;
-}
-
-.login-divider::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: #e2e8f0;
-}
-
-.login-divider span {
-    position: relative;
-    display: inline-block;
-    padding: 0 1rem;
-    background: #fff;
-    color: #718096;
-    font-size: 0.9rem;
-}
-
 /* Sidebar Styles */
 .sidebar {
     position: fixed;
@@ -63,11 +39,16 @@ body {
     border-right: 1px solid #e2e8f0;
     z-index: 1000;
     transition: transform 0.3s ease;
+    overflow-y: auto; /* Make sidebar scrollable */
 }
 
 .sidebar-header {
     padding: 2rem 1.5rem;
     border-bottom: 1px solid #e2e8f0;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 10;
 }
 
 .sidebar-header h3 {
@@ -108,6 +89,8 @@ body {
     background: none;
     font-size: 0.9rem;
     position: relative;
+    width: 100%;
+    text-align: left;
 }
 
 .nav-link:hover {
@@ -141,11 +124,31 @@ body {
     font-weight: 500;
 }
 
+/* Mobile Sidebar Toggle */
+.sidebar-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #718096;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: none;
+}
+
+@media (max-width: 992px) {
+    .sidebar-close {
+        display: block;
+    }
+}
+
 /* Main Content */
 .main-content {
     margin-left: 280px;
     min-height: 100vh;
     background: transparent;
+    transition: margin-left 0.3s ease;
 }
 
 .main-header {
@@ -153,7 +156,7 @@ body {
     padding: 1.5rem 2rem;
     border-bottom: 1px solid #e2e8f0;
     display: flex;
-    justify-content: between;
+    justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
@@ -304,6 +307,7 @@ body {
     border-left: 4px solid #3182ce;
     transition: all 0.2s ease;
     cursor: pointer;
+    position: relative;
 }
 
 .story-item:hover {
@@ -344,12 +348,20 @@ body {
     margin-bottom: 0.75rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.2s ease;
+    cursor: pointer;
     border-left: 3px solid #3182ce;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .task-item:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.task-content {
+    flex: 1;
 }
 
 .task-title {
@@ -361,6 +373,32 @@ body {
 .task-meta {
     font-size: 0.8rem;
     color: #718096;
+}
+
+.task-actions {
+    display: flex;
+    gap: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.task-item:hover .task-actions {
+    opacity: 1;
+}
+
+.task-actions button {
+    background: none;
+    border: none;
+    color: #718096;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.task-actions button:hover {
+    background: #e2e8f0;
+    color: #3182ce;
 }
 
 /* Kanban Board */
@@ -388,6 +426,19 @@ body {
 
 .kanban-tasks {
     min-height: 300px;
+}
+
+/* For drag and drop functionality */
+.kanban-task-placeholder {
+    background-color: #edf2f7;
+    border: 2px dashed #cbd5e0;
+    margin-bottom: 0.75rem;
+    height: 80px;
+    border-radius: 8px;
+}
+
+.task-dragging {
+    opacity: 0.5;
 }
 
 /* Info Panel */
@@ -458,6 +509,8 @@ body {
 @media (max-width: 992px) {
     .sidebar {
         transform: translateX(-100%);
+        width: 100%;
+        max-width: 320px;
     }
     
     .sidebar.show {
@@ -480,6 +533,22 @@ body {
     .kanban-container {
         overflow-x: scroll;
     }
+
+    /* Add backdrop when sidebar is open */
+    .sidebar-backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        display: none;
+    }
+    
+    .sidebar-backdrop.show {
+        display: block;
+    }
 }
 
 @media (max-width: 768px) {
@@ -489,10 +558,41 @@ body {
     
     .main-header {
         padding: 1rem;
+        flex-wrap: wrap;
     }
     
     .current-category {
         font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        width: 100%;
+    }
+
+    .header-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    
+    .header-actions .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .task-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .task-actions {
+        margin-top: 0.5rem;
+        opacity: 1;
+        width: 100%;
+        justify-content: flex-end;
     }
 }
 
@@ -625,12 +725,60 @@ textarea.form-control {
     padding-top: 1rem;
 }
 
-/* Country code dropdown */
-.country-code-dropdown {
-    max-height: 200px;
-    overflow-y: auto;
+/* Reordering styles */
+.reorder-handle {
+    cursor: move;
+    color: #cbd5e0;
+    margin-right: 0.5rem;
 }
 
-.dropdown-menu {
-    z-index: 1050;
+.reorder-handle:hover {
+    color: #4a5568;
+}
+
+.reorder-item-dragging {
+    opacity: 0.5;
+}
+
+.reorder-placeholder {
+    background-color: #edf2f7;
+    border: 2px dashed #cbd5e0;
+    margin-bottom: 0.75rem;
+    border-radius: 8px;
+    height: 40px;
+}
+
+/* Completed items */
+.item-completed {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+/* Empty state */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    background: #f7fafc;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: #cbd5e0;
+    margin-bottom: 1rem;
+}
+
+.empty-state h4 {
+    color: #4a5568;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: #718096;
+    max-width: 400px;
+    margin: 0 auto;
 }

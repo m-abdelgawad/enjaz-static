@@ -13,6 +13,9 @@
 <body>
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
+        <button class="sidebar-close" onclick="toggleSidebar()">
+            <i class="fas fa-times"></i>
+        </button>
         <div class="sidebar-header">
             <h3><i class="fas fa-layer-group me-2"></i>LifeHub</h3>
         </div>
@@ -32,45 +35,40 @@
                     <i class="fas fa-tasks"></i>
                     <span>Tasks</span>
                 </a>
-            </div>
-            
-            <div class="nav-section">
-                <h6 class="nav-section-title">AREAS</h6>
+                <a href="completed.html" class="nav-link">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Completed</span>
+                </a>
                 <a href="work-center.html" class="nav-link active">
                     <i class="fas fa-briefcase"></i>
                     <span>Work Center</span>
-                    <span class="badge">3</span>
-                </a>
-                <a href="personal-center.html" class="nav-link">
-                    <i class="fas fa-user"></i>
-                    <span>Personal Center</span>
-                    <span class="badge">2</span>
-                </a>
-                <a href="freelance-center.html" class="nav-link">
-                    <i class="fas fa-laptop-code"></i>
-                    <span>Freelancing</span>
-                    <span class="badge">1</span>
-                </a>
-                <a href="fitness-center.html" class="nav-link">
-                    <i class="fas fa-dumbbell"></i>
-                    <span>Fitness</span>
-                    <span class="badge">4</span>
                 </a>
             </div>
             
             <div class="nav-section">
                 <h6 class="nav-section-title">QUICK ACTIONS</h6>
-                <a href="#" class="nav-link" onclick="showAddWorkProject()">
+                <button class="nav-link" onclick="showAddProjectModal()">
                     <i class="fas fa-plus"></i>
-                    <span>New Work Project</span>
-                </a>
-                <a href="#" class="nav-link" onclick="showAddWorkTask()">
-                    <i class="fas fa-plus"></i>
-                    <span>New Work Task</span>
+                    <span>New Project</span>
+                </button>
+                <button class="nav-link" onclick="showAddStoryModal()">
+                    <i class="fas fa-bookmark"></i>
+                    <span>New Story</span>
+                </button>
+                <button class="nav-link" onclick="showAddTaskModal()">
+                    <i class="fas fa-check-square"></i>
+                    <span>New Task</span>
+                </button>
+                <a href="login.html" class="nav-link text-danger">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Exit</span>
                 </a>
             </div>
         </nav>
     </div>
+
+    <!-- Sidebar Backdrop -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
 
     <!-- Main Content -->
     <div class="main-content">
@@ -83,9 +81,9 @@
                 <h1 class="current-category">Work Center</h1>
             </div>
             <div class="header-actions">
-                <button class="btn btn-primary" onclick="showAddWorkProject()">
-                    <i class="fas fa-plus me-2"></i>New Work Project
-                </button>
+                <a href="login.html" class="btn btn-outline-danger ms-2">
+                    <i class="fas fa-sign-out-alt me-1"></i>Exit
+                </a>
             </div>
         </header>
 
@@ -115,12 +113,72 @@
             <div class="dashboard-section">
                 <div class="dashboard-section-header">
                     <h2 class="dashboard-section-title">Work Projects</h2>
-                    <button class="btn btn-sm btn-outline-primary" onclick="showAddWorkProject()">
+                    <button class="btn btn-sm btn-outline-primary" onclick="showAddProjectModal()">
                         <i class="fas fa-plus me-1"></i>Add Project
                     </button>
                 </div>
                 <div class="projects-grid" id="workProjectsGrid">
-                    <!-- Work projects will be dynamically inserted here -->
+                    <!-- Sample Work Projects -->
+                    <div class="project-card" onclick="editProject(1)">
+                        <div class="project-header">
+                            <h3 class="project-title">Website Redesign</h3>
+                            <span class="project-status status-in_progress">In Progress</span>
+                        </div>
+                        <p class="project-description">Redesign the company website with a modern look and improved user experience.</p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-tasks"></i>
+                                <span>12 Tasks</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Due May 30</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 65%"></div>
+                        </div>
+                    </div>
+                    <div class="project-card" onclick="editProject(2)">
+                        <div class="project-header">
+                            <h3 class="project-title">Mobile App Development</h3>
+                            <span class="project-status status-in_progress">In Progress</span>
+                        </div>
+                        <p class="project-description">Develop a cross-platform mobile application for customer engagement.</p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-tasks"></i>
+                                <span>18 Tasks</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Due Jun 15</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 42%"></div>
+                        </div>
+                    </div>
+                    <div class="project-card" onclick="editProject(4)">
+                        <div class="project-header">
+                            <h3 class="project-title">New Product Launch</h3>
+                            <span class="project-status status-on_hold">On Hold</span>
+                        </div>
+                        <p class="project-description">Prepare and execute the launch of our new product line.</p>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-tasks"></i>
+                                <span>14 Tasks</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Due Jul 15</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 22%"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -128,7 +186,7 @@
             <div class="dashboard-section">
                 <div class="dashboard-section-header">
                     <h2 class="dashboard-section-title">Recent Work Tasks</h2>
-                    <button class="btn btn-sm btn-outline-primary" onclick="showAddWorkTask()">
+                    <button class="btn btn-sm btn-outline-primary" onclick="showAddTaskModal()">
                         <i class="fas fa-plus me-1"></i>Add Task
                     </button>
                 </div>
@@ -145,7 +203,40 @@
                             </tr>
                         </thead>
                         <tbody id="workTasksTable">
-                            <!-- Work tasks will be dynamically inserted here -->
+                            <!-- Sample Work Tasks -->
+                            <tr>
+                                <td><a href="#" onclick="editTask(1)">Finalize homepage wireframes</a></td>
+                                <td>Website Redesign</td>
+                                <td>Create landing page design</td>
+                                <td><span class="badge bg-success">In Progress</span></td>
+                                <td>May 25, 2025</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="editTask(1)"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-outline-success" onclick="moveTaskStatus(1, 'completed')"><i class="fas fa-check"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="#" onclick="editTask(2)">Create user authentication logic</a></td>
+                                <td>Mobile App Development</td>
+                                <td>Backend development</td>
+                                <td><span class="badge bg-success">In Progress</span></td>
+                                <td>June 2, 2025</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="editTask(2)"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-outline-success" onclick="moveTaskStatus(2, 'completed')"><i class="fas fa-check"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="#" onclick="editTask(4)">Product pricing strategy</a></td>
+                                <td>New Product Launch</td>
+                                <td>Market analysis</td>
+                                <td><span class="badge bg-warning">On Hold</span></td>
+                                <td>Jun 10, 2025</td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="editTask(4)"><i class="fas fa-edit"></i></button>
+                                    <button class="btn btn-sm btn-outline-success" onclick="moveTaskStatus(4, 'in_progress')"><i class="fas fa-play"></i></button>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -169,7 +260,37 @@
                             </tr>
                         </thead>
                         <tbody id="workDeadlinesTable">
-                            <!-- Work deadlines will be dynamically inserted here -->
+                            <!-- Sample Work Deadlines -->
+                            <tr>
+                                <td><a href="#" onclick="editTask(1)">Finalize homepage wireframes</a></td>
+                                <td><span class="badge bg-info">Task</span></td>
+                                <td>May 25, 2025</td>
+                                <td><span class="badge bg-success">In Progress</span></td>
+                                <td><span class="badge bg-danger">High</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="editTask(1)"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="#" onclick="editProject(1)">Website Redesign</a></td>
+                                <td><span class="badge bg-warning">Project</span></td>
+                                <td>May 30, 2025</td>
+                                <td><span class="badge bg-success">In Progress</span></td>
+                                <td><span class="badge bg-danger">High</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="editProject(1)"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="#" onclick="editTask(2)">Create user authentication logic</a></td>
+                                <td><span class="badge bg-info">Task</span></td>
+                                <td>June 2, 2025</td>
+                                <td><span class="badge bg-success">In Progress</span></td>
+                                <td><span class="badge bg-primary">Medium</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="editTask(2)"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -177,135 +298,335 @@
         </div>
     </div>
 
-    <!-- Add Work Project Modal -->
-    <div class="modal fade" id="addWorkProjectModal" tabindex="-1">
+    <!-- Add Project Modal -->
+    <div class="modal fade" id="addProjectModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Create New Work Project</h5>
+                    <h5 class="modal-title">Create New Project</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <form onsubmit="createWorkProject(event)">
+                <form id="addProjectForm">
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="form-label">Project Name</label>
-                            <input type="text" class="form-control" id="newWorkProjectName" maxlength="120" required>
+                            <input type="text" class="form-control" id="newProjectName" maxlength="120" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Description</label>
-                            <textarea class="form-control" id="newWorkProjectDescription" rows="3"></textarea>
+                            <textarea class="form-control" id="newProjectDescription" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Area</label>
+                            <select class="form-select" id="newProjectArea" required>
+                                <option value="Work" selected>Work</option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Status</label>
-                            <select class="form-select" id="newWorkProjectStatus">
-                                <option value="backlog">Backlog</option>
-                                <option value="not_started">Not Started</option>
-                                <option value="in_progress">In Progress</option>
-                                <option value="on_hold">On Hold</option>
-                                <option value="blocked">Blocked</option>
-                                <option value="completed">Completed</option>
+                            <select class="form-select" id="newProjectStatus">
+                                <option value="Backlog">Backlog</option>
+                                <option value="Not Started">Not Started</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="On Hold">On Hold</option>
+                                <option value="Blocked">Blocked</option>
+                                <option value="Completed">Completed</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Priority</label>
-                            <select class="form-select" id="newWorkProjectPriority">
-                                <option value="medium">Medium</option>
-                                <option value="low">Low</option>
-                                <option value="high">High</option>
-                                <option value="urgent">Urgent</option>
+                            <select class="form-select" id="newProjectPriority">
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
+                                <option value="High">High</option>
+                                <option value="Urgent">Urgent</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="newWorkProjectStartDate">
+                            <input type="date" class="form-control" id="newProjectStartDate">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Due Date</label>
-                            <input type="date" class="form-control" id="newWorkProjectDueDate">
+                            <input type="date" class="form-control" id="newProjectDueDate">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Notes</label>
-                            <textarea class="form-control" id="newWorkProjectNotes" rows="3"></textarea>
+                            <textarea class="form-control" id="newProjectNotes" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Create Work Project</button>
+                        <button type="submit" class="btn btn-primary">Create Project</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- Add Work Task Modal -->
-    <div class="modal fade" id="addWorkTaskModal" tabindex="-1">
+    <!-- Add Story Modal -->
+    <div class="modal fade" id="addStoryModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Create New Work Task</h5>
+                    <h5 class="modal-title">Create New Story</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <form onsubmit="createWorkTask(event)">
+                <form id="addStoryForm">
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label class="form-label">Task Title</label>
-                            <input type="text" class="form-control" id="newWorkTaskTitle" maxlength="180" required>
+                            <label class="form-label">Story Title</label>
+                            <input type="text" class="form-control" id="newStoryTitle" maxlength="180" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Project</label>
-                            <select class="form-select" id="newWorkTaskProject" onchange="populateWorkStories()">
-                                <!-- Options will be populated dynamically with Work projects -->
+                            <select class="form-select" id="newStoryProject" required>
+                                <option value="1">Website Redesign</option>
+                                <option value="2">Mobile App Development</option>
+                                <option value="4">New Product Launch</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" id="newStoryStatus">
+                                <option value="Backlog">Backlog</option>
+                                <option value="Not Started">Not Started</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="On Hold">On Hold</option>
+                                <option value="Blocked">Blocked</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Priority</label>
+                            <select class="form-select" id="newStoryPriority">
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
+                                <option value="High">High</option>
+                                <option value="Urgent">Urgent</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Start Date</label>
+                            <input type="date" class="form-control" id="newStoryStartDate">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Due Date</label>
+                            <input type="date" class="form-control" id="newStoryDueDate">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Notes</label>
+                            <textarea class="form-control" id="newStoryNotes" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Create Story</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Task Modal -->
+    <div class="modal fade" id="addTaskModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create New Task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form id="addTaskForm">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">Task Title</label>
+                            <input type="text" class="form-control" id="newTaskTitle" maxlength="180" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Project</label>
+                            <select class="form-select" id="newTaskProject" onchange="populateWorkStories()">
+                                <option value="1">Website Redesign</option>
+                                <option value="2">Mobile App Development</option>
+                                <option value="4">New Product Launch</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Story</label>
-                            <select class="form-select" id="newWorkTaskStory">
-                                <!-- Options will be populated dynamically based on selected project -->
+                            <select class="form-select" id="newTaskStory">
+                                <option value="101">Create landing page design</option>
+                                <option value="102">Implement responsive navigation</option>
+                                <option value="103">Backend development</option>
+                                <option value="104">Market analysis</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Status</label>
-                            <select class="form-select" id="newWorkTaskStatus">
-                                <option value="backlog">Backlog</option>
-                                <option value="not_started">Not Started</option>
-                                <option value="in_progress">In Progress</option>
-                                <option value="on_hold">On Hold</option>
-                                <option value="blocked">Blocked</option>
-                                <option value="completed">Completed</option>
+                            <select class="form-select" id="newTaskStatus">
+                                <option value="Backlog">Backlog</option>
+                                <option value="Not Started">Not Started</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="On Hold">On Hold</option>
+                                <option value="Blocked">Blocked</option>
+                                <option value="Completed">Completed</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Priority</label>
-                            <select class="form-select" id="newWorkTaskPriority">
-                                <option value="medium">Medium</option>
-                                <option value="low">Low</option>
-                                <option value="high">High</option>
-                                <option value="urgent">Urgent</option>
+                            <select class="form-select" id="newTaskPriority">
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
+                                <option value="High">High</option>
+                                <option value="Urgent">Urgent</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="newWorkTaskStartDate">
+                            <input type="date" class="form-control" id="newTaskStartDate">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Due Date</label>
-                            <input type="date" class="form-control" id="newWorkTaskDueDate">
+                            <input type="date" class="form-control" id="newTaskDueDate">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Notes</label>
-                            <textarea class="form-control" id="newWorkTaskNotes" rows="3"></textarea>
+                            <textarea class="form-control" id="newTaskNotes" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Create Work Task</button>
+                        <button type="submit" class="btn btn-primary">Create Task</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
+    <!-- Edit Project, Story and Task Modals (Same as in index.html) -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        // Sample data for modals (same as index.html)
+        const sampleProject = {
+            id: 1,
+            name: "Website Redesign",
+            description: "Redesign the company website with a modern look and improved user experience.",
+            area: "Work",
+            status: "In Progress",
+            priority: "High",
+            startDate: "2025-05-01",
+            dueDate: "2025-05-30",
+            notes: "This is a high priority project for Q2."
+        };
+
+        const sampleStory = {
+            id: 101,
+            title: "Create landing page design",
+            project: 1,
+            status: "In Progress",
+            priority: "High",
+            startDate: "2025-05-10",
+            dueDate: "2025-05-20",
+            notes: "Focus on mobile-first approach."
+        };
+
+        const sampleTask = {
+            id: 1,
+            title: "Finalize homepage wireframes",
+            story: 101,
+            status: "In Progress",
+            priority: "High",
+            startDate: "2025-05-15",
+            dueDate: "2025-05-25",
+            notes: "Get approval from marketing team."
+        };
+
+        // Toggle sidebar function
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('show');
+            document.getElementById('sidebarBackdrop').classList.toggle('show');
+        }
+
+        // Modal handling functions
+        function showAddProjectModal() {
+            const modal = new bootstrap.Modal(document.getElementById('addProjectModal'));
+            modal.show();
+        }
+
+        function showAddStoryModal() {
+            const modal = new bootstrap.Modal(document.getElementById('addStoryModal'));
+            modal.show();
+        }
+
+        function showAddTaskModal() {
+            const modal = new bootstrap.Modal(document.getElementById('addTaskModal'));
+            modal.show();
+        }
+
+        function editProject(id) {
+            // In a real app, this would fetch project data from API
+            alert('Editing project with ID: ' + id);
+            // Redirect to index page for now since that has the edit project modal
+            window.location.href = 'index.html';
+        }
+
+        function editTask(id) {
+            // In a real app, this would fetch task data from API
+            alert('Editing task with ID: ' + id);
+            // Redirect to tasks page for now since that has the edit task modal
+            window.location.href = 'tasks.html';
+        }
+
+        function moveTaskStatus(id, newStatus) {
+            // In a real app, this would update task status via API
+            alert(`Task ${id} moved to ${newStatus}`);
+        }
+
+        function populateWorkStories() {
+            const projectSelect = document.getElementById('newTaskProject');
+            const storySelect = document.getElementById('newTaskStory');
+            
+            // Clear existing options
+            storySelect.innerHTML = '';
+            
+            // In a real app, this would fetch stories for the selected project from API
+            // For now, just add some sample options based on selected project
+            if (projectSelect.value === '1') {
+                storySelect.innerHTML += `<option value="101">Create landing page design</option>`;
+                storySelect.innerHTML += `<option value="102">Implement responsive navigation</option>`;
+            } else if (projectSelect.value === '2') {
+                storySelect.innerHTML += `<option value="103">Backend development</option>`;
+                storySelect.innerHTML += `<option value="105">User interface design</option>`;
+            } else if (projectSelect.value === '4') {
+                storySelect.innerHTML += `<option value="104">Market analysis</option>`;
+                storySelect.innerHTML += `<option value="106">Marketing campaign</option>`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form submission handlers
+            document.getElementById('addProjectForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // In a real app, send form data to API
+                alert('Project created!');
+                bootstrap.Modal.getInstance(document.getElementById('addProjectModal')).hide();
+            });
+
+            document.getElementById('addStoryForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // In a real app, send form data to API
+                alert('Story created!');
+                bootstrap.Modal.getInstance(document.getElementById('addStoryModal')).hide();
+            });
+
+            document.getElementById('addTaskForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // In a real app, send form data to API
+                alert('Task created!');
+                bootstrap.Modal.getInstance(document.getElementById('addTaskModal')).hide();
+            });
+        });
+    </script>
 </body>
 </html>

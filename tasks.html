@@ -31,6 +31,10 @@
                     <i class="fas fa-project-diagram"></i>
                     <span>Projects</span>
                 </a>
+                <a href="stories.html" class="nav-link">
+                    <i class="fas fa-bookmark"></i>
+                    <span>Stories</span>
+                </a>
                 <a href="tasks.html" class="nav-link active">
                     <i class="fas fa-tasks"></i>
                     <span>Tasks</span>
@@ -68,7 +72,7 @@
     </div>
 
     <!-- Sidebar Backdrop -->
-    <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
     <!-- Main Content -->
     <div class="main-content">
@@ -80,223 +84,170 @@
                 </button>
                 <h1 class="current-category">All Tasks</h1>
             </div>
-            <div class="header-actions">
-                <a href="login.html" class="btn btn-outline-danger ms-2">
-                    <i class="fas fa-sign-out-alt me-1"></i>Exit
-                </a>
-            </div>
         </header>
 
         <!-- Tasks Content -->
         <div class="content-area">
-            <!-- Kanban Board -->
-            <div class="row kanban-container">
-                <div class="col-md-2">
-                    <div class="kanban-column h-100">
-                        <h2 class="kanban-title">Backlog</h2>
-                        <div class="kanban-tasks" id="backlogTasks">
-                            <!-- Sample Tasks -->
-                            <div class="task-item priority-medium" onclick="editTask(10)">
-                                <div class="task-content">
-                                    <h4 class="task-title">Create contact form</h4>
-                                    <div class="task-meta">
-                                        <span><i class="fas fa-project-diagram me-1"></i>Website Redesign</span>
-                                    </div>
+            <!-- Kanban Board - Row Layout -->
+            <div class="kanban-board-rows">
+                <!-- Backlog Section -->
+                <div class="kanban-row">
+                    <div class="kanban-row-header">
+                        <h3 class="kanban-status-title">
+                            <i class="fas fa-inbox me-2"></i>Backlog
+                            <span class="badge bg-secondary ms-2">2</span>
+                        </h3>
+                    </div>
+                    <div class="kanban-row-content">
+                        <div class="task-card priority-medium" onclick="openTaskEdit(10)">
+                            <div class="task-card-content">
+                                <h5 class="task-card-title">Create contact form</h5>
+                                <div class="task-card-meta">
+                                    <span class="project-name"><i class="fas fa-project-diagram me-1"></i>Website Redesign</span>
+                                    <span class="task-priority priority-medium"><i class="fas fa-flag me-1"></i>Medium</span>
                                 </div>
                             </div>
-                            <div class="task-item priority-low" onclick="editTask(11)">
-                                <div class="task-content">
-                                    <h4 class="task-title">Design footer section</h4>
-                                    <div class="task-meta">
-                                        <span><i class="fas fa-project-diagram me-1"></i>Website Redesign</span>
-                                    </div>
+                        </div>
+                        <div class="task-card priority-low" onclick="openTaskEdit(11)">
+                            <div class="task-card-content">
+                                <h5 class="task-card-title">Design footer section</h5>
+                                <div class="task-card-meta">
+                                    <span class="project-name"><i class="fas fa-project-diagram me-1"></i>Website Redesign</span>
+                                    <span class="task-priority priority-low"><i class="fas fa-flag me-1"></i>Low</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <div class="kanban-column h-100">
-                        <h2 class="kanban-title">Not Started</h2>
-                        <div class="kanban-tasks" id="notStartedTasks">
-                            <!-- Sample Tasks -->
-                            <div class="task-item priority-high" onclick="editTask(20)">
-                                <div class="task-content">
-                                    <h4 class="task-title">Research API integrations</h4>
-                                    <div class="task-meta">
-                                        <span><i class="fas fa-project-diagram me-1"></i>Mobile App Development</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="task-item priority-medium" onclick="editTask(21)">
-                                <div class="task-content">
-                                    <h4 class="task-title">Design logo variations</h4>
-                                    <div class="task-meta">
-                                        <span><i class="fas fa-project-diagram me-1"></i>Website Redesign</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="kanban-column h-100">
-                        <h2 class="kanban-title">In Progress</h2>
-                        <div class="kanban-tasks" id="inProgressTasks">
-                            <!-- Sample Tasks -->
-                            <div class="task-item priority-high" onclick="editTask(30)">
-                                <div class="task-content">
-                                    <h4 class="task-title">Finalize homepage wireframes</h4>
-                                    <div class="task-meta">
-                                        <span><i class="fas fa-project-diagram me-1"></i>Website Redesign</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="task-item priority-medium" onclick="editTask(31)">
-                                <div class="task-content">
-                                    <h4 class="task-title">Create user authentication logic</h4>
-                                    <div class="task-meta">
-                                        <span><i class="fas fa-project-diagram me-1"></i>Mobile App Development</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="task-item priority-urgent" onclick="editTask(32)">
-                                <div class="task-content">
-                                    <h4 class="task-title">Develop Q2 content calendar</h4>
-                                    <div class="task-meta">
-                                        <span><i class="fas fa-project-diagram me-1"></i>Content Marketing Strategy</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="kanban-column h-100">
-                        <h2 class="kanban-title">On Hold</h2>
-                        <div class="kanban-tasks" id="onHoldTasks">
-                            <!-- Sample Tasks -->
-                            <div class="task-item priority-high" onclick="editTask(40)">
-                                <div class="task-content">
-                                    <h4 class="task-title">Product pricing strategy</h4>
-                                    <div class="task-meta">
-                                        <span><i class="fas fa-project-diagram me-1"></i>New Product Launch</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="task-item priority-medium" onclick="editTask(41)">
-                                <div class="task-content">
-                                    <h4 class="task-title">Source new office furniture</h4>
-                                    <div class="task-meta">
-                                        <span><i class="fas fa-project-diagram me-1"></i>Office Relocation</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="kanban-column h-100">
-                        <h2 class="kanban-title">Blocked</h2>
-                        <div class="kanban-tasks" id="blockedTasks">
-                            <!-- Sample Tasks -->
-                            <div class="task-item priority-urgent" onclick="editTask(50)">
-                                <div class="task-content">
-                                    <h4 class="task-title">Fix API authentication issue</h4>
-                                    <div class="task-meta">
-                                        <span><i class="fas fa-project-diagram me-1"></i>Mobile App Development</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="task-item priority-high" onclick="editTask(51)">
-                                <div class="task-content">
-                                    <h4 class="task-title">Resolve server configuration</h4>
-                                    <div class="task-meta">
-                                        <span><i class="fas fa-project-diagram me-1"></i>Website Redesign</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="kanban-column h-100">
-                        <h2 class="kanban-title">Completed</h2>
-                        <div class="kanban-tasks" id="completedTasks">
-                            <!-- Empty state with note that completed tasks are on the completed page -->
-                            <div class="empty-state">
-                                <i class="fas fa-check-circle"></i>
-                                <h4>Completed tasks</h4>
-                                <p>Check the <a href="completed.html">Completed</a> page to see all finished work.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Task Modal -->
-    <div class="modal fade" id="editTaskModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Edit Task</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <!-- Not Started Section -->
+                <div class="kanban-row">
+                    <div class="kanban-row-header">
+                        <h3 class="kanban-status-title">
+                            <i class="fas fa-pause me-2"></i>Not Started
+                            <span class="badge bg-info ms-2">2</span>
+                        </h3>
+                    </div>
+                    <div class="kanban-row-content">
+                        <div class="task-card priority-high" onclick="openTaskEdit(20)">
+                            <div class="task-card-content">
+                                <h5 class="task-card-title">Research API integrations</h5>
+                                <div class="task-card-meta">
+                                    <span class="project-name"><i class="fas fa-project-diagram me-1"></i>Mobile App Development</span>
+                                    <span class="task-priority priority-high"><i class="fas fa-flag me-1"></i>High</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task-card priority-medium" onclick="openTaskEdit(21)">
+                            <div class="task-card-content">
+                                <h5 class="task-card-title">Design logo variations</h5>
+                                <div class="task-card-meta">
+                                    <span class="project-name"><i class="fas fa-project-diagram me-1"></i>Website Redesign</span>
+                                    <span class="task-priority priority-medium"><i class="fas fa-flag me-1"></i>Medium</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <form id="editTaskForm">
-                    <div class="modal-body">
-                        <input type="hidden" id="editTaskId">
-                        <div class="mb-3">
-                            <label class="form-label">Task Title</label>
-                            <input type="text" class="form-control" id="editTaskTitle" maxlength="180" required>
+
+                <!-- In Progress Section -->
+                <div class="kanban-row">
+                    <div class="kanban-row-header">
+                        <h3 class="kanban-status-title">
+                            <i class="fas fa-play me-2"></i>In Progress
+                            <span class="badge bg-success ms-2">3</span>
+                        </h3>
+                    </div>
+                    <div class="kanban-row-content">
+                        <div class="task-card priority-high" onclick="openTaskEdit(30)">
+                            <div class="task-card-content">
+                                <h5 class="task-card-title">Finalize homepage wireframes</h5>
+                                <div class="task-card-meta">
+                                    <span class="project-name"><i class="fas fa-project-diagram me-1"></i>Website Redesign</span>
+                                    <span class="task-priority priority-high"><i class="fas fa-flag me-1"></i>High</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Story</label>
-                            <select class="form-select" id="editTaskStory" required>
-                                <option value="101">Create landing page design</option>
-                                <option value="102">Implement responsive navigation</option>
-                            </select>
+                        <div class="task-card priority-medium" onclick="openTaskEdit(31)">
+                            <div class="task-card-content">
+                                <h5 class="task-card-title">Create user authentication logic</h5>
+                                <div class="task-card-meta">
+                                    <span class="project-name"><i class="fas fa-project-diagram me-1"></i>Mobile App Development</span>
+                                    <span class="task-priority priority-medium"><i class="fas fa-flag me-1"></i>Medium</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Status</label>
-                            <select class="form-select" id="editTaskStatus">
-                                <option value="Backlog">Backlog</option>
-                                <option value="Not Started">Not Started</option>
-                                <option value="In Progress">In Progress</option>
-                                <option value="On Hold">On Hold</option>
-                                <option value="Blocked">Blocked</option>
-                                <option value="Completed">Completed</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Priority</label>
-                            <select class="form-select" id="editTaskPriority">
-                                <option value="Medium">Medium</option>
-                                <option value="Low">Low</option>
-                                <option value="High">High</option>
-                                <option value="Urgent">Urgent</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="editTaskStartDate">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Due Date</label>
-                            <input type="date" class="form-control" id="editTaskDueDate">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Notes</label>
-                            <textarea class="form-control" id="editTaskNotes" rows="3"></textarea>
+                        <div class="task-card priority-urgent" onclick="openTaskEdit(32)">
+                            <div class="task-card-content">
+                                <h5 class="task-card-title">Develop Q2 content calendar</h5>
+                                <div class="task-card-meta">
+                                    <span class="project-name"><i class="fas fa-project-diagram me-1"></i>Content Marketing Strategy</span>
+                                    <span class="task-priority priority-urgent"><i class="fas fa-flag me-1"></i>Urgent</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger me-auto" onclick="confirmDeleteTask()">Delete Task</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Update Task</button>
+                </div>
+
+                <!-- On Hold Section -->
+                <div class="kanban-row">
+                    <div class="kanban-row-header">
+                        <h3 class="kanban-status-title">
+                            <i class="fas fa-hand-paper me-2"></i>On Hold
+                            <span class="badge bg-warning ms-2">2</span>
+                        </h3>
                     </div>
-                </form>
+                    <div class="kanban-row-content">
+                        <div class="task-card priority-high" onclick="openTaskEdit(40)">
+                            <div class="task-card-content">
+                                <h5 class="task-card-title">Product pricing strategy</h5>
+                                <div class="task-card-meta">
+                                    <span class="project-name"><i class="fas fa-project-diagram me-1"></i>New Product Launch</span>
+                                    <span class="task-priority priority-high"><i class="fas fa-flag me-1"></i>High</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task-card priority-medium" onclick="openTaskEdit(41)">
+                            <div class="task-card-content">
+                                <h5 class="task-card-title">Source new office furniture</h5>
+                                <div class="task-card-meta">
+                                    <span class="project-name"><i class="fas fa-project-diagram me-1"></i>Office Relocation</span>
+                                    <span class="task-priority priority-medium"><i class="fas fa-flag me-1"></i>Medium</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blocked Section -->
+                <div class="kanban-row">
+                    <div class="kanban-row-header">
+                        <h3 class="kanban-status-title">
+                            <i class="fas fa-ban me-2"></i>Blocked
+                            <span class="badge bg-danger ms-2">2</span>
+                        </h3>
+                    </div>
+                    <div class="kanban-row-content">
+                        <div class="task-card priority-urgent" onclick="openTaskEdit(50)">
+                            <div class="task-card-content">
+                                <h5 class="task-card-title">Fix API authentication issue</h5>
+                                <div class="task-card-meta">
+                                    <span class="project-name"><i class="fas fa-project-diagram me-1"></i>Mobile App Development</span>
+                                    <span class="task-priority priority-urgent"><i class="fas fa-flag me-1"></i>Urgent</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task-card priority-high" onclick="openTaskEdit(51)">
+                            <div class="task-card-content">
+                                <h5 class="task-card-title">Resolve server configuration</h5>
+                                <div class="task-card-meta">
+                                    <span class="project-name"><i class="fas fa-project-diagram me-1"></i>Website Redesign</span>
+                                    <span class="task-priority priority-high"><i class="fas fa-flag me-1"></i>High</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -316,10 +267,19 @@
                             <input type="text" class="form-control" id="newTaskTitle" maxlength="180" required>
                         </div>
                         <div class="mb-3">
+                            <label class="form-label">Project</label>
+                            <select class="form-select" id="newTaskProject" onchange="updateStoryOptions()" required>
+                                <option value="">Select Project</option>
+                                <option value="1">Website Redesign</option>
+                                <option value="2">Mobile App Development</option>
+                                <option value="3">Content Marketing Strategy</option>
+                                <option value="4">New Product Launch</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label">Story</label>
                             <select class="form-select" id="newTaskStory" required>
-                                <option value="101">Create landing page design</option>
-                                <option value="102">Implement responsive navigation</option>
+                                <option value="">Select Story</option>
                             </select>
                         </div>
                         <div class="mb-3">
@@ -365,28 +325,13 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
     <script src="script.js"></script>
     <script>
-        // Sample data for task modal
-        const sampleTask = {
-            id: 30,
-            title: "Finalize homepage wireframes",
-            story: 101,
-            status: "In Progress",
-            priority: "High",
-            startDate: "2025-05-15",
-            dueDate: "2025-05-25",
-            notes: "Get approval from marketing team."
-        };
-
-        // Toggle sidebar function
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('show');
             document.getElementById('sidebarBackdrop').classList.toggle('show');
         }
 
-        // Modal handling functions
         function showAddTaskModal() {
             const modal = new bootstrap.Modal(document.getElementById('addTaskModal'));
             modal.show();
@@ -394,72 +339,47 @@
 
         function showAddProjectModal() {
             window.location.href = 'index.html';
-            setTimeout(() => {
-                const modal = new bootstrap.Modal(document.getElementById('addProjectModal'));
-                modal.show();
-            }, 500);
         }
 
         function showAddStoryModal() {
-            window.location.href = 'index.html';
-            setTimeout(() => {
-                const modal = new bootstrap.Modal(document.getElementById('addStoryModal'));
-                modal.show();
-            }, 500);
+            window.location.href = 'stories.html';
         }
 
-        function editTask(id) {
-            // In a real app, fetch task data from API
-            document.getElementById('editTaskId').value = id;
-            document.getElementById('editTaskTitle').value = sampleTask.title;
-            document.getElementById('editTaskStory').value = sampleTask.story;
-            document.getElementById('editTaskStatus').value = sampleTask.status;
-            document.getElementById('editTaskPriority').value = sampleTask.priority;
-            document.getElementById('editTaskStartDate').value = sampleTask.startDate;
-            document.getElementById('editTaskDueDate').value = sampleTask.dueDate;
-            document.getElementById('editTaskNotes').value = sampleTask.notes;
-
-            const modal = new bootstrap.Modal(document.getElementById('editTaskModal'));
-            modal.show();
+        function openTaskEdit(id) {
+            window.location.href = `task-edit.html?id=${id}`;
         }
 
-        function confirmDeleteTask() {
-            if (confirm('Are you sure you want to delete this task?')) {
-                alert('Task deleted');
-                bootstrap.Modal.getInstance(document.getElementById('editTaskModal')).hide();
+        function updateStoryOptions() {
+            const projectSelect = document.getElementById('newTaskProject');
+            const storySelect = document.getElementById('newTaskStory');
+            
+            storySelect.innerHTML = '<option value="">Select Story</option>';
+            
+            if (projectSelect.value === '1') {
+                storySelect.innerHTML += '<option value="101">Create landing page design</option>';
+                storySelect.innerHTML += '<option value="102">Implement responsive navigation</option>';
+            } else if (projectSelect.value === '2') {
+                storySelect.innerHTML += '<option value="103">Backend development</option>';
+                storySelect.innerHTML += '<option value="105">User interface design</option>';
+            } else if (projectSelect.value === '3') {
+                storySelect.innerHTML += '<option value="106">Content strategy</option>';
+                storySelect.innerHTML += '<option value="107">Social media campaigns</option>';
+            } else if (projectSelect.value === '4') {
+                storySelect.innerHTML += '<option value="104">Market analysis</option>';
+                storySelect.innerHTML += '<option value="108">Marketing campaign</option>';
             }
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize sortable for each kanban column
-            const kanbanColumns = document.querySelectorAll('.kanban-tasks');
-            kanbanColumns.forEach(column => {
-                new Sortable(column, {
-                    group: 'tasks',
-                    animation: 150,
-                    ghostClass: 'task-dragging',
-                    onEnd: function(evt) {
-                        // In a real app, update task status and order via API
-                        const taskId = evt.item.getAttribute('data-task-id') || evt.item.onclick.toString().match(/editTask\((\d+)\)/)[1];
-                        const newStatus = evt.to.id.replace('Tasks', '');
-                        console.log(`Task ${taskId} moved to ${newStatus}, new position: ${evt.newIndex}`);
-                    }
-                });
-            });
+            const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+            if (sidebarBackdrop) {
+                sidebarBackdrop.addEventListener('click', toggleSidebar);
+            }
 
-            // Form submission handlers
             document.getElementById('addTaskForm').addEventListener('submit', function(e) {
                 e.preventDefault();
-                // In a real app, send form data to API
                 alert('Task created!');
                 bootstrap.Modal.getInstance(document.getElementById('addTaskModal')).hide();
-            });
-
-            document.getElementById('editTaskForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                // In a real app, send form data to API
-                alert('Task updated!');
-                bootstrap.Modal.getInstance(document.getElementById('editTaskModal')).hide();
             });
         });
     </script>

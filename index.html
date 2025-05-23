@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +8,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <!-- Sidebar -->
@@ -85,168 +83,152 @@
                 </button>
                 <h1 class="current-category">Dashboard</h1>
             </div>
+            <div class="header-actions">
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProjectModal"><i class="fas fa-plus me-1"></i>New Project</button>
+            </div>
         </header>
 
         <!-- Dashboard Content -->
         <div class="content-area">
-            <!-- Dashboard Stats Cards -->
+            <!-- Enhanced Stats Cards -->
             <div class="dashboard-stats">
                 <div class="stat-card">
-                    <div class="stat-card-icon projects">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                    <h4>Active Projects</h4>
-                    <div class="stat-value">12</div>
-                    <div class="stat-change">+2 this week</div>
+                    <div class="stat-card-icon projects"><i class="fas fa-project-diagram"></i></div>
+                    <h4>Total Projects</h4>
+                    <div class="stat-value">4</div>
+                    <div class="stat-change">+2 this month</div>
                 </div>
-                
                 <div class="stat-card">
-                    <div class="stat-card-icon stories">
-                        <i class="fas fa-bookmark"></i>
-                    </div>
+                    <div class="stat-card-icon stories"><i class="fas fa-bookmark"></i></div>
                     <h4>Active Stories</h4>
-                    <div class="stat-value">34</div>
+                    <div class="stat-value">12</div>
                     <div class="stat-change">+5 this week</div>
                 </div>
-                
                 <div class="stat-card">
-                    <div class="stat-card-icon tasks">
-                        <i class="fas fa-tasks"></i>
-                    </div>
-                    <h4>Pending Tasks</h4>
-                    <div class="stat-value">67</div>
-                    <div class="stat-change">-8 completed</div>
+                    <div class="stat-card-icon tasks"><i class="fas fa-tasks"></i></div>
+                    <h4>Total Tasks</h4>
+                    <div class="stat-value">34</div>
+                    <div class="stat-change">+8 this week</div>
                 </div>
-                
                 <div class="stat-card">
-                    <div class="stat-card-icon completed">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <h4>Completed This Week</h4>
+                    <div class="stat-card-icon completed"><i class="fas fa-check-circle"></i></div>
+                    <h4>Completed</h4>
+                    <div class="stat-value">67%</div>
+                    <div class="stat-change">+12% this month</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon bg-gradient-primary"><i class="fas fa-clock"></i></div>
+                    <h4>In Progress</h4>
                     <div class="stat-value">23</div>
-                    <div class="stat-change">+15% increase</div>
-                </div>
-            </div>
-
-            <!-- Work Sections -->
-            <div class="dashboard-section">
-                <div class="dashboard-section-header">
-                    <h3 class="dashboard-section-title">Continue Working On These Tasks</h3>
-                </div>
-                <div class="tasks-list">
-                    <div class="task-item priority-high" onclick="openTaskEdit(30)">
-                        <div class="task-content">
-                            <h5 class="task-title">Finalize homepage wireframes</h5>
-                            <div class="task-meta">
-                                <span class="project-name"><i class="fas fa-project-diagram me-1"></i>Website Redesign</span>
-                                <span class="task-priority priority-high"><i class="fas fa-flag me-1"></i>High Priority</span>
-                                <span class="task-due"><i class="fas fa-calendar me-1"></i>Due: Today</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="task-item priority-medium" onclick="openTaskEdit(31)">
-                        <div class="task-content">
-                            <h5 class="task-title">Create user authentication logic</h5>
-                            <div class="task-meta">
-                                <span class="project-name"><i class="fas fa-project-diagram me-1"></i>Mobile App Development</span>
-                                <span class="task-priority priority-medium"><i class="fas fa-flag me-1"></i>Medium Priority</span>
-                                <span class="task-due"><i class="fas fa-calendar me-1"></i>Due: Tomorrow</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dashboard-section">
-                <div class="dashboard-section-header">
-                    <h3 class="dashboard-section-title">Follow Up On These Pending Tasks</h3>
-                </div>
-                <div class="tasks-list">
-                    <div class="task-item priority-urgent" onclick="openTaskEdit(50)">
-                        <div class="task-content">
-                            <h5 class="task-title">Fix API authentication issue</h5>
-                            <div class="task-meta">
-                                <span class="project-name"><i class="fas fa-project-diagram me-1"></i>Mobile App Development</span>
-                                <span class="task-priority priority-urgent"><i class="fas fa-flag me-1"></i>Urgent</span>
-                                <span class="task-due"><i class="fas fa-calendar me-1"></i>Overdue</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="task-item priority-high" onclick="openTaskEdit(40)">
-                        <div class="task-content">
-                            <h5 class="task-title">Product pricing strategy</h5>
-                            <div class="task-meta">
-                                <span class="project-name"><i class="fas fa-project-diagram me-1"></i>New Product Launch</span>
-                                <span class="task-priority priority-high"><i class="fas fa-flag me-1"></i>High Priority</span>
-                                <span class="task-due"><i class="fas fa-calendar me-1"></i>Due: This Week</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dashboard-section">
-                <div class="dashboard-section-header">
-                    <h3 class="dashboard-section-title">Stories In Progress</h3>
-                </div>
-                <div class="stories-list">
-                    <div class="story-item" onclick="openStoryEdit(101)">
-                        <div class="story-content">
-                            <h5 class="story-title">Create landing page design</h5>
-                            <div class="story-meta">
-                                <span class="story-project"><i class="fas fa-project-diagram me-1"></i>Website Redesign</span>
-                                <span class="story-priority priority-high"><i class="fas fa-flag me-1"></i>High Priority</span>
-                                <span class="story-progress"><i class="fas fa-tasks me-1"></i>3/5 Tasks</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="story-item" onclick="openStoryEdit(103)">
-                        <div class="story-content">
-                            <h5 class="story-title">Backend development</h5>
-                            <div class="story-meta">
-                                <span class="story-project"><i class="fas fa-project-diagram me-1"></i>Mobile App Development</span>
-                                <span class="story-priority priority-urgent"><i class="fas fa-flag me-1"></i>Urgent</span>
-                                <span class="story-progress"><i class="fas fa-tasks me-1"></i>2/3 Tasks</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dashboard-section">
-                <div class="dashboard-section-header">
-                    <h3 class="dashboard-section-title">Stories On Hold</h3>
-                </div>
-                <div class="stories-list">
-                    <div class="story-item" onclick="openStoryEdit(104)">
-                        <div class="story-content">
-                            <h5 class="story-title">Market analysis</h5>
-                            <div class="story-meta">
-                                <span class="story-project"><i class="fas fa-project-diagram me-1"></i>New Product Launch</span>
-                                <span class="story-priority priority-high"><i class="fas fa-flag me-1"></i>High Priority</span>
-                                <span class="story-progress"><i class="fas fa-tasks me-1"></i>1/6 Tasks</span>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="stat-change">Active items</div>
                 </div>
             </div>
 
             <!-- Charts Section -->
+            <div class="row mb-4">
+                <div class="col-lg-6">
+                    <div class="chart-container">
+                        <h6 class="chart-title">Tasks Completed Over Time</h6>
+                        <canvas id="tasksChart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="chart-container">
+                        <h6 class="chart-title">Stories Progress</h6>
+                        <canvas id="storiesChart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Continue Working Section -->
             <div class="dashboard-section">
                 <div class="dashboard-section-header">
-                    <h3 class="dashboard-section-title">Progress Overview</h3>
+                    <h5 class="dashboard-section-title">Continue Working on These Tasks</h5>
+                    <a href="tasks.html" class="btn btn-sm btn-outline-primary">View All</a>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="chart-container">
-                            <h5 class="chart-title">Tasks Completed Over Time</h5>
-                            <canvas id="tasksChart" width="400" height="200"></canvas>
+                <div class="tasks-list">
+                    <div class="task-item priority-high" onclick="window.location.href='task-view.html?id=301'">
+                        <div class="task-content">
+                            <h6 class="task-title">Design wireframes</h6>
+                            <div class="task-meta">
+                                <span class="project-name">Website Redesign</span>
+                                <span class="priority-high"><i class="fas fa-flag me-1"></i>High</span>
+                                <span class="text-muted">Due: May 18, 2025</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="chart-container">
-                            <h5 class="chart-title">Stories Completed Over Time</h5>
-                            <canvas id="storiesChart" width="400" height="200"></canvas>
+                    <div class="task-item priority-medium" onclick="window.location.href='task-view.html?id=302'">
+                        <div class="task-content">
+                            <h6 class="task-title">Create mockups</h6>
+                            <div class="task-meta">
+                                <span class="project-name">Website Redesign</span>
+                                <span class="priority-medium"><i class="fas fa-flag me-1"></i>Medium</span>
+                                <span class="text-muted">Due: May 22, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Follow Up Section -->
+            <div class="dashboard-section">
+                <div class="dashboard-section-header">
+                    <h5 class="dashboard-section-title">Follow Up on Pending Tasks</h5>
+                    <a href="tasks.html" class="btn btn-sm btn-outline-primary">View All</a>
+                </div>
+                <div class="tasks-list">
+                    <div class="task-item priority-urgent" onclick="window.location.href='task-view.html?id=303'">
+                        <div class="task-content">
+                            <h6 class="task-title">Review with team</h6>
+                            <div class="task-meta">
+                                <span class="project-name">Website Redesign</span>
+                                <span class="priority-urgent"><i class="fas fa-flag me-1"></i>Urgent</span>
+                                <span class="text-muted">Overdue</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stories Sections -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="dashboard-section">
+                        <div class="dashboard-section-header">
+                            <h5 class="dashboard-section-title">Stories In Progress</h5>
+                            <a href="stories.html" class="btn btn-sm btn-outline-primary">View All</a>
+                        </div>
+                        <div class="stories-list">
+                            <div class="story-item priority-high" onclick="window.location.href='story-view.html?id=101'">
+                                <div class="story-content">
+                                    <h6 class="story-title">Create landing page design</h6>
+                                    <div class="story-meta">
+                                        <span class="project-name">Website Redesign</span>
+                                        <span class="priority-high"><i class="fas fa-flag me-1"></i>High</span>
+                                        <span class="text-muted">67% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="dashboard-section">
+                        <div class="dashboard-section-header">
+                            <h5 class="dashboard-section-title">Stories On Hold</h5>
+                            <a href="stories.html" class="btn btn-sm btn-outline-primary">View All</a>
+                        </div>
+                        <div class="stories-list">
+                            <div class="story-item priority-medium" onclick="window.location.href='story-view.html?id=102'">
+                                <div class="story-content">
+                                    <h6 class="story-title">Implement responsive navigation</h6>
+                                    <div class="story-meta">
+                                        <span class="project-name">Website Redesign</span>
+                                        <span class="priority-medium"><i class="fas fa-flag me-1"></i>Medium</span>
+                                        <span class="text-muted">33% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -255,208 +237,77 @@
     </div>
 
     <!-- Add Project Modal -->
-    <div class="modal fade" id="addProjectModal" tabindex="-1">
-        <div class="modal-dialog">
+    <div class="modal fade" id="addProjectModal" tabindex="-1" aria-labelledby="addProjectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Create New Project</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    <h5 class="modal-title" id="addProjectModalLabel">Create New Project</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form id="addProjectForm">
-                    <div class="modal-body">
+                <div class="modal-body">
+                    <form id="addProjectForm">
                         <div class="mb-3">
                             <label class="form-label">Project Name</label>
                             <input type="text" class="form-control" id="newProjectName" maxlength="120" required>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Area</label>
-                            <select class="form-select" id="newProjectArea" required>
-                                <option value="Work">Work</option>
-                                <option value="Personal">Personal</option>
-                                <option value="Freelancing">Freelancing</option>
-                                <option value="Fitness">Fitness</option>
-                            </select>
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" id="newProjectDescription" rows="3"></textarea>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Status</label>
-                            <select class="form-select" id="newProjectStatus">
-                                <option value="Backlog">Backlog</option>
-                                <option value="Not Started">Not Started</option>
-                                <option value="In Progress">In Progress</option>
-                                <option value="On Hold">On Hold</option>
-                                <option value="Blocked">Blocked</option>
-                                <option value="Completed">Completed</option>
-                            </select>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Area</label>
+                                    <select class="form-select" id="newProjectArea">
+                                        <option value="Personal">Personal</option>
+                                        <option value="Work">Work</option>
+                                        <option value="Freelance">Freelance</option>
+                                        <option value="Fitness">Fitness</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Priority</label>
+                                    <select class="form-select" id="newProjectPriority">
+                                        <option value="Low">Low</option>
+                                        <option value="Medium" selected>Medium</option>
+                                        <option value="High">High</option>
+                                        <option value="Urgent">Urgent</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Priority</label>
-                            <select class="form-select" id="newProjectPriority">
-                                <option value="Medium">Medium</option>
-                                <option value="Low">Low</option>
-                                <option value="High">High</option>
-                                <option value="Urgent">Urgent</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="newProjectStartDate">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Due Date</label>
-                            <input type="date" class="form-control" id="newProjectDueDate">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Start Date</label>
+                                    <input type="date" class="form-control" id="newProjectStartDate">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Due Date</label>
+                                    <input type="date" class="form-control" id="newProjectDueDate">
+                                </div>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Notes</label>
                             <textarea class="form-control" id="newProjectNotes" rows="3"></textarea>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Create Project</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add Story Modal -->
-    <div class="modal fade" id="addStoryModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Create New Story</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </form>
                 </div>
-                <form id="addStoryForm">
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label class="form-label">Story Title</label>
-                            <input type="text" class="form-control" id="newStoryTitle" maxlength="180" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Project</label>
-                            <select class="form-select" id="newStoryProject" required>
-                                <option value="1">Website Redesign</option>
-                                <option value="2">Mobile App Development</option>
-                                <option value="3">Content Marketing Strategy</option>
-                                <option value="4">New Product Launch</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Status</label>
-                            <select class="form-select" id="newStoryStatus">
-                                <option value="Backlog">Backlog</option>
-                                <option value="Not Started">Not Started</option>
-                                <option value="In Progress">In Progress</option>
-                                <option value="On Hold">On Hold</option>
-                                <option value="Blocked">Blocked</option>
-                                <option value="Completed">Completed</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Priority</label>
-                            <select class="form-select" id="newStoryPriority">
-                                <option value="Medium">Medium</option>
-                                <option value="Low">Low</option>
-                                <option value="High">High</option>
-                                <option value="Urgent">Urgent</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="newStoryStartDate">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Due Date</label>
-                            <input type="date" class="form-control" id="newStoryDueDate">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Notes</label>
-                            <textarea class="form-control" id="newStoryNotes" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Create Story</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add Task Modal -->
-    <div class="modal fade" id="addTaskModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Create New Task</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" form="addProjectForm" class="btn btn-primary">Create Project</button>
                 </div>
-                <form id="addTaskForm">
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label class="form-label">Task Title</label>
-                            <input type="text" class="form-control" id="newTaskTitle" maxlength="180" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Project</label>
-                            <select class="form-select" id="newTaskProject" onchange="updateStoryOptions()" required>
-                                <option value="">Select Project</option>
-                                <option value="1">Website Redesign</option>
-                                <option value="2">Mobile App Development</option>
-                                <option value="3">Content Marketing Strategy</option>
-                                <option value="4">New Product Launch</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Story</label>
-                            <select class="form-select" id="newTaskStory" required>
-                                <option value="">Select Story</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Status</label>
-                            <select class="form-select" id="newTaskStatus">
-                                <option value="Backlog">Backlog</option>
-                                <option value="Not Started">Not Started</option>
-                                <option value="In Progress">In Progress</option>
-                                <option value="On Hold">On Hold</option>
-                                <option value="Blocked">Blocked</option>
-                                <option value="Completed">Completed</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Priority</label>
-                            <select class="form-select" id="newTaskPriority">
-                                <option value="Medium">Medium</option>
-                                <option value="Low">Low</option>
-                                <option value="High">High</option>
-                                <option value="Urgent">Urgent</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="newTaskStartDate">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Due Date</label>
-                            <input type="date" class="form-control" id="newTaskDueDate">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Notes</label>
-                            <textarea class="form-control" id="newTaskNotes" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Create Task</button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
     <script>
         function toggleSidebar() {
@@ -509,16 +360,16 @@
         }
 
         // Initialize charts
-        function initializeCharts() {
+        document.addEventListener('DOMContentLoaded', function() {
             // Tasks Chart
             const tasksCtx = document.getElementById('tasksChart').getContext('2d');
             new Chart(tasksCtx, {
                 type: 'line',
                 data: {
-                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
                     datasets: [{
                         label: 'Tasks Completed',
-                        data: [3, 5, 2, 8, 4, 6, 7],
+                        data: [12, 19, 23, 25, 34],
                         borderColor: '#3182ce',
                         backgroundColor: 'rgba(49, 130, 206, 0.1)',
                         tension: 0.4
@@ -527,66 +378,27 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true } }
                 }
             });
 
             // Stories Chart
             const storiesCtx = document.getElementById('storiesChart').getContext('2d');
             new Chart(storiesCtx, {
-                type: 'bar',
+                type: 'doughnut',
                 data: {
-                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    labels: ['Completed', 'In Progress', 'Not Started'],
                     datasets: [{
-                        label: 'Stories Completed',
-                        data: [1, 0, 2, 1, 0, 1, 2],
-                        backgroundColor: '#f093fb',
-                        borderColor: '#f5576c',
-                        borderWidth: 1
+                        data: [67, 23, 10],
+                        backgroundColor: ['#22c55e', '#3182ce', '#e2e8f0']
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
+                    plugins: { legend: { position: 'bottom' } }
                 }
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const sidebarBackdrop = document.getElementById('sidebarBackdrop');
-            if (sidebarBackdrop) {
-                sidebarBackdrop.addEventListener('click', toggleSidebar);
-            }
-
-            // Initialize charts
-            initializeCharts();
-
-            // Form handlers
-            document.getElementById('addProjectForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Project created!');
-                bootstrap.Modal.getInstance(document.getElementById('addProjectModal')).hide();
-            });
-
-            document.getElementById('addStoryForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Story created!');
-                bootstrap.Modal.getInstance(document.getElementById('addStoryModal')).hide();
-            });
-
-            document.getElementById('addTaskForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                alert('Task created!');
-                bootstrap.Modal.getInstance(document.getElementById('addTaskModal')).hide();
             });
         });
     </script>

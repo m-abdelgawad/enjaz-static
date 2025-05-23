@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -175,7 +174,7 @@
                         </div>
                         <div class="card-body">
                             <div class="tasks-list" id="storyTasksList">
-                                <div class="task-item" data-id="301">
+                                <div class="task-item" data-id="301" onclick="window.location.href='task-view.html?id=301'">
                                     <div class="reorder-handle me-2 d-none">
                                         <i class="fas fa-grip-vertical"></i>
                                     </div>
@@ -190,7 +189,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="task-item" data-id="302">
+                                <div class="task-item" data-id="302" onclick="window.location.href='task-view.html?id=302'">
                                     <div class="reorder-handle me-2 d-none">
                                         <i class="fas fa-grip-vertical"></i>
                                     </div>
@@ -205,7 +204,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="task-item" data-id="303">
+                                <div class="task-item" data-id="303" onclick="window.location.href='task-view.html?id=303'">
                                     <div class="reorder-handle me-2 d-none">
                                         <i class="fas fa-grip-vertical"></i>
                                     </div>
@@ -323,10 +322,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
     <script src="script.js"></script>
     <script>
-        let storyId;
-        let projectId;
-        let tasksReorderingActive = false;
-        let tasksSortable = null;
+        let storyId, projectId, tasksReorderingActive = false, tasksSortable = null;
 
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('show');
@@ -342,7 +338,6 @@
         }
 
         function showAddTaskModal() {
-            // Set the story ID in the add task form
             document.getElementById('taskStoryId').value = storyId;
             document.getElementById('taskProjectId').value = projectId;
             new bootstrap.Modal(document.getElementById('addTaskModal')).show();
@@ -363,7 +358,6 @@
                 btn.innerHTML = '<i class="fas fa-check me-1"></i>Save Order';
                 btn.classList.replace('btn-outline-secondary', 'btn-success');
                 
-                // Initialize sortable if not already initialized
                 if (!tasksSortable) {
                     const tasksList = document.getElementById('storyTasksList');
                     tasksSortable = new Sortable(tasksList, {
@@ -371,7 +365,6 @@
                         handle: '.reorder-handle',
                         ghostClass: 'reorder-item-dragging',
                         onEnd: function(evt) {
-                            // Log the new order
                             console.log('Tasks reordered:', getTasksOrder());
                         }
                     });
@@ -379,8 +372,6 @@
             } else {
                 btn.innerHTML = '<i class="fas fa-sort me-1"></i>Reorder';
                 btn.classList.replace('btn-success', 'btn-outline-secondary');
-                
-                // Save the new order to API
                 saveTasksOrder();
             }
         }
@@ -393,18 +384,6 @@
         function saveTasksOrder() {
             const order = getTasksOrder();
             console.log('Saving tasks order:', order);
-            
-            // In a real implementation, this would make an API call to update the order
-            // Example:
-            // fetch(`/api/stories/${storyId}/tasks/reorder`, {
-            //     method: 'PUT',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify({ order: order })
-            // })
-            // .then(response => response.json())
-            // .then(data => console.log('Order saved:', data))
-            // .catch(error => console.error('Error saving order:', error));
-            
             alert('Tasks order saved!');
         }
 
@@ -426,25 +405,16 @@
                 sidebarBackdrop.addEventListener('click', toggleSidebar);
             }
 
-            // Get story ID from URL
             const urlParams = new URLSearchParams(window.location.search);
             storyId = urlParams.get('id');
             
             if (storyId) {
-                // Set the edit button href
                 document.getElementById('editStoryBtn').href = `story-edit.html?id=${storyId}`;
-                
-                // Load story data (simulate API call in real app)
                 loadStoryData(storyId);
             } else {
-                // Redirect to stories list if no ID provided
                 window.location.href = 'stories.html';
             }
             
-            // Initialize add task button
-            document.getElementById('addTaskBtn').addEventListener('click', showAddTaskModal);
-            
-            // Initialize form handling
             document.getElementById('addTaskForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 createTask();
@@ -452,25 +422,10 @@
         });
 
         function loadStoryData(id) {
-            // In a real app, this would fetch data from the API
-            // For now, we'll use sample data
-            
-            // Example API call:
-            // fetch(`/api/stories/${id}`)
-            //     .then(response => response.json())
-            //     .then(data => {
-            //         populateStoryData(data);
-            //     })
-            //     .catch(error => console.error('Error loading story:', error));
-            
-            // Use sample data for now
             const storyData = {
                 id: id,
                 title: 'Create landing page design',
-                project: {
-                    id: '1',
-                    name: 'Website Redesign'
-                },
+                project: { id: '1', name: 'Website Redesign' },
                 status: 'In Progress',
                 priority: 'High',
                 start_date: '2025-05-15',
@@ -498,17 +453,12 @@
             document.getElementById('storyDueDate').textContent = formatDate(data.due_date);
             document.getElementById('storyNotes').textContent = data.notes;
             
-            // Update progress bar
             document.querySelector('.progress-bar').style.width = `${data.progress}%`;
             document.querySelector('.progress-bar').setAttribute('aria-valuenow', data.progress);
             
-            // Update status classes
             updateStatusStyles('storyStatus', data.status);
             
-            // Set the project ID
             projectId = data.project.id;
-            
-            // Update the back button
             document.getElementById('backToProjectBtn').href = `project-view.html?id=${projectId}`;
         }
 
@@ -524,15 +474,12 @@
                 notes: document.getElementById('newTaskNotes').value || ''
             };
             
-            // In a real app, this would call the API to create the task
             console.log('Creating task - API call would happen here:', task);
-            
             alert('Task created successfully!');
             bootstrap.Modal.getInstance(document.getElementById('addTaskModal')).hide();
             
-            // Reload tasks (in a real app) or add to UI (for demo)
             addTaskToUI({
-                id: new Date().getTime(), // Use timestamp as temporary ID
+                id: new Date().getTime(),
                 title: task.title,
                 status: task.status,
                 priority: task.priority,
@@ -546,15 +493,14 @@
             const taskItem = document.createElement('div');
             taskItem.className = 'task-item';
             taskItem.setAttribute('data-id', task.id);
+            taskItem.onclick = () => window.location.href = `task-view.html?id=${task.id}`;
             
             taskItem.innerHTML = `
                 <div class="reorder-handle me-2 ${tasksReorderingActive ? 'd-flex' : 'd-none'}">
                     <i class="fas fa-grip-vertical"></i>
                 </div>
                 <div class="task-content">
-                    <h6 class="task-title">
-                        <a href="task-view.html?id=${task.id}">${task.title}</a>
-                    </h6>
+                    <h6 class="task-title">${task.title}</h6>
                     <div class="task-meta">
                         <span class="badge ${getStatusBadgeClass(task.status)}">${task.status}</span>
                         <span class="priority-${task.priority.toLowerCase()}"><i class="fas fa-flag me-1"></i>${task.priority}</span>
@@ -587,10 +533,7 @@
             const element = document.getElementById(elementId);
             if (!element) return;
             
-            // Remove all existing status classes
             element.classList.remove('bg-success', 'bg-primary', 'bg-warning', 'bg-danger', 'bg-info', 'bg-secondary');
-            
-            // Add the appropriate class
             element.classList.add(getStatusBadgeClass(status));
         }
     </script>

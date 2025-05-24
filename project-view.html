@@ -46,6 +46,46 @@
             </div>
         </header>
         <div class="content-area">
+            <!-- Quick Stats Row -->
+            <div class="quick-stats-row mb-4">
+                <div class="quick-stat-item">
+                    <div class="quick-stat-icon stories">
+                        <i class="fas fa-bookmark"></i>
+                    </div>
+                    <div class="quick-stat-content">
+                        <div class="quick-stat-number">3</div>
+                        <div class="quick-stat-label">Stories</div>
+                    </div>
+                </div>
+                <div class="quick-stat-item">
+                    <div class="quick-stat-icon tasks">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="quick-stat-content">
+                        <div class="quick-stat-number">12</div>
+                        <div class="quick-stat-label">Total Tasks</div>
+                    </div>
+                </div>
+                <div class="quick-stat-item">
+                    <div class="quick-stat-icon completed">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="quick-stat-content">
+                        <div class="quick-stat-number">8</div>
+                        <div class="quick-stat-label">Completed</div>
+                    </div>
+                </div>
+                <div class="quick-stat-item">
+                    <div class="quick-stat-icon progress">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="quick-stat-content">
+                        <div class="quick-stat-number">67%</div>
+                        <div class="quick-stat-label">Progress</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-lg-8">
                     <div class="card mb-4">
@@ -85,6 +125,160 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Stories Section -->
+                    <div class="card mb-4">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0"><i class="fas fa-bookmark me-2"></i>Stories</h5>
+                            <a href="story-edit.html" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-plus me-1"></i>Add Story
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="project-stories-list">
+                                <div class="project-item-row">
+                                    <div class="project-item-content">
+                                        <div class="project-item-main">
+                                            <h6 class="project-item-title">Create landing page design</h6>
+                                            <div class="project-item-meta">
+                                                <span class="priority-high"><i class="fas fa-flag me-1"></i>High</span>
+                                                <span class="badge bg-primary">In Progress</span>
+                                                <span class="text-muted">Due: May 25, 2025</span>
+                                                <span class="text-muted">5 tasks total, 3 completed</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="project-item-actions">
+                                        <a href="story-view.html" class="btn btn-sm btn-outline-primary me-1">
+                                            <i class="fas fa-eye"></i> View
+                                        </a>
+                                        <a href="story-edit.html" class="btn btn-sm btn-outline-secondary">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="project-item-row">
+                                    <div class="project-item-content">
+                                        <div class="project-item-main">
+                                            <h6 class="project-item-title">Setup responsive framework</h6>
+                                            <div class="project-item-meta">
+                                                <span class="priority-medium"><i class="fas fa-flag me-1"></i>Medium</span>
+                                                <span class="badge bg-warning">Not Started</span>
+                                                <span class="text-muted">Due: June 1, 2025</span>
+                                                <span class="text-muted">4 tasks total, 0 completed</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="project-item-actions">
+                                        <a href="story-view.html" class="btn btn-sm btn-outline-primary me-1">
+                                            <i class="fas fa-eye"></i> View
+                                        </a>
+                                        <a href="story-edit.html" class="btn btn-sm btn-outline-secondary">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="project-item-row">
+                                    <div class="project-item-content">
+                                        <div class="project-item-main">
+                                            <h6 class="project-item-title">Content migration strategy</h6>
+                                            <div class="project-item-meta">
+                                                <span class="priority-low"><i class="fas fa-flag me-1"></i>Low</span>
+                                                <span class="badge bg-success">Completed</span>
+                                                <span class="text-muted">Completed: May 18, 2025</span>
+                                                <span class="text-muted">3 tasks total, 3 completed</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="project-item-actions">
+                                        <a href="story-view.html" class="btn btn-sm btn-outline-primary me-1">
+                                            <i class="fas fa-eye"></i> View
+                                        </a>
+                                        <a href="story-edit.html" class="btn btn-sm btn-outline-secondary">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tasks Section -->
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0"><i class="fas fa-tasks me-2"></i>Tasks</h5>
+                            <a href="task-edit.html" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-plus me-1"></i>Add Task
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="project-tasks-list">
+                                <div class="project-item-row">
+                                    <div class="project-item-content">
+                                        <div class="project-item-main">
+                                            <h6 class="project-item-title">Design wireframes for homepage</h6>
+                                            <div class="project-item-meta">
+                                                <span class="text-muted">Story: Create landing page design</span>
+                                                <span class="priority-high"><i class="fas fa-flag me-1"></i>High</span>
+                                                <span class="badge bg-primary">In Progress</span>
+                                                <span class="text-muted">Due: May 25, 2025</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="project-item-actions">
+                                        <a href="task-view.html" class="btn btn-sm btn-outline-primary me-1">
+                                            <i class="fas fa-eye"></i> View
+                                        </a>
+                                        <a href="task-edit.html" class="btn btn-sm btn-outline-secondary">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="project-item-row">
+                                    <div class="project-item-content">
+                                        <div class="project-item-main">
+                                            <h6 class="project-item-title">Create color scheme</h6>
+                                            <div class="project-item-meta">
+                                                <span class="text-muted">Story: Create landing page design</span>
+                                                <span class="priority-medium"><i class="fas fa-flag me-1"></i>Medium</span>
+                                                <span class="badge bg-success">Completed</span>
+                                                <span class="text-muted">Completed: May 20, 2025</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="project-item-actions">
+                                        <a href="task-view.html" class="btn btn-sm btn-outline-primary me-1">
+                                            <i class="fas fa-eye"></i> View
+                                        </a>
+                                        <a href="task-edit.html" class="btn btn-sm btn-outline-secondary">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="project-item-row">
+                                    <div class="project-item-content">
+                                        <div class="project-item-main">
+                                            <h6 class="project-item-title">Setup development environment</h6>
+                                            <div class="project-item-meta">
+                                                <span class="text-muted">Story: Setup responsive framework</span>
+                                                <span class="priority-high"><i class="fas fa-flag me-1"></i>High</span>
+                                                <span class="badge bg-warning">Not Started</span>
+                                                <span class="text-muted">Due: May 30, 2025</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="project-item-actions">
+                                        <a href="task-view.html" class="btn btn-sm btn-outline-primary me-1">
+                                            <i class="fas fa-eye"></i> View
+                                        </a>
+                                        <a href="task-edit.html" class="btn btn-sm btn-outline-secondary">
+                                            <i class="fas fa-edit"></i> Edit
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="project-info">
@@ -110,5 +304,6 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.gpteng.co/gptengineer.js"></script>
 </body>
 </html>

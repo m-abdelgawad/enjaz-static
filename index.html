@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeHub - Dashboard</title>
+    <title>Enjaz - Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
 <body>
     <div class="sidebar">
         <div class="sidebar-header">
-            <h3><i class="fas fa-layer-group me-2"></i>LifeHub</h3>
+            <h3><i class="fas fa-layer-group me-2"></i>Enjaz</h3>
         </div>
         <nav class="sidebar-nav">
             <div class="nav-section">
@@ -26,10 +26,7 @@
             </div>
             <div class="nav-section">
                 <h6 class="nav-section-title">AREAS</h6>
-                <a href="work-center.html" class="nav-link"><i class="fas fa-briefcase"></i><span>Work Center</span><span class="badge">3</span></a>
-                <a href="personal-center.html" class="nav-link"><i class="fas fa-user"></i><span>Personal</span><span class="badge">2</span></a>
-                <a href="freelance-center.html" class="nav-link"><i class="fas fa-laptop-code"></i><span>Freelancing</span><span class="badge">1</span></a>
-                <a href="fitness-center.html" class="nav-link"><i class="fas fa-dumbbell"></i><span>Fitness</span><span class="badge">4</span></a>
+                <a href="work-center.html" class="nav-link"><i class="fas fa-briefcase"></i><span>Work Center</span></a>
             </div>
             <div class="nav-section">
                 <h6 class="nav-section-title">QUICK ACTIONS</h6>
@@ -43,35 +40,28 @@
     <div class="main-content">
         <header class="main-header">
             <h1 class="current-category">Dashboard</h1>
-            <div class="header-actions">
-                <a href="projects.html" class="btn btn-primary"><i class="fas fa-plus me-2"></i>New Project</a>
-            </div>
         </header>
         <div class="content-area">
             <div class="dashboard-stats">
                 <div class="stat-card">
                     <div class="stat-card-icon projects"><i class="fas fa-project-diagram"></i></div>
                     <h4>Projects</h4>
-                    <div class="stat-value">4</div>
-                    <div class="stat-change">+1 this week</div>
+                    <div class="stat-value">3</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-card-icon stories"><i class="fas fa-bookmark"></i></div>
                     <h4>Stories</h4>
                     <div class="stat-value">8</div>
-                    <div class="stat-change">+3 this week</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-card-icon tasks"><i class="fas fa-tasks"></i></div>
                     <h4>Tasks</h4>
-                    <div class="stat-value">23</div>
-                    <div class="stat-change">+5 this week</div>
+                    <div class="stat-value">25</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-card-icon completed"><i class="fas fa-check-circle"></i></div>
                     <h4>Completed</h4>
-                    <div class="stat-value">15</div>
-                    <div class="stat-change">Great progress!</div>
+                    <div class="stat-value">18</div>
                 </div>
             </div>
             <div class="dashboard-section">
@@ -94,35 +84,8 @@
                         <div class="progress-bar">
                             <div class="progress-fill" style="width: 67%"></div>
                         </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3 class="project-title">Mobile App Development</h3>
-                            <span class="project-status status-not_started">Not Started</span>
-                        </div>
-                        <p class="project-description">Native mobile app for iOS and Android platforms</p>
-                        <div class="project-stats">
-                            <span class="stat-item"><i class="fas fa-bookmark me-1"></i>2 stories</span>
-                            <span class="stat-item"><i class="fas fa-tasks me-1"></i>8 tasks</span>
-                            <span class="stat-item"><i class="fas fa-check me-1"></i>0 completed</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 0%"></div>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3 class="project-title">Content Marketing Strategy</h3>
-                            <span class="project-status status-completed">Completed</span>
-                        </div>
-                        <p class="project-description">Comprehensive content strategy for Q2 2025</p>
-                        <div class="project-stats">
-                            <span class="stat-item"><i class="fas fa-bookmark me-1"></i>2 stories</span>
-                            <span class="stat-item"><i class="fas fa-tasks me-1"></i>6 tasks</span>
-                            <span class="stat-item"><i class="fas fa-check me-1"></i>6 completed</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width: 100%"></div>
+                        <div class="d-flex gap-2 mt-3">
+                            <a href="project-view.html" class="btn btn-sm btn-outline-primary">View</a>
                         </div>
                     </div>
                 </div>
@@ -132,40 +95,29 @@
                     <h2 class="dashboard-section-title">Recent Tasks</h2>
                     <a href="tasks.html" class="btn btn-sm btn-outline-primary">View All</a>
                 </div>
-                <div class="tasks-list">
-                    <div class="task-item priority-high">
-                        <div class="task-content">
-                            <h6 class="task-title">Design wireframes for homepage</h6>
-                            <div class="task-meta">
-                                <span class="project-name">Website Redesign</span>
-                                <span class="priority-high"><i class="fas fa-flag me-1"></i>High</span>
-                                <span class="badge bg-primary">In Progress</span>
-                                <span class="text-muted">Due: May 25, 2025</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="task-item priority-medium">
-                        <div class="task-content">
-                            <h6 class="task-title">Set up development environment</h6>
-                            <div class="task-meta">
-                                <span class="project-name">Mobile App Development</span>
-                                <span class="priority-medium"><i class="fas fa-flag me-1"></i>Medium</span>
-                                <span class="badge bg-info">Not Started</span>
-                                <span class="text-muted">Due: May 30, 2025</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="task-item priority-low">
-                        <div class="task-content">
-                            <h6 class="task-title">Research competitor analysis</h6>
-                            <div class="task-meta">
-                                <span class="project-name">Content Marketing Strategy</span>
-                                <span class="priority-low"><i class="fas fa-flag me-1"></i>Low</span>
-                                <span class="badge bg-success">Completed</span>
-                                <span class="text-muted">Completed: May 20, 2025</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Project</th>
+                                <th>Status</th>
+                                <th>Due Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Design wireframes for homepage</td>
+                                <td>Website Redesign</td>
+                                <td><span class="badge bg-primary">In Progress</span></td>
+                                <td>May 25, 2025</td>
+                                <td>
+                                    <a href="task-view.html" class="btn btn-sm btn-outline-primary">View</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

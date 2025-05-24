@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeHub - Tasks</title>
+    <title>Enjaz - Tasks</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
 <body>
     <div class="sidebar">
         <div class="sidebar-header">
-            <h3><i class="fas fa-layer-group me-2"></i>LifeHub</h3>
+            <h3><i class="fas fa-layer-group me-2"></i>Enjaz</h3>
         </div>
         <nav class="sidebar-nav">
             <div class="nav-section">
@@ -26,10 +26,7 @@
             </div>
             <div class="nav-section">
                 <h6 class="nav-section-title">AREAS</h6>
-                <a href="work-center.html" class="nav-link"><i class="fas fa-briefcase"></i><span>Work Center</span><span class="badge">3</span></a>
-                <a href="personal-center.html" class="nav-link"><i class="fas fa-user"></i><span>Personal</span><span class="badge">2</span></a>
-                <a href="freelance-center.html" class="nav-link"><i class="fas fa-laptop-code"></i><span>Freelancing</span><span class="badge">1</span></a>
-                <a href="fitness-center.html" class="nav-link"><i class="fas fa-dumbbell"></i><span>Fitness</span><span class="badge">4</span></a>
+                <a href="work-center.html" class="nav-link"><i class="fas fa-briefcase"></i><span>Work Center</span></a>
             </div>
             <div class="nav-section">
                 <h6 class="nav-section-title">QUICK ACTIONS</h6>
@@ -44,54 +41,10 @@
         <header class="main-header">
             <h1 class="current-category">Tasks</h1>
             <div class="header-actions">
-                <div class="btn-group me-2">
-                    <input type="radio" class="btn-check" name="viewOptions" id="listView" checked>
-                    <label class="btn btn-outline-secondary" for="listView"><i class="fas fa-list me-1"></i>List</label>
-                    <input type="radio" class="btn-check" name="viewOptions" id="kanbanView">
-                    <label class="btn btn-outline-secondary" for="kanbanView"><i class="fas fa-columns me-1"></i>Kanban</label>
-                </div>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTaskModal"><i class="fas fa-plus me-2"></i>New Task</button>
+                <a href="task-edit.html" class="btn btn-primary"><i class="fas fa-plus me-2"></i>New Task</a>
             </div>
         </header>
         <div class="content-area">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div class="row g-3">
-                        <div class="col-md-3">
-                            <input type="text" class="form-control" placeholder="Search tasks...">
-                        </div>
-                        <div class="col-md-2">
-                            <select class="form-select">
-                                <option value="">All Projects</option>
-                                <option value="1">Website Redesign</option>
-                                <option value="2">Mobile App</option>
-                                <option value="3">Marketing Campaign</option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <select class="form-select">
-                                <option value="">All Statuses</option>
-                                <option value="backlog">Backlog</option>
-                                <option value="not_started">Not Started</option>
-                                <option value="in_progress">In Progress</option>
-                                <option value="completed">Completed</option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <select class="form-select">
-                                <option value="">All Priorities</option>
-                                <option value="low">Low</option>
-                                <option value="medium">Medium</option>
-                                <option value="high">High</option>
-                                <option value="urgent">Urgent</option>
-                            </select>
-                        </div>
-                        <div class="col-md-1">
-                            <button class="btn btn-outline-secondary w-100"><i class="fas fa-times"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="tasks-list">
                 <div class="task-item priority-high">
                     <div class="task-content">
@@ -108,137 +61,8 @@
                         <a href="task-edit.html" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
                     </div>
                 </div>
-                <div class="task-item priority-medium">
-                    <div class="task-content">
-                        <h6 class="task-title">Set up development environment</h6>
-                        <div class="task-meta">
-                            <span class="project-name">Mobile App Development</span>
-                            <span class="priority-medium"><i class="fas fa-flag me-1"></i>Medium</span>
-                            <span class="badge bg-info">Not Started</span>
-                            <span class="text-muted">Due: May 30, 2025</span>
-                        </div>
-                    </div>
-                    <div class="task-actions">
-                        <a href="task-view.html" class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></a>
-                        <a href="task-edit.html" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
-                    </div>
-                </div>
-                <div class="task-item priority-urgent">
-                    <div class="task-content">
-                        <h6 class="task-title">Fix critical bug in payment system</h6>
-                        <div class="task-meta">
-                            <span class="project-name">Website Redesign</span>
-                            <span class="priority-urgent"><i class="fas fa-flag me-1"></i>Urgent</span>
-                            <span class="badge bg-danger">Blocked</span>
-                            <span class="text-muted">Due: May 24, 2025</span>
-                        </div>
-                    </div>
-                    <div class="task-actions">
-                        <a href="task-view.html" class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></a>
-                        <a href="task-edit.html" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
-                    </div>
-                </div>
-                <div class="task-item priority-low">
-                    <div class="task-content">
-                        <h6 class="task-title">Update documentation</h6>
-                        <div class="task-meta">
-                            <span class="project-name">Content Marketing Strategy</span>
-                            <span class="priority-low"><i class="fas fa-flag me-1"></i>Low</span>
-                            <span class="badge bg-warning">On Hold</span>
-                            <span class="text-muted">Due: June 5, 2025</span>
-                        </div>
-                    </div>
-                    <div class="task-actions">
-                        <a href="task-view.html" class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></a>
-                        <a href="task-edit.html" class="btn btn-sm btn-outline-secondary"><i class="fas fa-edit"></i></a>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="addTaskModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Create New Task</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label class="form-label">Task Title</label>
-                            <input type="text" class="form-control" maxlength="180" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Project</label>
-                            <select class="form-select" required>
-                                <option value="">Select Project</option>
-                                <option value="1">Website Redesign</option>
-                                <option value="2">Mobile App Development</option>
-                                <option value="3">Content Marketing Strategy</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Story</label>
-                            <select class="form-select" required>
-                                <option value="">Select Story</option>
-                                <option value="101">Create landing page design</option>
-                                <option value="102">Implement responsive navigation</option>
-                            </select>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Status</label>
-                                    <select class="form-select">
-                                        <option value="backlog">Backlog</option>
-                                        <option value="not_started">Not Started</option>
-                                        <option value="in_progress">In Progress</option>
-                                        <option value="on_hold">On Hold</option>
-                                        <option value="blocked">Blocked</option>
-                                        <option value="completed">Completed</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Priority</label>
-                                    <select class="form-select">
-                                        <option value="low">Low</option>
-                                        <option value="medium">Medium</option>
-                                        <option value="high">High</option>
-                                        <option value="urgent">Urgent</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Start Date</label>
-                                    <input type="date" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Due Date</label>
-                                    <input type="date" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Notes</label>
-                            <textarea class="form-control" rows="4"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Create Task</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

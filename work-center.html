@@ -30,9 +30,9 @@
             </div>
             <div class="nav-section">
                 <h6 class="nav-section-title">QUICK ACTIONS</h6>
-                <a href="project-edit.html" class="nav-link"><i class="fas fa-plus"></i><span>New Project</span></a>
-                <a href="story-edit.html" class="nav-link"><i class="fas fa-bookmark"></i><span>New Story</span></a>
-                <a href="task-edit.html" class="nav-link"><i class="fas fa-check-square"></i><span>New Task</span></a>
+                <a href="projects.html" class="nav-link"><i class="fas fa-plus"></i><span>New Project</span></a>
+                <a href="stories.html" class="nav-link"><i class="fas fa-bookmark"></i><span>New Story</span></a>
+                <a href="tasks.html" class="nav-link"><i class="fas fa-check-square"></i><span>New Task</span></a>
                 <a href="login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i><span>Exit</span></a>
             </div>
         </nav>
@@ -45,46 +45,28 @@
             </div>
         </header>
         <div class="content-area">
-            <!-- Quick Stats Row -->
-            <div class="quick-stats-row mb-4">
-                <div class="quick-stat-item">
-                    <div class="quick-stat-icon in-progress">
-                        <i class="fas fa-play-circle"></i>
-                    </div>
-                    <div class="quick-stat-content">
-                        <div class="quick-stat-number">2</div>
-                        <div class="quick-stat-label">In Progress Projects</div>
-                    </div>
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-card-icon projects"><i class="fas fa-project-diagram"></i></div>
+                    <h4>Work Projects</h4>
+                    <div class="stat-value">3</div>
                 </div>
-                <div class="quick-stat-item">
-                    <div class="quick-stat-icon stories">
-                        <i class="fas fa-bookmark"></i>
-                    </div>
-                    <div class="quick-stat-content">
-                        <div class="quick-stat-number">5</div>
-                        <div class="quick-stat-label">In Progress Stories</div>
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon stories"><i class="fas fa-bookmark"></i></div>
+                    <h4>Active Projects</h4>
+                    <div class="stat-value">2</div>
                 </div>
-                <div class="quick-stat-item">
-                    <div class="quick-stat-icon tasks">
-                        <i class="fas fa-tasks"></i>
-                    </div>
-                    <div class="quick-stat-content">
-                        <div class="quick-stat-number">12</div>
-                        <div class="quick-stat-label">In Progress Tasks</div>
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon tasks"><i class="fas fa-tasks"></i></div>
+                    <h4>Work Tasks</h4>
+                    <div class="stat-value">18</div>
                 </div>
-                <div class="quick-stat-item">
-                    <div class="quick-stat-icon overdue">
-                        <i class="fas fa-pause-circle"></i>
-                    </div>
-                    <div class="quick-stat-content">
-                        <div class="quick-stat-number">3</div>
-                        <div class="quick-stat-label">On-Hold Tasks</div>
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon completed"><i class="fas fa-check-circle"></i></div>
+                    <h4>Completed Tasks</h4>
+                    <div class="stat-value">12</div>
                 </div>
             </div>
-
             <div class="dashboard-section">
                 <div class="dashboard-section-header">
                     <h2 class="dashboard-section-title">Work Projects</h2>
@@ -113,7 +95,7 @@
             </div>
             <div class="dashboard-section">
                 <div class="dashboard-section-header">
-                    <h2 class="dashboard-section-title">All Work Tasks</h2>
+                    <h2 class="dashboard-section-title">Recent Work Tasks</h2>
                     <a href="tasks.html" class="btn btn-sm btn-outline-primary">View All</a>
                 </div>
                 <div class="table-responsive">
@@ -123,7 +105,6 @@
                                 <th>Task</th>
                                 <th>Project</th>
                                 <th>Status</th>
-                                <th>Priority</th>
                                 <th>Due Date</th>
                                 <th>Actions</th>
                             </tr>
@@ -133,33 +114,9 @@
                                 <td>Design wireframes for homepage</td>
                                 <td>Website Redesign</td>
                                 <td><span class="badge bg-primary">In Progress</span></td>
-                                <td><span class="priority-high"><i class="fas fa-flag me-1"></i>High</span></td>
                                 <td>May 25, 2025</td>
                                 <td>
                                     <a href="task-view.html" class="btn btn-sm btn-outline-primary">View</a>
-                                    <a href="task-edit.html" class="btn btn-sm btn-outline-secondary">Edit</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Create color scheme</td>
-                                <td>Website Redesign</td>
-                                <td><span class="badge bg-warning">On Hold</span></td>
-                                <td><span class="priority-medium"><i class="fas fa-flag me-1"></i>Medium</span></td>
-                                <td>May 22, 2025</td>
-                                <td>
-                                    <a href="task-view.html" class="btn btn-sm btn-outline-primary">View</a>
-                                    <a href="task-edit.html" class="btn btn-sm btn-outline-secondary">Edit</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Setup development environment</td>
-                                <td>Website Redesign</td>
-                                <td><span class="badge bg-primary">In Progress</span></td>
-                                <td><span class="priority-low"><i class="fas fa-flag me-1"></i>Low</span></td>
-                                <td>May 20, 2025</td>
-                                <td>
-                                    <a href="task-view.html" class="btn btn-sm btn-outline-primary">View</a>
-                                    <a href="task-edit.html" class="btn btn-sm btn-outline-secondary">Edit</a>
                                 </td>
                             </tr>
                         </tbody>
@@ -168,6 +125,5 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.gpteng.co/gptengineer.js"></script>
 </body>
 </html>

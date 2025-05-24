@@ -11,13 +11,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <button class="sidebar-close" onclick="toggleSidebar()"><i class="fas fa-times"></i></button>
+    <div class="sidebar">
         <div class="sidebar-header">
             <h3><i class="fas fa-layer-group me-2"></i>LifeHub</h3>
         </div>
-        
         <nav class="sidebar-nav">
             <div class="nav-section">
                 <h6 class="nav-section-title">PAGES</h6>
@@ -26,89 +23,70 @@
                 <a href="stories.html" class="nav-link"><i class="fas fa-bookmark"></i><span>Stories</span></a>
                 <a href="tasks.html" class="nav-link"><i class="fas fa-tasks"></i><span>Tasks</span></a>
                 <a href="completed.html" class="nav-link active"><i class="fas fa-check-circle"></i><span>Completed</span></a>
-                <a href="work-center.html" class="nav-link"><i class="fas fa-briefcase"></i><span>Work Center</span></a>
             </div>
-            
+            <div class="nav-section">
+                <h6 class="nav-section-title">AREAS</h6>
+                <a href="work-center.html" class="nav-link"><i class="fas fa-briefcase"></i><span>Work Center</span><span class="badge">3</span></a>
+                <a href="personal-center.html" class="nav-link"><i class="fas fa-user"></i><span>Personal</span><span class="badge">2</span></a>
+                <a href="freelance-center.html" class="nav-link"><i class="fas fa-laptop-code"></i><span>Freelancing</span><span class="badge">1</span></a>
+                <a href="fitness-center.html" class="nav-link"><i class="fas fa-dumbbell"></i><span>Fitness</span><span class="badge">4</span></a>
+            </div>
             <div class="nav-section">
                 <h6 class="nav-section-title">QUICK ACTIONS</h6>
-                <button class="nav-link" onclick="window.location.href='index.html'"><i class="fas fa-plus"></i><span>New Project</span></button>
-                <button class="nav-link" onclick="window.location.href='stories.html'"><i class="fas fa-bookmark"></i><span>New Story</span></button>
-                <button class="nav-link" onclick="window.location.href='tasks.html'"><i class="fas fa-check-square"></i><span>New Task</span></button>
+                <a href="projects.html" class="nav-link"><i class="fas fa-plus"></i><span>New Project</span></a>
+                <a href="stories.html" class="nav-link"><i class="fas fa-bookmark"></i><span>New Story</span></a>
+                <a href="tasks.html" class="nav-link"><i class="fas fa-check-square"></i><span>New Task</span></a>
                 <a href="login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i><span>Exit</span></a>
             </div>
         </nav>
     </div>
-
-    <!-- Sidebar Backdrop -->
-    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
-
-    <!-- Main Content -->
     <div class="main-content">
-        <!-- Header -->
         <header class="main-header">
-            <div class="d-flex align-items-center">
-                <button class="btn btn-link sidebar-toggle d-lg-none" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
-                <h1 class="current-category">Completed Tasks</h1>
-            </div>
+            <h1 class="current-category">Completed Tasks</h1>
             <div class="header-actions">
-                <div class="btn-group" role="group">
-                    <input type="radio" class="btn-check" name="viewOptions" id="listView" autocomplete="off" checked>
+                <div class="btn-group">
+                    <input type="radio" class="btn-check" name="viewOptions" id="listView" checked>
                     <label class="btn btn-outline-secondary" for="listView"><i class="fas fa-list me-1"></i>List</label>
-                    <input type="radio" class="btn-check" name="viewOptions" id="gridView" autocomplete="off">
+                    <input type="radio" class="btn-check" name="viewOptions" id="gridView">
                     <label class="btn btn-outline-secondary" for="gridView"><i class="fas fa-th-large me-1"></i>Grid</label>
                 </div>
             </div>
         </header>
-
-        <!-- Content -->
         <div class="content-area">
-            <!-- Stats Overview -->
-            <div class="row mb-4">
-                <div class="col-lg-3 col-md-6 mb-3">
-                    <div class="stat-card">
-                        <div class="stat-card-icon completed"><i class="fas fa-check-circle"></i></div>
-                        <h4>Total Completed</h4>
-                        <div class="stat-value">23</div>
-                        <div class="stat-change">+5 this week</div>
-                    </div>
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-card-icon completed"><i class="fas fa-check-circle"></i></div>
+                    <h4>Total Completed</h4>
+                    <div class="stat-value">23</div>
+                    <div class="stat-change">+5 this week</div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-3">
-                    <div class="stat-card">
-                        <div class="stat-card-icon projects"><i class="fas fa-trophy"></i></div>
-                        <h4>Projects Done</h4>
-                        <div class="stat-value">2</div>
-                        <div class="stat-change">+1 this month</div>
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon projects"><i class="fas fa-trophy"></i></div>
+                    <h4>Projects Done</h4>
+                    <div class="stat-value">2</div>
+                    <div class="stat-change">+1 this month</div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-3">
-                    <div class="stat-card">
-                        <div class="stat-card-icon stories"><i class="fas fa-star"></i></div>
-                        <h4>Stories Done</h4>
-                        <div class="stat-value">8</div>
-                        <div class="stat-change">+3 this week</div>
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon stories"><i class="fas fa-star"></i></div>
+                    <h4>Stories Done</h4>
+                    <div class="stat-value">8</div>
+                    <div class="stat-change">+3 this week</div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-3">
-                    <div class="stat-card">
-                        <div class="stat-card-icon bg-gradient-primary"><i class="fas fa-calendar-check"></i></div>
-                        <h4>This Month</h4>
-                        <div class="stat-value">15</div>
-                        <div class="stat-change">Great progress!</div>
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon bg-gradient-primary"><i class="fas fa-calendar-check"></i></div>
+                    <h4>This Month</h4>
+                    <div class="stat-value">15</div>
+                    <div class="stat-change">Great progress!</div>
                 </div>
             </div>
-
-            <!-- Filter and Search -->
             <div class="card mb-4">
                 <div class="card-body">
                     <div class="row g-3">
                         <div class="col-md-4">
-                            <label class="form-label">Search</label>
-                            <input type="text" class="form-control" placeholder="Search completed tasks..." id="searchInput">
+                            <input type="text" class="form-control" placeholder="Search completed tasks...">
                         </div>
                         <div class="col-md-2">
-                            <label class="form-label">Project</label>
-                            <select class="form-select" id="projectFilter">
+                            <select class="form-select">
                                 <option value="">All Projects</option>
                                 <option value="1">Website Redesign</option>
                                 <option value="2">Mobile App</option>
@@ -116,8 +94,7 @@
                             </select>
                         </div>
                         <div class="col-md-2">
-                            <label class="form-label">Priority</label>
-                            <select class="form-select" id="priorityFilter">
+                            <select class="form-select">
                                 <option value="">All Priorities</option>
                                 <option value="Low">Low</option>
                                 <option value="Medium">Medium</option>
@@ -126,25 +103,21 @@
                             </select>
                         </div>
                         <div class="col-md-2">
-                            <label class="form-label">Date Range</label>
-                            <select class="form-select" id="dateFilter">
-                                <option value="">All Time</option>
+                            <select class="form-select">
+                                <option value="">Date Range</option>
                                 <option value="today">Today</option>
                                 <option value="week">This Week</option>
                                 <option value="month">This Month</option>
                             </select>
                         </div>
                         <div class="col-md-2">
-                            <label class="form-label">&nbsp;</label>
-                            <button class="btn btn-outline-secondary w-100" onclick="clearFilters()"><i class="fas fa-times me-1"></i>Clear</button>
+                            <button class="btn btn-outline-secondary w-100"><i class="fas fa-times me-1"></i>Clear</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Completed Tasks List -->
-            <div class="tasks-list" id="completedTasksList">
-                <div class="task-item completed" onclick="window.location.href='task-view.html?id=101'">
+            <div class="tasks-list">
+                <div class="task-item priority-high">
                     <div class="task-content">
                         <h6 class="task-title">Design wireframes for homepage</h6>
                         <div class="task-meta">
@@ -155,12 +128,11 @@
                         </div>
                     </div>
                     <div class="task-actions">
-                        <button class="btn btn-sm btn-outline-primary" onclick="event.stopPropagation(); viewTask(101)"><i class="fas fa-eye"></i></button>
-                        <button class="btn btn-sm btn-outline-secondary" onclick="event.stopPropagation(); duplicateTask(101)"><i class="fas fa-copy"></i></button>
+                        <a href="task-view.html" class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></a>
+                        <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-copy"></i></button>
                     </div>
                 </div>
-
-                <div class="task-item completed" onclick="window.location.href='task-view.html?id=102'">
+                <div class="task-item priority-medium">
                     <div class="task-content">
                         <h6 class="task-title">Set up project repository</h6>
                         <div class="task-meta">
@@ -171,12 +143,11 @@
                         </div>
                     </div>
                     <div class="task-actions">
-                        <button class="btn btn-sm btn-outline-primary" onclick="event.stopPropagation(); viewTask(102)"><i class="fas fa-eye"></i></button>
-                        <button class="btn btn-sm btn-outline-secondary" onclick="event.stopPropagation(); duplicateTask(102)"><i class="fas fa-copy"></i></button>
+                        <a href="task-view.html" class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></a>
+                        <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-copy"></i></button>
                     </div>
                 </div>
-
-                <div class="task-item completed" onclick="window.location.href='task-view.html?id=103'">
+                <div class="task-item priority-high">
                     <div class="task-content">
                         <h6 class="task-title">User research interviews</h6>
                         <div class="task-meta">
@@ -187,12 +158,11 @@
                         </div>
                     </div>
                     <div class="task-actions">
-                        <button class="btn btn-sm btn-outline-primary" onclick="event.stopPropagation(); viewTask(103)"><i class="fas fa-eye"></i></button>
-                        <button class="btn btn-sm btn-outline-secondary" onclick="event.stopPropagation(); duplicateTask(103)"><i class="fas fa-copy"></i></button>
+                        <a href="task-view.html" class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></a>
+                        <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-copy"></i></button>
                     </div>
                 </div>
-
-                <div class="task-item completed" onclick="window.location.href='task-view.html?id=104'">
+                <div class="task-item priority-low">
                     <div class="task-content">
                         <h6 class="task-title">Content strategy document</h6>
                         <div class="task-meta">
@@ -203,16 +173,14 @@
                         </div>
                     </div>
                     <div class="task-actions">
-                        <button class="btn btn-sm btn-outline-primary" onclick="event.stopPropagation(); viewTask(104)"><i class="fas fa-eye"></i></button>
-                        <button class="btn btn-sm btn-outline-secondary" onclick="event.stopPropagation(); duplicateTask(104)"><i class="fas fa-copy"></i></button>
+                        <a href="task-view.html" class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></a>
+                        <button class="btn btn-sm btn-outline-secondary"><i class="fas fa-copy"></i></button>
                     </div>
                 </div>
             </div>
-
-            <!-- Pagination -->
-            <nav aria-label="Completed tasks pagination">
+            <nav>
                 <ul class="pagination justify-content-center">
-                    <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
+                    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
                     <li class="page-item active"><a class="page-link" href="#">1</a></li>
                     <li class="page-item"><a class="page-link" href="#">2</a></li>
                     <li class="page-item"><a class="page-link" href="#">3</a></li>
@@ -221,33 +189,6 @@
             </nav>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
-    <script>
-        function toggleSidebar(){document.getElementById('sidebar').classList.toggle('show');document.getElementById('sidebarBackdrop').classList.toggle('show')}
-        function viewTask(id){window.location.href=`task-view.html?id=${id}`}
-        function duplicateTask(id){console.log(`Duplicating task ${id}`);alert('Task duplicated successfully!')}
-        function clearFilters(){document.getElementById('searchInput').value='';document.getElementById('projectFilter').value='';document.getElementById('priorityFilter').value='';document.getElementById('dateFilter').value='';filterTasks()}
-        function filterTasks(){console.log('Filtering tasks...')}
-
-        document.addEventListener('DOMContentLoaded',function(){
-            const sidebarBackdrop=document.getElementById('sidebarBackdrop');
-            if(sidebarBackdrop){sidebarBackdrop.addEventListener('click',toggleSidebar)}
-
-            document.getElementById('searchInput').addEventListener('input',filterTasks);
-            document.getElementById('projectFilter').addEventListener('change',filterTasks);
-            document.getElementById('priorityFilter').addEventListener('change',filterTasks);
-            document.getElementById('dateFilter').addEventListener('change',filterTasks);
-
-            document.getElementById('listView').addEventListener('change',function(){
-                if(this.checked){document.getElementById('completedTasksList').className='tasks-list'}
-            });
-
-            document.getElementById('gridView').addEventListener('change',function(){
-                if(this.checked){document.getElementById('completedTasksList').className='tasks-grid'}
-            });
-        });
-    </script>
 </body>
 </html>

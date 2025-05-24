@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,229 +11,173 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <button class="sidebar-close" onclick="toggleSidebar()">
-            <i class="fas fa-times"></i>
-        </button>
+    <div class="sidebar">
         <div class="sidebar-header">
             <h3><i class="fas fa-layer-group me-2"></i>LifeHub</h3>
         </div>
-        
         <nav class="sidebar-nav">
             <div class="nav-section">
                 <h6 class="nav-section-title">PAGES</h6>
-                <a href="index.html" class="nav-link">
-                    <i class="fas fa-home"></i>
-                    <span>Dashboard</span>
-                </a>
-                <a href="projects.html" class="nav-link">
-                    <i class="fas fa-project-diagram"></i>
-                    <span>Projects</span>
-                </a>
-                <a href="stories.html" class="nav-link">
-                    <i class="fas fa-bookmark"></i>
-                    <span>Stories</span>
-                </a>
-                <a href="tasks.html" class="nav-link">
-                    <i class="fas fa-tasks"></i>
-                    <span>Tasks</span>
-                </a>
-                <a href="completed.html" class="nav-link">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Completed</span>
-                </a>
-                <a href="work-center.html" class="nav-link">
-                    <i class="fas fa-briefcase"></i>
-                    <span>Work Center</span>
-                </a>
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a>
+                <a href="projects.html" class="nav-link"><i class="fas fa-project-diagram"></i><span>Projects</span></a>
+                <a href="stories.html" class="nav-link"><i class="fas fa-bookmark"></i><span>Stories</span></a>
+                <a href="tasks.html" class="nav-link"><i class="fas fa-tasks"></i><span>Tasks</span></a>
+                <a href="completed.html" class="nav-link"><i class="fas fa-check-circle"></i><span>Completed</span></a>
             </div>
-            
             <div class="nav-section">
                 <h6 class="nav-section-title">QUICK ACTIONS</h6>
-                <button class="nav-link" onclick="showAddProjectModal()">
-                    <i class="fas fa-plus"></i>
-                    <span>New Project</span>
-                </button>
-                <button class="nav-link" onclick="showAddStoryModal()">
-                    <i class="fas fa-bookmark"></i>
-                    <span>New Story</span>
-                </button>
-                <button class="nav-link" onclick="showAddTaskModal()">
-                    <i class="fas fa-check-square"></i>
-                    <span>New Task</span>
-                </button>
-                <a href="login.html" class="nav-link text-danger">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Exit</span>
-                </a>
+                <a href="projects.html" class="nav-link"><i class="fas fa-plus"></i><span>New Project</span></a>
+                <a href="stories.html" class="nav-link"><i class="fas fa-bookmark"></i><span>New Story</span></a>
+                <a href="tasks.html" class="nav-link"><i class="fas fa-check-square"></i><span>New Task</span></a>
+                <a href="login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i><span>Exit</span></a>
             </div>
         </nav>
     </div>
-
-    <!-- Sidebar Backdrop -->
-    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
-
-    <!-- Main Content -->
     <div class="main-content">
-        <!-- Header -->
         <header class="main-header">
-            <div class="d-flex align-items-center">
-                <button class="btn btn-link sidebar-toggle d-lg-none" onclick="toggleSidebar()">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <h1 class="current-category">Story Details</h1>
-            </div>
+            <h1 class="current-category">Story Details</h1>
             <div class="header-actions">
-                <a href="#" id="backToProjectBtn" class="btn btn-outline-secondary me-2">
-                    <i class="fas fa-arrow-left me-1"></i>Back to Project
-                </a>
-                <a href="#" id="editStoryBtn" class="btn btn-primary">
-                    <i class="fas fa-edit me-1"></i>Edit Story
-                </a>
+                <a href="project-view.html" class="btn btn-outline-secondary me-2"><i class="fas fa-arrow-left me-1"></i>Back to Project</a>
+                <a href="story-edit.html" class="btn btn-primary"><i class="fas fa-edit me-1"></i>Edit Story</a>
             </div>
         </header>
-
-        <!-- Story Details Content -->
         <div class="content-area">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-start mb-3">
-                                <div>
-                                    <h2 id="storyTitle" class="fw-bold mb-2">Create landing page design</h2>
+                            <div class="d-flex justify-content-between align-items-start mb-4">
+                                <div class="flex-grow-1">
+                                    <h2 class="fw-bold mb-3">Create landing page design</h2>
                                     <div class="d-flex flex-wrap gap-3 mb-3">
                                         <div class="story-meta-item">
                                             <span class="text-muted">Project:</span>
-                                            <a href="#" id="storyProject" class="ms-1">Website Redesign</a>
+                                            <a href="project-view.html" class="ms-1 text-decoration-none">Website Redesign</a>
                                         </div>
                                         <div class="story-meta-item">
                                             <span class="text-muted">Status:</span>
-                                            <span id="storyStatus" class="badge bg-primary ms-1">In Progress</span>
+                                            <span class="badge bg-primary ms-1">In Progress</span>
                                         </div>
                                         <div class="story-meta-item">
                                             <span class="text-muted">Priority:</span>
-                                            <span id="storyPriority" class="priority-high ms-1"><i class="fas fa-flag me-1"></i>High</span>
+                                            <span class="priority-high ms-1"><i class="fas fa-flag me-1"></i>High</span>
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn btn-outline-danger" onclick="confirmDeleteStory()">
-                                    <i class="fas fa-trash-alt me-1"></i>Delete
-                                </button>
+                                <button class="btn btn-outline-danger"><i class="fas fa-trash-alt me-1"></i>Delete</button>
                             </div>
-                            
-                            <div class="mb-4">
-                                <div class="d-flex justify-content-between mb-1">
-                                    <div>
-                                        <span class="text-muted">Progress:</span>
-                                        <span id="storyProgress" class="ms-1">67% Complete</span>
-                                    </div>
-                                    <div>
-                                        <span id="storyTaskCount" class="badge bg-secondary">2/3 Tasks</span>
-                                    </div>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: 67%" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            
                             <div class="row mb-4">
                                 <div class="col-md-6">
-                                    <div class="story-meta-item">
-                                        <span class="text-muted">Start Date:</span>
-                                        <span id="storyStartDate" class="ms-1">May 15, 2025</span>
+                                    <div class="info-item">
+                                        <label>Start Date</label>
+                                        <div>May 15, 2025</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="story-meta-item">
-                                        <span class="text-muted">Due Date:</span>
-                                        <span id="storyDueDate" class="ms-1">May 25, 2025</span>
+                                    <div class="info-item">
+                                        <label>Due Date</label>
+                                        <div>May 25, 2025</div>
                                     </div>
                                 </div>
                             </div>
-                            
                             <div class="story-description">
-                                <h6>Notes:</h6>
-                                <p id="storyNotes">Design a modern, responsive landing page focused on user conversion. Incorporate brand guidelines and ensure accessibility standards are met.</p>
+                                <h6>Description:</h6>
+                                <p>Design wireframes and mockups for the new landing page with focus on conversion optimization and modern design principles.</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Tasks Section -->
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h5 class="card-title mb-0">Tasks</h5>
-                            <div>
-                                <button class="btn btn-sm btn-outline-secondary me-2" id="reorderTasksBtn" onclick="toggleTasksReordering()">
-                                    <i class="fas fa-sort me-1"></i>Reorder
-                                </button>
-                                <button class="btn btn-sm btn-primary" id="addTaskBtn">
-                                    <i class="fas fa-plus me-1"></i>Add Task
-                                </button>
-                            </div>
+                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                                <i class="fas fa-plus me-1"></i>Add Task
+                            </button>
                         </div>
                         <div class="card-body">
-                            <div class="tasks-list" id="storyTasksList">
-                                <div class="task-item" data-id="301" onclick="window.location.href='task-view.html?id=301'">
-                                    <div class="reorder-handle me-2 d-none">
-                                        <i class="fas fa-grip-vertical"></i>
-                                    </div>
+                            <div class="tasks-list">
+                                <div class="task-item priority-high">
                                     <div class="task-content">
-                                        <h6 class="task-title">
-                                            <a href="task-view.html?id=301">Design wireframes</a>
-                                        </h6>
+                                        <h6 class="task-title">Design wireframes for homepage</h6>
                                         <div class="task-meta">
-                                            <span class="badge bg-success">Completed</span>
                                             <span class="priority-high"><i class="fas fa-flag me-1"></i>High</span>
-                                            <span class="text-muted">Due: May 18, 2025</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="task-item" data-id="302" onclick="window.location.href='task-view.html?id=302'">
-                                    <div class="reorder-handle me-2 d-none">
-                                        <i class="fas fa-grip-vertical"></i>
-                                    </div>
-                                    <div class="task-content">
-                                        <h6 class="task-title">
-                                            <a href="task-view.html?id=302">Create mockups</a>
-                                        </h6>
-                                        <div class="task-meta">
                                             <span class="badge bg-primary">In Progress</span>
-                                            <span class="priority-medium"><i class="fas fa-flag me-1"></i>Medium</span>
-                                            <span class="text-muted">Due: May 22, 2025</span>
+                                            <span class="text-muted">Due: May 25, 2025</span>
                                         </div>
+                                    </div>
+                                    <div class="task-actions">
+                                        <a href="task-view.html" class="btn btn-sm btn-outline-primary">View</a>
                                     </div>
                                 </div>
-                                <div class="task-item" data-id="303" onclick="window.location.href='task-view.html?id=303'">
-                                    <div class="reorder-handle me-2 d-none">
-                                        <i class="fas fa-grip-vertical"></i>
-                                    </div>
+                                <div class="task-item priority-medium">
                                     <div class="task-content">
-                                        <h6 class="task-title">
-                                            <a href="task-view.html?id=303">Review with team</a>
-                                        </h6>
+                                        <h6 class="task-title">Create color scheme</h6>
                                         <div class="task-meta">
-                                            <span class="badge bg-info">Not Started</span>
-                                            <span class="priority-low"><i class="fas fa-flag me-1"></i>Low</span>
-                                            <span class="text-muted">Due: May 24, 2025</span>
+                                            <span class="priority-medium"><i class="fas fa-flag me-1"></i>Medium</span>
+                                            <span class="badge bg-success">Completed</span>
+                                            <span class="text-muted">Completed: May 20, 2025</span>
                                         </div>
+                                    </div>
+                                    <div class="task-actions">
+                                        <a href="task-view.html" class="btn btn-sm btn-outline-primary">View</a>
+                                    </div>
+                                </div>
+                                <div class="task-item priority-low">
+                                    <div class="task-content">
+                                        <h6 class="task-title">Select typography</h6>
+                                        <div class="task-meta">
+                                            <span class="priority-low"><i class="fas fa-flag me-1"></i>Low</span>
+                                            <span class="badge bg-success">Completed</span>
+                                            <span class="text-muted">Completed: May 18, 2025</span>
+                                        </div>
+                                    </div>
+                                    <div class="task-actions">
+                                        <a href="task-view.html" class="btn btn-sm btn-outline-primary">View</a>
+                                    </div>
+                                </div>
+                                <div class="task-item priority-high">
+                                    <div class="task-content">
+                                        <h6 class="task-title">Create high-fidelity mockups</h6>
+                                        <div class="task-meta">
+                                            <span class="priority-high"><i class="fas fa-flag me-1"></i>High</span>
+                                            <span class="badge bg-info">Not Started</span>
+                                            <span class="text-muted">Due: May 28, 2025</span>
+                                        </div>
+                                    </div>
+                                    <div class="task-actions">
+                                        <a href="task-view.html" class="btn btn-sm btn-outline-primary">View</a>
+                                    </div>
+                                </div>
+                                <div class="task-item priority-medium">
+                                    <div class="task-content">
+                                        <h6 class="task-title">Get approval from stakeholders</h6>
+                                        <div class="task-meta">
+                                            <span class="priority-medium"><i class="fas fa-flag me-1"></i>Medium</span>
+                                            <span class="badge bg-secondary">Backlog</span>
+                                            <span class="text-muted">Due: May 30, 2025</span>
+                                        </div>
+                                    </div>
+                                    <div class="task-actions">
+                                        <a href="task-view.html" class="btn btn-sm btn-outline-primary">View</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-lg-4">
                     <div class="story-info">
                         <h6>Story Information</h6>
                         <div class="info-item">
-                            <label>Progress</label>
-                            <div class="progress mb-2">
-                                <div class="progress-bar" style="width: 67%"></div>
-                            </div>
-                            <small class="text-muted">2 of 3 tasks completed</small>
+                            <label>Project</label>
+                            <div>Website Redesign</div>
+                        </div>
+                        <div class="info-item">
+                            <label>Tasks</label>
+                            <div>5 tasks total</div>
+                        </div>
+                        <div class="info-item">
+                            <label>Completed</label>
+                            <div>3 tasks</div>
                         </div>
                         <div class="info-item">
                             <label>Created</label>
@@ -247,45 +192,41 @@
             </div>
         </div>
     </div>
-
-    <!-- Add Task Modal -->
-    <div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+    <div class="modal fade" id="addTaskModal" tabindex="-1">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addTaskModalLabel">Add New Task</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title">Create New Task</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="addTaskForm">
-                        <input type="hidden" id="taskStoryId" value="">
-                        <input type="hidden" id="taskProjectId" value="">
+                    <form>
                         <div class="mb-3">
                             <label class="form-label">Task Title</label>
-                            <input type="text" class="form-control" id="newTaskTitle" maxlength="180" required>
+                            <input type="text" class="form-control" maxlength="180" required>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Status</label>
-                                    <select class="form-select" id="newTaskStatus">
-                                        <option value="Backlog">Backlog</option>
-                                        <option value="Not Started">Not Started</option>
-                                        <option value="In Progress">In Progress</option>
-                                        <option value="On Hold">On Hold</option>
-                                        <option value="Blocked">Blocked</option>
-                                        <option value="Completed">Completed</option>
+                                    <select class="form-select">
+                                        <option value="backlog">Backlog</option>
+                                        <option value="not_started">Not Started</option>
+                                        <option value="in_progress">In Progress</option>
+                                        <option value="on_hold">On Hold</option>
+                                        <option value="blocked">Blocked</option>
+                                        <option value="completed">Completed</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Priority</label>
-                                    <select class="form-select" id="newTaskPriority">
-                                        <option value="Low">Low</option>
-                                        <option value="Medium" selected>Medium</option>
-                                        <option value="High">High</option>
-                                        <option value="Urgent">Urgent</option>
+                                    <select class="form-select">
+                                        <option value="low">Low</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="high">High</option>
+                                        <option value="urgent">Urgent</option>
                                     </select>
                                 </div>
                             </div>
@@ -294,248 +235,29 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Start Date</label>
-                                    <input type="date" class="form-control" id="newTaskStartDate">
+                                    <input type="date" class="form-control">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Due Date</label>
-                                    <input type="date" class="form-control" id="newTaskDueDate">
+                                    <input type="date" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Notes</label>
-                            <textarea class="form-control" id="newTaskNotes" rows="3"></textarea>
+                            <textarea class="form-control" rows="4"></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" onclick="document.getElementById('addTaskForm').requestSubmit()">Create Task</button>
+                    <button type="submit" class="btn btn-primary">Create Task</button>
                 </div>
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-    <script src="script.js"></script>
-    <script>
-        let storyId, projectId, tasksReorderingActive = false, tasksSortable = null;
-
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('show');
-            document.getElementById('sidebarBackdrop').classList.toggle('show');
-        }
-
-        function showAddProjectModal() {
-            window.location.href = 'index.html';
-        }
-
-        function showAddStoryModal() {
-            window.location.href = 'stories.html';
-        }
-
-        function showAddTaskModal() {
-            document.getElementById('taskStoryId').value = storyId;
-            document.getElementById('taskProjectId').value = projectId;
-            new bootstrap.Modal(document.getElementById('addTaskModal')).show();
-        }
-
-        function toggleTasksReordering() {
-            const handles = document.querySelectorAll('.reorder-handle');
-            const btn = document.getElementById('reorderTasksBtn');
-            
-            tasksReorderingActive = !tasksReorderingActive;
-            
-            handles.forEach(handle => {
-                handle.classList.toggle('d-none');
-                handle.classList.toggle('d-flex');
-            });
-            
-            if (tasksReorderingActive) {
-                btn.innerHTML = '<i class="fas fa-check me-1"></i>Save Order';
-                btn.classList.replace('btn-outline-secondary', 'btn-success');
-                
-                if (!tasksSortable) {
-                    const tasksList = document.getElementById('storyTasksList');
-                    tasksSortable = new Sortable(tasksList, {
-                        animation: 150,
-                        handle: '.reorder-handle',
-                        ghostClass: 'reorder-item-dragging',
-                        onEnd: function(evt) {
-                            console.log('Tasks reordered:', getTasksOrder());
-                        }
-                    });
-                }
-            } else {
-                btn.innerHTML = '<i class="fas fa-sort me-1"></i>Reorder';
-                btn.classList.replace('btn-success', 'btn-outline-secondary');
-                saveTasksOrder();
-            }
-        }
-
-        function getTasksOrder() {
-            const items = document.querySelectorAll('#storyTasksList .task-item');
-            return Array.from(items).map(item => item.dataset.id);
-        }
-
-        function saveTasksOrder() {
-            const order = getTasksOrder();
-            console.log('Saving tasks order:', order);
-            alert('Tasks order saved!');
-        }
-
-        function confirmDeleteStory() {
-            if (confirm('Are you sure you want to delete this story? This will also delete all associated tasks.')) {
-                deleteStory(storyId);
-            }
-        }
-
-        async function deleteStory(id) {
-            console.log(`Deleting story ${id} - API call would happen here`);
-            alert('Story deleted successfully!');
-            window.location.href = `project-view.html?id=${projectId}`;
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const sidebarBackdrop = document.getElementById('sidebarBackdrop');
-            if (sidebarBackdrop) {
-                sidebarBackdrop.addEventListener('click', toggleSidebar);
-            }
-
-            const urlParams = new URLSearchParams(window.location.search);
-            storyId = urlParams.get('id');
-            
-            if (storyId) {
-                document.getElementById('editStoryBtn').href = `story-edit.html?id=${storyId}`;
-                loadStoryData(storyId);
-            } else {
-                window.location.href = 'stories.html';
-            }
-            
-            document.getElementById('addTaskForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                createTask();
-            });
-        });
-
-        function loadStoryData(id) {
-            const storyData = {
-                id: id,
-                title: 'Create landing page design',
-                project: { id: '1', name: 'Website Redesign' },
-                status: 'In Progress',
-                priority: 'High',
-                start_date: '2025-05-15',
-                due_date: '2025-05-25',
-                notes: 'Design a modern, responsive landing page focused on user conversion. Incorporate brand guidelines and ensure accessibility standards are met.',
-                progress: 67,
-                task_count: { total: 3, completed: 2 },
-                created_at: '2025-05-15',
-                updated_at: '2025-05-22'
-            };
-            
-            populateStoryData(storyData);
-        }
-
-        function populateStoryData(data) {
-            document.getElementById('storyTitle').textContent = data.title;
-            document.getElementById('storyProject').textContent = data.project.name;
-            document.getElementById('storyProject').href = `project-view.html?id=${data.project.id}`;
-            document.getElementById('storyStatus').textContent = data.status;
-            document.getElementById('storyPriority').innerHTML = `<i class="fas fa-flag me-1"></i>${data.priority}`;
-            document.getElementById('storyPriority').className = `priority-${data.priority.toLowerCase()} ms-1`;
-            document.getElementById('storyProgress').textContent = `${data.progress}% Complete`;
-            document.getElementById('storyTaskCount').textContent = `${data.task_count.completed}/${data.task_count.total} Tasks`;
-            document.getElementById('storyStartDate').textContent = formatDate(data.start_date);
-            document.getElementById('storyDueDate').textContent = formatDate(data.due_date);
-            document.getElementById('storyNotes').textContent = data.notes;
-            
-            document.querySelector('.progress-bar').style.width = `${data.progress}%`;
-            document.querySelector('.progress-bar').setAttribute('aria-valuenow', data.progress);
-            
-            updateStatusStyles('storyStatus', data.status);
-            
-            projectId = data.project.id;
-            document.getElementById('backToProjectBtn').href = `project-view.html?id=${projectId}`;
-        }
-
-        function createTask() {
-            const task = {
-                title: document.getElementById('newTaskTitle').value,
-                story_id: document.getElementById('taskStoryId').value,
-                project_id: document.getElementById('taskProjectId').value,
-                status: document.getElementById('newTaskStatus').value,
-                priority: document.getElementById('newTaskPriority').value,
-                start_date: document.getElementById('newTaskStartDate').value || null,
-                due_date: document.getElementById('newTaskDueDate').value || null,
-                notes: document.getElementById('newTaskNotes').value || ''
-            };
-            
-            console.log('Creating task - API call would happen here:', task);
-            alert('Task created successfully!');
-            bootstrap.Modal.getInstance(document.getElementById('addTaskModal')).hide();
-            
-            addTaskToUI({
-                id: new Date().getTime(),
-                title: task.title,
-                status: task.status,
-                priority: task.priority,
-                due_date: task.due_date
-            });
-        }
-
-        function addTaskToUI(task) {
-            const tasksList = document.getElementById('storyTasksList');
-            
-            const taskItem = document.createElement('div');
-            taskItem.className = 'task-item';
-            taskItem.setAttribute('data-id', task.id);
-            taskItem.onclick = () => window.location.href = `task-view.html?id=${task.id}`;
-            
-            taskItem.innerHTML = `
-                <div class="reorder-handle me-2 ${tasksReorderingActive ? 'd-flex' : 'd-none'}">
-                    <i class="fas fa-grip-vertical"></i>
-                </div>
-                <div class="task-content">
-                    <h6 class="task-title">${task.title}</h6>
-                    <div class="task-meta">
-                        <span class="badge ${getStatusBadgeClass(task.status)}">${task.status}</span>
-                        <span class="priority-${task.priority.toLowerCase()}"><i class="fas fa-flag me-1"></i>${task.priority}</span>
-                        <span class="text-muted">Due: ${formatDate(task.due_date)}</span>
-                    </div>
-                </div>
-            `;
-            
-            tasksList.appendChild(taskItem);
-        }
-
-        function formatDate(dateString) {
-            if (!dateString) return 'Not set';
-            const date = new Date(dateString);
-            return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-        }
-
-        function getStatusBadgeClass(status) {
-            switch(status) {
-                case 'Completed': return 'bg-success';
-                case 'In Progress': return 'bg-primary';
-                case 'On Hold': return 'bg-warning';
-                case 'Blocked': return 'bg-danger';
-                case 'Not Started': return 'bg-info';
-                default: return 'bg-secondary';
-            }
-        }
-
-        function updateStatusStyles(elementId, status) {
-            const element = document.getElementById(elementId);
-            if (!element) return;
-            
-            element.classList.remove('bg-success', 'bg-primary', 'bg-warning', 'bg-danger', 'bg-info', 'bg-secondary');
-            element.classList.add(getStatusBadgeClass(status));
-        }
-    </script>
 </body>
 </html>

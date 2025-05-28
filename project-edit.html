@@ -30,9 +30,9 @@
             </div>
             <div class="nav-section">
                 <h6 class="nav-section-title">QUICK ACTIONS</h6>
-                <a href="projects.html" class="nav-link"><i class="fas fa-plus"></i><span>New Project</span></a>
-                <a href="stories.html" class="nav-link"><i class="fas fa-bookmark"></i><span>New Story</span></a>
-                <a href="tasks.html" class="nav-link"><i class="fas fa-check-square"></i><span>New Task</span></a>
+                <a href="project-edit.html" class="nav-link"><i class="fas fa-plus"></i><span>New Project</span></a>
+                <a href="story-edit.html" class="nav-link"><i class="fas fa-bookmark"></i><span>New Story</span></a>
+                <a href="task-edit.html" class="nav-link"><i class="fas fa-check-square"></i><span>New Task</span></a>
                 <a href="login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i><span>Exit</span></a>
             </div>
         </nav>
@@ -46,58 +46,210 @@
         </header>
         <div class="content-area">
             <div class="row justify-content-center">
-                <div class="col-lg-8">
+                <div class="col-lg-10">
                     <div class="card">
                         <div class="card-body">
                             <form action="project-view.html" method="get">
-                                <div class="mb-3">
-                                    <label class="form-label">Project Name</label>
-                                    <input type="text" class="form-control" value="Website Redesign" maxlength="120" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Description</label>
-                                    <textarea class="form-control" rows="3">Complete redesign of company website with modern UI/UX principles and responsive design for better user experience.</textarea>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">Status</label>
-                                            <select class="form-select">
-                                                <option value="backlog">Backlog</option>
-                                                <option value="not_started">Not Started</option>
-                                                <option value="in_progress" selected>In Progress</option>
-                                                <option value="on_hold">On Hold</option>
-                                                <option value="blocked">Blocked</option>
-                                                <option value="completed">Completed</option>
-                                            </select>
+                                <div class="mb-4">
+                                    <h5 class="mb-3">Project Information</h5>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="mb-3">
+                                                <label class="form-label">Project Name</label>
+                                                <input type="text" class="form-control" value="Website Redesign" maxlength="120" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label">Area</label>
+                                                <select class="form-select">
+                                                    <option value="work_center" selected>Work Center</option>
+                                                    <option value="personal">Personal</option>
+                                                    <option value="learning">Learning</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">Priority</label>
-                                            <select class="form-select">
-                                                <option value="low">Low</option>
-                                                <option value="medium">Medium</option>
-                                                <option value="high" selected>High</option>
-                                                <option value="urgent">Urgent</option>
-                                            </select>
+                                    <div class="mb-3">
+                                        <label class="form-label">Description</label>
+                                        <textarea class="form-control" rows="3">Complete redesign of company website with modern UI/UX principles and responsive design for better user experience.</textarea>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="mb-3">
+                                                <label class="form-label">Status</label>
+                                                <select class="form-select">
+                                                    <option value="backlog">Backlog</option>
+                                                    <option value="not_started">Not Started</option>
+                                                    <option value="in_progress" selected>In Progress</option>
+                                                    <option value="on_hold">On Hold</option>
+                                                    <option value="blocked">Blocked</option>
+                                                    <option value="completed">Completed</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="mb-3">
+                                                <label class="form-label">Priority</label>
+                                                <select class="form-select">
+                                                    <option value="low">Low</option>
+                                                    <option value="medium">Medium</option>
+                                                    <option value="high" selected>High</option>
+                                                    <option value="urgent">Urgent</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="mb-3">
+                                                <label class="form-label">Start Date</label>
+                                                <input type="date" class="form-control" value="2025-05-01">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="mb-3">
+                                                <label class="form-label">Due Date</label>
+                                                <input type="date" class="form-control" value="2025-06-15">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">Start Date</label>
-                                            <input type="date" class="form-control" value="2025-05-01">
-                                        </div>
+
+                                <!-- Stories Section -->
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5>Stories & Tasks</h5>
+                                        <button type="button" class="btn btn-outline-primary btn-sm" onclick="addStory()">
+                                            <i class="fas fa-plus me-1"></i>Add Story
+                                        </button>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label class="form-label">Due Date</label>
-                                            <input type="date" class="form-control" value="2025-06-15">
+                                    
+                                    <div id="storiesContainer">
+                                        <!-- Story 1 -->
+                                        <div class="story-edit-item mb-4" data-story-id="1">
+                                            <div class="card border-primary">
+                                                <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                                                    <h6 class="mb-0"><i class="fas fa-bookmark me-2"></i>Story</h6>
+                                                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeStory(this)">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Story Title</label>
+                                                                <input type="text" class="form-control" value="Create landing page design" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Due Date</label>
+                                                                <input type="date" class="form-control" value="2025-05-25">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <!-- Tasks for this story -->
+                                                    <div class="tasks-section">
+                                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                                            <h6 class="mb-0">Tasks</h6>
+                                                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="addTask(this)">
+                                                                <i class="fas fa-plus me-1"></i>Add Task
+                                                            </button>
+                                                        </div>
+                                                        <div class="tasks-container">
+                                                            <div class="task-edit-item mb-2" data-task-id="1">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-md-8">
+                                                                        <input type="text" class="form-control form-control-sm" value="Design wireframes for homepage" placeholder="Task title">
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <input type="date" class="form-control form-control-sm" value="2025-05-22">
+                                                                    </div>
+                                                                    <div class="col-md-1">
+                                                                        <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeTask(this)">
+                                                                            <i class="fas fa-trash"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="task-edit-item mb-2" data-task-id="2">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-md-8">
+                                                                        <input type="text" class="form-control form-control-sm" value="Create color scheme" placeholder="Task title">
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <input type="date" class="form-control form-control-sm" value="2025-05-20">
+                                                                    </div>
+                                                                    <div class="col-md-1">
+                                                                        <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeTask(this)">
+                                                                            <i class="fas fa-trash"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Story 2 -->
+                                        <div class="story-edit-item mb-4" data-story-id="2">
+                                            <div class="card border-primary">
+                                                <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                                                    <h6 class="mb-0"><i class="fas fa-bookmark me-2"></i>Story</h6>
+                                                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeStory(this)">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Story Title</label>
+                                                                <input type="text" class="form-control" value="Setup responsive framework" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Due Date</label>
+                                                                <input type="date" class="form-control" value="2025-06-01">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="tasks-section">
+                                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                                            <h6 class="mb-0">Tasks</h6>
+                                                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="addTask(this)">
+                                                                <i class="fas fa-plus me-1"></i>Add Task
+                                                            </button>
+                                                        </div>
+                                                        <div class="tasks-container">
+                                                            <div class="task-edit-item mb-2" data-task-id="3">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-md-8">
+                                                                        <input type="text" class="form-control form-control-sm" value="Setup development environment" placeholder="Task title">
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <input type="date" class="form-control form-control-sm" value="2025-05-30">
+                                                                    </div>
+                                                                    <div class="col-md-1">
+                                                                        <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeTask(this)">
+                                                                            <i class="fas fa-trash"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="mb-3">
                                     <label class="form-label">Notes</label>
                                     <textarea class="form-control" rows="3">Focus on mobile-first design and accessibility standards.</textarea>
@@ -113,5 +265,92 @@
             </div>
         </div>
     </div>
+
+    <script>
+        let storyCounter = 2;
+        let taskCounter = 3;
+
+        function addStory() {
+            storyCounter++;
+            const storiesContainer = document.getElementById('storiesContainer');
+            const storyHtml = `
+                <div class="story-edit-item mb-4" data-story-id="${storyCounter}">
+                    <div class="card border-primary">
+                        <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0"><i class="fas fa-bookmark me-2"></i>Story</h6>
+                            <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeStory(this)">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="mb-3">
+                                        <label class="form-label">Story Title</label>
+                                        <input type="text" class="form-control" placeholder="Enter story title" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Due Date</label>
+                                        <input type="date" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tasks-section">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h6 class="mb-0">Tasks</h6>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" onclick="addTask(this)">
+                                        <i class="fas fa-plus me-1"></i>Add Task
+                                    </button>
+                                </div>
+                                <div class="tasks-container"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            storiesContainer.insertAdjacentHTML('beforeend', storyHtml);
+        }
+
+        function removeStory(button) {
+            if (confirm('Are you sure you want to delete this story and all its tasks?')) {
+                button.closest('.story-edit-item').remove();
+            }
+        }
+
+        function addTask(button) {
+            taskCounter++;
+            const tasksContainer = button.closest('.tasks-section').querySelector('.tasks-container');
+            const taskHtml = `
+                <div class="task-edit-item mb-2" data-task-id="${taskCounter}">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <input type="text" class="form-control form-control-sm" placeholder="Task title">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="date" class="form-control form-control-sm">
+                        </div>
+                        <div class="col-md-1">
+                            <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeTask(this)">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            tasksContainer.insertAdjacentHTML('beforeend', taskHtml);
+        }
+
+        function removeTask(button) {
+            if (confirm('Are you sure you want to delete this task?')) {
+                button.closest('.task-edit-item').remove();
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.gpteng.co/gptengineer.js"></script>
 </body>
 </html>

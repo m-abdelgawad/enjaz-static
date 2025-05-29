@@ -11,11 +11,12 @@
     <link rel="stylesheet" href="style.css">
     <style>
         .ai-section {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
             border-radius: 16px;
             padding: 2rem;
-            border: 1px solid rgba(102, 126, 234, 0.1);
+            border: 2px solid #e2e8f0;
             margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
         
         .ai-icon {
@@ -32,11 +33,13 @@
         }
         
         .ai-description {
-            background: rgba(102, 126, 234, 0.05);
+            background: white;
             border-left: 4px solid #667eea;
-            padding: 1rem;
+            padding: 1.5rem;
             border-radius: 8px;
             margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            color: #334155;
         }
         
         .ai-btn {
@@ -86,6 +89,28 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
+        }
+        
+        .field-explanation {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            color: #475569;
+        }
+        
+        .field-explanation h6 {
+            color: #334155;
+            margin-bottom: 0.5rem;
+        }
+        
+        .ai-section h3 {
+            color: #1e293b;
+        }
+        
+        .ai-section p {
+            color: #64748b;
         }
     </style>
 </head>
@@ -149,6 +174,44 @@
                         </div>
                     </div>
                     
+                    <div class="row mb-4">
+                        <div class="col-md-4">
+                            <label for="deliveryDate" class="form-label fw-semibold">Required Delivery Date (Optional)</label>
+                            <input type="date" id="deliveryDate" class="form-control">
+                            <div class="form-text">
+                                <i class="fas fa-calendar me-1"></i>
+                                AI will plan the project to meet this deadline if provided.
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="weekendDays" class="form-label fw-semibold">Weekend Days per Week</label>
+                            <select id="weekendDays" class="form-select">
+                                <option value="1">1 Day (Friday only)</option>
+                                <option value="2" selected>2 Days (Friday & Saturday)</option>
+                                <option value="3">3 Days (Thursday, Friday & Saturday)</option>
+                            </select>
+                            <div class="form-text">
+                                <i class="fas fa-calendar-times me-1"></i>
+                                Non-working days per week for schedule calculation.
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="bufferDays" class="form-label fw-semibold">Buffer Days</label>
+                            <input type="number" id="bufferDays" class="form-control" value="0" min="0">
+                            <div class="form-text">
+                                <i class="fas fa-pause me-1"></i>
+                                Extra days for holidays, vacations, or unexpected delays.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="field-explanation">
+                        <h6><i class="fas fa-info-circle me-2"></i>Planning Parameters</h6>
+                        <p class="mb-2"><strong>Delivery Date:</strong> If specified, AI will structure the project to meet this deadline.</p>
+                        <p class="mb-2"><strong>Weekend Days:</strong> Choose how many days per week are non-working (1-3 days).</p>
+                        <p class="mb-0"><strong>Buffer Days:</strong> Additional time buffer for holidays, vacations, or contingencies.</p>
+                    </div>
+                    
                     <div class="text-center">
                         <button type="submit" class="ai-btn">
                             <i class="fas fa-magic me-2"></i>
@@ -184,8 +247,15 @@
             // Show loading overlay
             document.getElementById('loadingOverlay').style.display = 'flex';
             
-            // Store the description in localStorage for the next page
-            localStorage.setItem('projectDescription', description);
+            // Store all form data in localStorage for the next page
+            const formData = {
+                description: description,
+                deliveryDate: document.getElementById('deliveryDate').value,
+                weekendDays: document.getElementById('weekendDays').value,
+                bufferDays: document.getElementById('bufferDays').value
+            };
+            
+            localStorage.setItem('aiPlannerInput', JSON.stringify(formData));
             
             // Simulate AI processing time
             setTimeout(() => {

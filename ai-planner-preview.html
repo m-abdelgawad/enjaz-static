@@ -29,11 +29,12 @@
         }
         
         .ai-section {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
             border-radius: 16px;
             padding: 2rem;
-            border: 1px solid rgba(102, 126, 234, 0.2);
+            border: 2px solid #e2e8f0;
             margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
         
         .ai-icon {
@@ -50,12 +51,13 @@
         }
         
         .ai-description {
-            background: rgba(255, 255, 255, 0.9);
+            background: white;
             border-left: 4px solid #667eea;
-            padding: 1rem;
+            padding: 1.5rem;
             border-radius: 8px;
             margin-bottom: 1.5rem;
-            color: #333;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            color: #334155;
         }
         
         .story-container {
@@ -197,7 +199,7 @@
         
         .task-header {
             display: flex;
-            justify-content: between;
+            justify-content: space-between;
             align-items: center;
             margin-bottom: 1rem;
             flex-wrap: wrap;
@@ -213,6 +215,14 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+        }
+        
+        .ai-section h4 {
+            color: #1e293b;
+        }
+        
+        .ai-section p {
+            color: #64748b;
         }
         
         @media (max-width: 768px) {
@@ -424,15 +434,23 @@
         let storyCounter = 0;
         let taskCounter = 0;
 
-        // Initialize the page with AI-generated data
+        // Initialize the page with AI-generated data and user input
         function initializePage() {
-            // Get project description from localStorage
-            const userDescription = localStorage.getItem('projectDescription');
+            // Get user input from localStorage
+            const userInput = JSON.parse(localStorage.getItem('aiPlannerInput') || '{}');
             
             // Populate form with AI-generated data
             document.getElementById('projectTitle').value = aiGeneratedPlan.title;
-            document.getElementById('projectDescription').value = userDescription || aiGeneratedPlan.description;
+            document.getElementById('projectDescription').value = userInput.description || aiGeneratedPlan.description;
             document.getElementById('projectArea').value = aiGeneratedPlan.area;
+            
+            // Populate planning parameters from user input
+            if (userInput.weekendDays) {
+                document.getElementById('weekendDays').value = userInput.weekendDays;
+            }
+            if (userInput.bufferDays) {
+                document.getElementById('bufferDays').value = userInput.bufferDays;
+            }
             
             // Set start date to today
             const today = new Date().toISOString().split('T')[0];

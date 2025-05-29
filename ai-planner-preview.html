@@ -1,0 +1,652 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enjaz - AI Project Plan Preview</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .ai-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ai-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M 8 0 L 0 0 0 8" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        }
+        
+        .ai-header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .ai-title {
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .plan-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+        
+        .story-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        .story-card:hover {
+            background: #e6f2ff;
+            transform: translateX(4px);
+        }
+        
+        .task-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+        
+        .task-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+        }
+        
+        .duration-badge {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .ai-input {
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 0.75rem;
+            transition: all 0.3s ease;
+        }
+        
+        .ai-input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            outline: none;
+        }
+        
+        .add-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .add-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            color: white;
+        }
+        
+        .remove-btn {
+            background: #ef4444;
+            border: none;
+            border-radius: 6px;
+            padding: 0.25rem 0.5rem;
+            color: white;
+            font-size: 0.75rem;
+            transition: all 0.3s ease;
+        }
+        
+        .remove-btn:hover {
+            background: #dc2626;
+            transform: scale(1.05);
+        }
+        
+        .create-project-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 12px;
+            padding: 1rem 3rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .create-project-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .create-project-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            color: white;
+        }
+        
+        .create-project-btn:hover::before {
+            left: 100%;
+        }
+        
+        .total-duration {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .plan-card {
+                padding: 1.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            .story-card {
+                padding: 1rem;
+            }
+            
+            .task-item {
+                padding: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3><i class="fas fa-layer-group me-2"></i>Enjaz</h3>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <h6 class="nav-section-title">PAGES</h6>
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a>
+                <a href="projects.html" class="nav-link"><i class="fas fa-project-diagram"></i><span>Projects</span></a>
+                <a href="stories.html" class="nav-link"><i class="fas fa-bookmark"></i><span>Stories</span></a>
+                <a href="tasks.html" class="nav-link"><i class="fas fa-tasks"></i><span>Tasks</span></a>
+                <a href="completed.html" class="nav-link"><i class="fas fa-check-circle"></i><span>Completed</span></a>
+                <a href="ai-planner.html" class="nav-link active"><i class="fas fa-robot"></i><span>AI Planner</span></a>
+            </div>
+            <div class="nav-section">
+                <h6 class="nav-section-title">AREAS</h6>
+                <a href="work-center.html" class="nav-link"><i class="fas fa-briefcase"></i><span>Work Center</span></a>
+            </div>
+            <div class="nav-section">
+                <h6 class="nav-section-title">QUICK ACTIONS</h6>
+                <a href="login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i><span>Exit</span></a>
+            </div>
+        </nav>
+    </div>
+    
+    <div class="main-content">
+        <div class="ai-header">
+            <div class="container">
+                <div class="ai-header-content">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h1 class="ai-title"><i class="fas fa-magic me-2"></i>AI Generated Project Plan</h1>
+                            <p class="mb-0">Review and customize your project structure before creating</p>
+                        </div>
+                        <div class="col-md-4 text-md-end">
+                            <a href="ai-planner.html" class="btn btn-outline-light">
+                                <i class="fas fa-arrow-left me-2"></i>Back to Input
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container my-4">
+            <form id="projectPlanForm">
+                <!-- Project Overview -->
+                <div class="plan-card">
+                    <h3 class="mb-4"><i class="fas fa-project-diagram text-primary me-2"></i>Project Overview</h3>
+                    
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="mb-3">
+                                <label for="projectTitle" class="form-label fw-semibold">Project Title</label>
+                                <input type="text" id="projectTitle" class="form-control ai-input" placeholder="Project title">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="projectArea" class="form-label fw-semibold">Area</label>
+                                <select id="projectArea" class="form-select ai-input">
+                                    <option value="work-center">Work Center</option>
+                                    <option value="personal">Personal</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="projectStartDate" class="form-label fw-semibold">Project Start Date</label>
+                                <input type="date" id="projectStartDate" class="form-control ai-input">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label fw-semibold">Calculated End Date</label>
+                                <input type="text" id="projectEndDate" class="form-control ai-input" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="projectDescription" class="form-label fw-semibold">Project Description</label>
+                        <textarea id="projectDescription" class="form-control ai-input" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="total-duration">
+                        <h5 class="mb-0">Total Project Duration: <span id="totalDuration">0</span> days</h5>
+                    </div>
+                </div>
+                
+                <!-- Stories Section -->
+                <div class="plan-card">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3><i class="fas fa-bookmark text-info me-2"></i>Project Stories</h3>
+                        <button type="button" class="add-btn" onclick="addStory()">
+                            <i class="fas fa-plus me-2"></i>Add Story
+                        </button>
+                    </div>
+                    
+                    <div id="storiesContainer">
+                        <!-- Stories will be generated here -->
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <button type="submit" class="create-project-btn">
+                        <i class="fas fa-rocket me-2"></i>Create Project
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Mock AI-generated project data
+        const aiGeneratedPlan = {
+            title: "E-commerce Website for Handmade Crafts",
+            description: "Modern e-commerce platform for selling handmade crafts with user registration, product catalog, shopping cart, payment integration, and admin panel.",
+            area: "work-center",
+            stories: [
+                {
+                    title: "User Authentication & Registration",
+                    description: "Implement user registration, login, and profile management system",
+                    duration: 7,
+                    tasks: [
+                        { title: "Design registration form UI", description: "Create responsive registration form with validation", duration: 2 },
+                        { title: "Implement user authentication", description: "Backend authentication system with JWT tokens", duration: 3 },
+                        { title: "Create user profile page", description: "User dashboard with profile editing capabilities", duration: 2 }
+                    ]
+                },
+                {
+                    title: "Product Catalog System",
+                    description: "Build comprehensive product listing and search functionality",
+                    duration: 14,
+                    tasks: [
+                        { title: "Design product listing page", description: "Grid/list view with filters and sorting", duration: 3 },
+                        { title: "Implement product search", description: "Advanced search with categories and filters", duration: 4 },
+                        { title: "Create product detail pages", description: "Detailed product view with image gallery", duration: 4 },
+                        { title: "Build product management admin", description: "Admin interface for adding/editing products", duration: 3 }
+                    ]
+                },
+                {
+                    title: "Shopping Cart & Checkout",
+                    description: "Complete shopping cart and secure checkout process",
+                    duration: 10,
+                    tasks: [
+                        { title: "Implement shopping cart", description: "Add/remove items with quantity management", duration: 3 },
+                        { title: "Design checkout flow", description: "Multi-step checkout with address and payment", duration: 4 },
+                        { title: "Integrate payment gateway", description: "Secure payment processing with Stripe/PayPal", duration: 3 }
+                    ]
+                },
+                {
+                    title: "Order Management System",
+                    description: "Complete order tracking and admin management",
+                    duration: 12,
+                    tasks: [
+                        { title: "Create order tracking", description: "Customer order history and status tracking", duration: 4 },
+                        { title: "Build admin order management", description: "Admin interface for processing orders", duration: 4 },
+                        { title: "Implement inventory tracking", description: "Stock management and low inventory alerts", duration: 4 }
+                    ]
+                },
+                {
+                    title: "Testing & Deployment",
+                    description: "Quality assurance and production deployment",
+                    duration: 7,
+                    tasks: [
+                        { title: "Cross-browser testing", description: "Test compatibility across different browsers", duration: 2 },
+                        { title: "Mobile responsiveness testing", description: "Ensure optimal mobile experience", duration: 2 },
+                        { title: "Production deployment", description: "Deploy to production server with SSL", duration: 3 }
+                    ]
+                }
+            ]
+        };
+
+        let storyCounter = 0;
+        let taskCounter = 0;
+
+        // Initialize the page with AI-generated data
+        function initializePage() {
+            // Get project description from localStorage
+            const userDescription = localStorage.getItem('projectDescription');
+            
+            // Populate form with AI-generated data
+            document.getElementById('projectTitle').value = aiGeneratedPlan.title;
+            document.getElementById('projectDescription').value = userDescription || aiGeneratedPlan.description;
+            document.getElementById('projectArea').value = aiGeneratedPlan.area;
+            
+            // Set start date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('projectStartDate').value = today;
+            
+            // Generate stories
+            aiGeneratedPlan.stories.forEach(story => {
+                addStoryWithData(story);
+            });
+            
+            // Update total duration
+            updateProjectDuration();
+            updateProjectEndDate();
+        }
+
+        // Add a new story with optional data
+        function addStory(storyData = null) {
+            storyCounter++;
+            const storiesContainer = document.getElementById('storiesContainer');
+            
+            const storyDiv = document.createElement('div');
+            storyDiv.className = 'story-card';
+            storyDiv.id = `story-${storyCounter}`;
+            
+            const storyTitle = storyData ? storyData.title : `New Story ${storyCounter}`;
+            const storyDesc = storyData ? storyData.description : '';
+            const storyDuration = storyData ? storyData.duration : 0;
+            
+            storyDiv.innerHTML = `
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="mb-0">
+                        <i class="fas fa-bookmark text-info me-2"></i>
+                        Story ${storyCounter}
+                    </h5>
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="duration-badge">
+                            <span class="story-duration">${storyDuration}</span> days
+                        </span>
+                        <button type="button" class="remove-btn" onclick="removeStory(${storyCounter})">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col-md-8">
+                        <label class="form-label fw-semibold">Story Title</label>
+                        <input type="text" class="form-control ai-input story-title" value="${storyTitle}" onchange="updateStoryDuration(${storyCounter})">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold">Manual Duration (days)</label>
+                        <input type="number" class="form-control ai-input story-manual-duration" value="${storyDuration}" min="0" onchange="updateStoryDuration(${storyCounter})">
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Story Description</label>
+                    <textarea class="form-control ai-input story-description" rows="2">${storyDesc}</textarea>
+                </div>
+                
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h6><i class="fas fa-tasks text-success me-2"></i>Tasks</h6>
+                    <button type="button" class="add-btn btn-sm" onclick="addTask(${storyCounter})">
+                        <i class="fas fa-plus me-1"></i>Add Task
+                    </button>
+                </div>
+                
+                <div class="tasks-container" id="tasks-${storyCounter}">
+                    <!-- Tasks will be added here -->
+                </div>
+            `;
+            
+            storiesContainer.appendChild(storyDiv);
+            
+            // Add tasks if provided
+            if (storyData && storyData.tasks) {
+                storyData.tasks.forEach(task => {
+                    addTaskWithData(storyCounter, task);
+                });
+            }
+        }
+
+        // Add story with data (for initialization)
+        function addStoryWithData(storyData) {
+            addStory(storyData);
+        }
+
+        // Remove a story
+        function removeStory(storyId) {
+            const storyElement = document.getElementById(`story-${storyId}`);
+            if (storyElement) {
+                storyElement.remove();
+                updateProjectDuration();
+                updateProjectEndDate();
+            }
+        }
+
+        // Add a new task to a story
+        function addTask(storyId, taskData = null) {
+            taskCounter++;
+            const tasksContainer = document.getElementById(`tasks-${storyId}`);
+            
+            const taskDiv = document.createElement('div');
+            taskDiv.className = 'task-item';
+            taskDiv.id = `task-${taskCounter}`;
+            
+            const taskTitle = taskData ? taskData.title : `New Task ${taskCounter}`;
+            const taskDesc = taskData ? taskData.description : '';
+            const taskDuration = taskData ? taskData.duration : 1;
+            
+            taskDiv.innerHTML = `
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h6 class="mb-0"><i class="fas fa-check-circle text-success me-2"></i>Task</h6>
+                    <div class="d-flex align-items-center gap-2">
+                        <small class="text-muted">
+                            <span class="task-duration">${taskDuration}</span> days
+                        </small>
+                        <button type="button" class="remove-btn" onclick="removeTask(${taskCounter}, ${storyId})">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="row mb-2">
+                    <div class="col-md-8">
+                        <input type="text" class="form-control ai-input task-title" placeholder="Task title" value="${taskTitle}" onchange="updateStoryDuration(${storyId})">
+                    </div>
+                    <div class="col-md-4">
+                        <input type="number" class="form-control ai-input task-duration-input" placeholder="Duration (days)" value="${taskDuration}" min="1" onchange="updateStoryDuration(${storyId})">
+                    </div>
+                </div>
+                
+                <textarea class="form-control ai-input task-description" rows="2" placeholder="Task description">${taskDesc}</textarea>
+            `;
+            
+            tasksContainer.appendChild(taskDiv);
+            updateStoryDuration(storyId);
+        }
+
+        // Add task with data (for initialization)
+        function addTaskWithData(storyId, taskData) {
+            addTask(storyId, taskData);
+        }
+
+        // Remove a task
+        function removeTask(taskId, storyId) {
+            const taskElement = document.getElementById(`task-${taskId}`);
+            if (taskElement) {
+                taskElement.remove();
+                updateStoryDuration(storyId);
+            }
+        }
+
+        // Update story duration based on tasks or manual input
+        function updateStoryDuration(storyId) {
+            const storyElement = document.getElementById(`story-${storyId}`);
+            if (!storyElement) return;
+            
+            // Get manual duration input
+            const manualDuration = parseInt(storyElement.querySelector('.story-manual-duration').value) || 0;
+            
+            // Calculate duration from tasks
+            const taskDurationInputs = storyElement.querySelectorAll('.task-duration-input');
+            let tasksTotalDuration = 0;
+            taskDurationInputs.forEach(input => {
+                tasksTotalDuration += parseInt(input.value) || 0;
+            });
+            
+            // Use the higher value between manual input and calculated tasks duration
+            const finalDuration = Math.max(manualDuration, tasksTotalDuration);
+            
+            // Update duration display
+            const durationDisplay = storyElement.querySelector('.story-duration');
+            durationDisplay.textContent = finalDuration;
+            
+            // Update manual duration field if tasks duration is higher
+            if (tasksTotalDuration > manualDuration) {
+                storyElement.querySelector('.story-manual-duration').value = tasksTotalDuration;
+            }
+            
+            updateProjectDuration();
+            updateProjectEndDate();
+        }
+
+        // Update total project duration
+        function updateProjectDuration() {
+            const storyDurations = document.querySelectorAll('.story-duration');
+            let totalDuration = 0;
+            
+            storyDurations.forEach(duration => {
+                totalDuration += parseInt(duration.textContent) || 0;
+            });
+            
+            document.getElementById('totalDuration').textContent = totalDuration;
+        }
+
+        // Update project end date based on start date and duration
+        function updateProjectEndDate() {
+            const startDate = document.getElementById('projectStartDate').value;
+            const duration = parseInt(document.getElementById('totalDuration').textContent) || 0;
+            
+            if (startDate) {
+                const start = new Date(startDate);
+                const end = new Date(start);
+                end.setDate(start.getDate() + duration);
+                
+                document.getElementById('projectEndDate').value = end.toISOString().split('T')[0];
+            }
+        }
+
+        // Add event listener for start date changes
+        document.getElementById('projectStartDate').addEventListener('change', updateProjectEndDate);
+
+        // Handle form submission
+        document.getElementById('projectPlanForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect all form data
+            const projectData = {
+                title: document.getElementById('projectTitle').value,
+                description: document.getElementById('projectDescription').value,
+                area: document.getElementById('projectArea').value,
+                startDate: document.getElementById('projectStartDate').value,
+                endDate: document.getElementById('projectEndDate').value,
+                duration: parseInt(document.getElementById('totalDuration').textContent),
+                stories: []
+            };
+            
+            // Collect stories and tasks data
+            const storyElements = document.querySelectorAll('.story-card');
+            storyElements.forEach(storyEl => {
+                const story = {
+                    title: storyEl.querySelector('.story-title').value,
+                    description: storyEl.querySelector('.story-description').value,
+                    duration: parseInt(storyEl.querySelector('.story-duration').textContent),
+                    tasks: []
+                };
+                
+                const taskElements = storyEl.querySelectorAll('.task-item');
+                taskElements.forEach(taskEl => {
+                    const task = {
+                        title: taskEl.querySelector('.task-title').value,
+                        description: taskEl.querySelector('.task-description').value,
+                        duration: parseInt(taskEl.querySelector('.task-duration-input').value)
+                    };
+                    story.tasks.push(task);
+                });
+                
+                projectData.stories.push(story);
+            });
+            
+            // In a real application, this would be sent to a backend
+            console.log('Project Data:', projectData);
+            alert('Project created successfully! This would normally save to your projects list.');
+            
+            // Redirect to projects page
+            window.location.href = 'projects.html';
+        });
+
+        // Initialize page when loaded
+        document.addEventListener('DOMContentLoaded', initializePage);
+    </script>
+    <script src="https://cdn.gpteng.co/gptengineer.js"></script>
+</body>
+</html>

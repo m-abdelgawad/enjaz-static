@@ -7,128 +7,52 @@
     <title>Enjaz - AI Project Planner</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        .ai-hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .ai-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            animation: float 20s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .ai-title {
-            font-family: 'Orbitron', monospace;
-            font-weight: 700;
-            font-size: 3.5rem;
-            background: linear-gradient(45deg, #ffffff, #e6f2ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            margin-bottom: 1rem;
-        }
-        
-        .ai-subtitle {
-            color: rgba(255,255,255,0.9);
-            font-size: 1.2rem;
-            font-weight: 300;
+        .ai-section {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(102, 126, 234, 0.1);
             margin-bottom: 2rem;
         }
         
-        .ai-card {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.3s ease;
+        .ai-icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
         }
         
-        .ai-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
         }
         
-        .ai-input {
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
+        .ai-description {
+            background: rgba(102, 126, 234, 0.05);
+            border-left: 4px solid #667eea;
             padding: 1rem;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            min-height: 120px;
-            resize: vertical;
-        }
-        
-        .ai-input:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-            outline: none;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
         }
         
         .ai-btn {
             background: linear-gradient(135deg, #667eea, #764ba2);
             border: none;
-            border-radius: 12px;
-            padding: 1rem 2rem;
+            border-radius: 8px;
+            padding: 0.75rem 2rem;
             font-weight: 600;
-            font-size: 1.1rem;
             color: white;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .ai-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
         }
         
         .ai-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
-        }
-        
-        .ai-btn:hover::before {
-            left: 100%;
-        }
-        
-        .ai-icon {
-            font-size: 4rem;
-            color: #667eea;
-            margin-bottom: 1.5rem;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            color: white;
         }
         
         .loading-overlay {
@@ -150,10 +74,10 @@
         }
         
         .spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(255,255,255,0.3);
-            border-top: 4px solid white;
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid white;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 0 auto 1rem;
@@ -162,21 +86,6 @@
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-        
-        @media (max-width: 768px) {
-            .ai-title {
-                font-size: 2.5rem;
-            }
-            
-            .ai-card {
-                padding: 2rem;
-                margin: 1rem;
-            }
-            
-            .ai-hero {
-                min-height: 50vh;
-            }
         }
     </style>
 </head>
@@ -207,51 +116,46 @@
     </div>
     
     <div class="main-content">
-        <div class="ai-hero">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center">
-                        <h1 class="ai-title">AI Project Planner</h1>
-                        <p class="ai-subtitle">Transform your ideas into structured project plans with the power of artificial intelligence</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <header class="main-header">
+            <h1 class="current-category">AI Project Planner</h1>
+        </header>
         
-        <div class="container my-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="ai-card">
-                        <div class="text-center mb-4">
-                            <i class="fas fa-brain ai-icon"></i>
-                            <h2 class="h3 mb-3">Describe Your Project Vision</h2>
-                            <p class="text-muted">Tell our AI assistant about your project goals, requirements, and expectations. The more details you provide, the better the generated plan will be.</p>
-                        </div>
-                        
-                        <form id="aiPlannerForm">
-                            <div class="mb-4">
-                                <label for="projectDescription" class="form-label fw-semibold">Project Description</label>
-                                <textarea 
-                                    id="projectDescription" 
-                                    class="form-control ai-input" 
-                                    placeholder="Example: I want to create a modern e-commerce website for selling handmade crafts. The site should have user registration, product catalog, shopping cart, payment integration, and admin panel for managing orders and inventory. Target completion in 3 months with a team of 3 developers."
-                                    required
-                                ></textarea>
-                                <div class="form-text">
-                                    <i class="fas fa-lightbulb me-1"></i>
-                                    Tip: Include project scope, target audience, key features, timeline preferences, and team size for optimal results.
-                                </div>
-                            </div>
-                            
-                            <div class="text-center">
-                                <button type="submit" class="ai-btn">
-                                    <i class="fas fa-magic me-2"></i>
-                                    Generate AI Project Plan
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+        <div class="content-area">
+            <div class="ai-section">
+                <div class="text-center mb-4">
+                    <i class="fas fa-robot ai-icon"></i>
+                    <h3>AI-Powered Project Planning</h3>
+                    <p class="text-muted">Describe your project vision and let AI create a structured plan for you</p>
                 </div>
+                
+                <div class="ai-description">
+                    <h6><i class="fas fa-lightbulb me-2"></i>How it works</h6>
+                    <p class="mb-0">Provide a detailed description of your project including goals, requirements, timeline, and team size. Our AI will analyze your input and generate a comprehensive project plan with stories and tasks.</p>
+                </div>
+                
+                <form id="aiPlannerForm">
+                    <div class="mb-4">
+                        <label for="projectDescription" class="form-label fw-semibold">Project Description</label>
+                        <textarea 
+                            id="projectDescription" 
+                            class="form-control" 
+                            rows="6"
+                            placeholder="Example: I want to create a modern e-commerce website for selling handmade crafts. The site should have user registration, product catalog, shopping cart, payment integration, and admin panel for managing orders and inventory. Target completion in 3 months with a team of 3 developers."
+                            required
+                        ></textarea>
+                        <div class="form-text">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Include project scope, target audience, key features, timeline preferences, and team size for optimal results.
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="ai-btn">
+                            <i class="fas fa-magic me-2"></i>
+                            Generate AI Project Plan
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -260,7 +164,7 @@
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-content">
             <div class="spinner"></div>
-            <h4>AI is analyzing your project...</h4>
+            <h5>AI is analyzing your project...</h5>
             <p>Creating structured plan with stories and tasks</p>
         </div>
     </div>

@@ -28,6 +28,36 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
         
+        .ai-section {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            margin-bottom: 2rem;
+        }
+        
+        .ai-icon {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .ai-description {
+            background: rgba(255, 255, 255, 0.9);
+            border-left: 4px solid #667eea;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        
         .story-container {
             background: #f8fafc;
             border-radius: 8px;
@@ -37,21 +67,39 @@
         }
         
         .story-header {
-            padding: 1rem;
+            padding: 1rem 1.5rem;
             border-bottom: 1px solid #e2e8f0;
             background: #f1f5f9;
             border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .story-header h6 {
+            margin: 0;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .story-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
         
         .story-content {
-            padding: 1rem;
+            padding: 1.5rem;
         }
         
         .task-container {
             background: white;
             border-radius: 6px;
             border: 1px solid #e2e8f0;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
             padding: 1rem;
             transition: all 0.3s ease;
         }
@@ -64,10 +112,11 @@
         .duration-badge {
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            padding: 0.25rem 0.75rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 500;
+            white-space: nowrap;
         }
         
         .total-duration {
@@ -91,6 +140,24 @@
         }
         
         .add-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            color: white;
+        }
+        
+        .add-btn-small {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border: none;
+            border-radius: 4px;
+            padding: 0.4rem 0.8rem;
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+        }
+        
+        .add-btn-small:hover {
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
             color: white;
@@ -126,6 +193,49 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
             color: white;
+        }
+        
+        .task-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .task-header h6 {
+            margin: 0;
+            flex: 1;
+        }
+        
+        .task-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .story-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .story-header-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .task-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .task-actions {
+                width: 100%;
+                justify-content: flex-end;
+            }
         }
     </style>
 </head>
@@ -169,6 +279,19 @@
         </header>
         
         <div class="content-area">
+            <div class="ai-section">
+                <div class="text-center mb-4">
+                    <i class="fas fa-robot ai-icon"></i>
+                    <h4>AI-Generated Project Plan</h4>
+                    <p class="text-muted mb-0">Review and customize your project plan below</p>
+                </div>
+                
+                <div class="ai-description">
+                    <h6><i class="fas fa-lightbulb me-2"></i>Plan Details</h6>
+                    <p class="mb-0">Your project has been automatically structured with stories and tasks. You can edit any field, add or remove items, and adjust durations to fit your needs.</p>
+                </div>
+            </div>
+            
             <form id="projectPlanForm">
                 <!-- Project Overview -->
                 <div class="plan-section">
@@ -193,13 +316,32 @@
                     </div>
                     
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="mb-3">
                                 <label for="projectStartDate" class="form-label fw-semibold">Project Start Date</label>
                                 <input type="date" id="projectStartDate" class="form-control">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="weekendDays" class="form-label fw-semibold">Weekend Days per Week</label>
+                                <select id="weekendDays" class="form-select" onchange="updateProjectEndDate()">
+                                    <option value="1">1 Day (Friday only)</option>
+                                    <option value="2" selected>2 Days (Friday & Saturday)</option>
+                                    <option value="3">3 Days (Thursday, Friday & Saturday)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-3">
+                                <label for="bufferDays" class="form-label fw-semibold">Buffer Days (Holidays/Vacation)</label>
+                                <input type="number" id="bufferDays" class="form-control" value="0" min="0" onchange="updateProjectEndDate()">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-12">
                             <div class="mb-3">
                                 <label class="form-label fw-semibold">Calculated End Date</label>
                                 <input type="text" id="projectEndDate" class="form-control" readonly>
@@ -228,6 +370,13 @@
                     
                     <div id="storiesContainer">
                         <!-- Stories will be generated here -->
+                    </div>
+                    
+                    <!-- Add Story Button at the end -->
+                    <div class="text-center">
+                        <button type="button" class="add-btn-small" onclick="addStory()">
+                            <i class="fas fa-plus me-2"></i>Add Another Story
+                        </button>
                     </div>
                 </div>
                 
@@ -294,7 +443,7 @@
                 addStoryWithData(story);
             });
             
-            // Update total duration
+            // Update total duration and end date
             updateProjectDuration();
             updateProjectEndDate();
         }
@@ -314,19 +463,17 @@
             
             storyDiv.innerHTML = `
                 <div class="story-header">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h6 class="mb-0">
-                            <i class="fas fa-bookmark text-info me-2"></i>
-                            Story ${storyCounter}
-                        </h6>
-                        <div class="d-flex align-items-center gap-2">
-                            <span class="duration-badge">
-                                <span class="story-duration">${storyDuration}</span> days
-                            </span>
-                            <button type="button" class="remove-btn" onclick="removeStory(${storyCounter})">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
+                    <h6>
+                        <i class="fas fa-bookmark text-info me-2"></i>
+                        Story ${storyCounter}
+                    </h6>
+                    <div class="story-header-actions">
+                        <span class="duration-badge">
+                            <span class="story-duration">${storyDuration}</span> days
+                        </span>
+                        <button type="button" class="remove-btn" onclick="removeStory(${storyCounter})">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </div>
                 </div>
                 
@@ -356,6 +503,13 @@
                     
                     <div class="tasks-container" id="tasks-${storyCounter}">
                         <!-- Tasks will be added here -->
+                    </div>
+                    
+                    <!-- Add Task Button at the end of tasks -->
+                    <div class="text-center">
+                        <button type="button" class="add-btn-small" onclick="addTask(${storyCounter})">
+                            <i class="fas fa-plus me-1"></i>Add Another Task
+                        </button>
                     </div>
                 </div>
             `;
@@ -406,10 +560,10 @@
             const taskDuration = taskData ? taskData.duration : 1;
             
             taskDiv.innerHTML = `
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h6 class="mb-0"><i class="fas fa-check-circle text-success me-2"></i>Task</h6>
-                    <div class="d-flex align-items-center gap-2">
-                        <small class="text-muted">
+                <div class="task-header">
+                    <h6><i class="fas fa-check-circle text-success me-2"></i>Task</h6>
+                    <div class="task-actions">
+                        <small class="text-muted me-2">
                             <span class="task-duration">${taskDuration}</span> days
                         </small>
                         <button type="button" class="remove-btn" onclick="removeTask(${taskCounter}, ${storyId})">
@@ -503,17 +657,50 @@
             document.getElementById('totalDuration').textContent = totalDuration;
         }
 
-        // Update project end date based on start date and duration
+        // Calculate working days considering weekends and buffer
+        function calculateWorkingDays(startDate, totalDays, weekendDaysPerWeek, bufferDays) {
+            const start = new Date(startDate);
+            let currentDate = new Date(start);
+            let remainingDays = totalDays;
+            
+            while (remainingDays > 0) {
+                const dayOfWeek = currentDate.getDay(); // 0 = Sunday, 6 = Saturday
+                
+                // Determine if current day is a weekend based on selection
+                let isWeekend = false;
+                if (weekendDaysPerWeek === 1) {
+                    isWeekend = dayOfWeek === 5; // Friday only
+                } else if (weekendDaysPerWeek === 2) {
+                    isWeekend = dayOfWeek === 5 || dayOfWeek === 6; // Friday & Saturday
+                } else if (weekendDaysPerWeek === 3) {
+                    isWeekend = dayOfWeek === 4 || dayOfWeek === 5 || dayOfWeek === 6; // Thursday, Friday & Saturday
+                }
+                
+                if (!isWeekend) {
+                    remainingDays--;
+                }
+                
+                if (remainingDays > 0) {
+                    currentDate.setDate(currentDate.getDate() + 1);
+                }
+            }
+            
+            // Add buffer days
+            currentDate.setDate(currentDate.getDate() + bufferDays);
+            
+            return currentDate;
+        }
+
+        // Update project end date based on start date, duration, weekends, and buffer
         function updateProjectEndDate() {
             const startDate = document.getElementById('projectStartDate').value;
             const duration = parseInt(document.getElementById('totalDuration').textContent) || 0;
+            const weekendDays = parseInt(document.getElementById('weekendDays').value) || 2;
+            const bufferDays = parseInt(document.getElementById('bufferDays').value) || 0;
             
-            if (startDate) {
-                const start = new Date(startDate);
-                const end = new Date(start);
-                end.setDate(start.getDate() + duration);
-                
-                document.getElementById('projectEndDate').value = end.toISOString().split('T')[0];
+            if (startDate && duration > 0) {
+                const endDate = calculateWorkingDays(startDate, duration, weekendDays, bufferDays);
+                document.getElementById('projectEndDate').value = endDate.toISOString().split('T')[0];
             }
         }
 

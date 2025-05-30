@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enjaz - View Configuration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .config-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .config-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .config-header {
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .config-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .config-meta {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        .section-header {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 0;
+        }
+        
+        .story-card {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .story-number {
+            background: #3b82f6;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        .story-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 0;
+        }
+        
+        .story-duration {
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .story-description {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .task-card {
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            margin-left: 2rem;
+        }
+        
+        .task-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .task-number {
+            background: #10b981;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        
+        .task-title {
+            font-weight: 600;
+            color: #1e293b;
+            margin: 0;
+        }
+        
+        .task-duration {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 0.125rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .task-description {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .empty-section {
+            text-align: center;
+            padding: 3rem;
+            color: #9ca3af;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3><i class="fas fa-layer-group me-2"></i>Enjaz</h3>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <h6 class="nav-section-title">PAGES</h6>
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a>
+                <a href="projects.html" class="nav-link"><i class="fas fa-project-diagram"></i><span>Projects</span></a>
+                <a href="stories.html" class="nav-link"><i class="fas fa-bookmark"></i><span>Stories</span></a>
+                <a href="tasks.html" class="nav-link"><i class="fas fa-tasks"></i><span>Tasks</span></a>
+                <a href="completed.html" class="nav-link"><i class="fas fa-check-circle"></i><span>Completed</span></a>
+            </div>
+            <div class="nav-section">
+                <h6 class="nav-section-title">AI PLANNER</h6>
+                <a href="ai-planner.html" class="nav-link"><i class="fas fa-robot"></i><span>AI Planner</span></a>
+                <a href="ai-configurations.html" class="nav-link active"><i class="fas fa-cog"></i><span>Configurations</span></a>
+            </div>
+            <div class="nav-section">
+                <h6 class="nav-section-title">USUAL BUSINESS</h6>
+                <a href="daily-journal.html" class="nav-link"><i class="fas fa-book"></i><span>Daily Journal</span></a>
+                <a href="simple-todo.html" class="nav-link"><i class="fas fa-list-check"></i><span>Simple ToDo</span></a>
+            </div>
+            <div class="nav-section">
+                <h6 class="nav-section-title">AREAS</h6>
+                <a href="work-center.html" class="nav-link"><i class="fas fa-briefcase"></i><span>Work Center</span></a>
+            </div>
+            <div class="nav-section">
+                <h6 class="nav-section-title">QUICK ACTIONS</h6>
+                <a href="login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i><span>Exit</span></a>
+            </div>
+        </nav>
+    </div>
+    
+    <div class="main-content">
+        <header class="main-header">
+            <h1 class="current-category">View Configuration</h1>
+            <div class="header-actions">
+                <a href="ai-configurations.html" class="btn btn-outline-secondary me-2">
+                    <i class="fas fa-arrow-left me-2"></i>Back to Configurations
+                </a>
+                <a href="#" id="editConfigBtn" class="btn btn-primary">
+                    <i class="fas fa-edit me-2"></i>Edit Configuration
+                </a>
+            </div>
+        </header>
+        
+        <div class="content-area">
+            <div class="config-container">
+                <div class="config-card">
+                    <div class="config-header">
+                        <h2 class="config-title" id="configTitle">Loading...</h2>
+                        <div class="config-meta" id="configMeta"></div>
+                    </div>
+                    
+                    <!-- Pre-Stories Section -->
+                    <div class="section-header">
+                        <h3 class="section-title">
+                            <i class="fas fa-play-circle me-2"></i>Pre-Stories
+                        </h3>
+                    </div>
+                    <div id="preStoriesContainer">
+                        <!-- Pre-stories will be loaded here -->
+                    </div>
+                    
+                    <!-- Post-Stories Section -->
+                    <div class="section-header">
+                        <h3 class="section-title">
+                            <i class="fas fa-flag-checkered me-2"></i>Post-Stories
+                        </h3>
+                    </div>
+                    <div id="postStoriesContainer">
+                        <!-- Post-stories will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const configId = urlParams.get('id');
+            
+            if (configId) {
+                loadConfiguration(configId);
+            } else {
+                window.location.href = 'ai-configurations.html';
+            }
+        });
+
+        function loadConfiguration(configId) {
+            const configurations = JSON.parse(localStorage.getItem('aiConfigurations') || '[]');
+            const config = configurations.find(c => c.id === configId);
+
+            if (!config) {
+                alert('Configuration not found.');
+                window.location.href = 'ai-configurations.html';
+                return;
+            }
+
+            // Set config header
+            document.getElementById('configTitle').textContent = config.name;
+            document.getElementById('configMeta').innerHTML = `
+                Created: ${new Date(config.createdAt || Date.now()).toLocaleDateString()} | 
+                ${config.preStories.length} Pre-Stories | 
+                ${config.postStories.length} Post-Stories | 
+                ${getTotalTasks(config)} Total Tasks
+            `;
+
+            // Set edit button link
+            document.getElementById('editConfigBtn').href = `ai-config-edit.html?id=${configId}`;
+
+            // Load pre-stories
+            loadStories(config.preStories, 'preStoriesContainer');
+            
+            // Load post-stories
+            loadStories(config.postStories, 'postStoriesContainer');
+        }
+
+        function loadStories(stories, containerId) {
+            const container = document.getElementById(containerId);
+            
+            if (stories.length === 0) {
+                container.innerHTML = '<div class="empty-section">No stories configured</div>';
+                return;
+            }
+
+            container.innerHTML = stories.map((story, index) => `
+                <div class="story-card">
+                    <div class="story-header">
+                        <div class="story-number">${index + 1}</div>
+                        <div class="flex-grow-1">
+                            <h4 class="story-title">${story.title}</h4>
+                        </div>
+                        <div class="story-duration">
+                            <i class="fas fa-clock me-1"></i>${story.duration} days
+                        </div>
+                    </div>
+                    
+                    ${story.description ? `<div class="story-description">${story.description}</div>` : ''}
+                    
+                    ${story.tasks && story.tasks.length > 0 ? `
+                        <div class="mb-2">
+                            <strong><i class="fas fa-tasks me-1"></i>Tasks:</strong>
+                        </div>
+                        ${story.tasks.map((task, taskIndex) => `
+                            <div class="task-card">
+                                <div class="task-header">
+                                    <div class="task-number">${taskIndex + 1}</div>
+                                    <div class="flex-grow-1">
+                                        <h6 class="task-title">${task.title}</h6>
+                                    </div>
+                                    <div class="task-duration">
+                                        ${task.duration} days
+                                    </div>
+                                </div>
+                                ${task.description ? `<div class="task-description">${task.description}</div>` : ''}
+                            </div>
+                        `).join('')}
+                    ` : ''}
+                </div>
+            `).join('');
+        }
+
+        function getTotalTasks(config) {
+            let totalTasks = 0;
+            config.preStories.forEach(story => {
+                if (story.tasks) totalTasks += story.tasks.length;
+            });
+            config.postStories.forEach(story => {
+                if (story.tasks) totalTasks += story.tasks.length;
+            });
+            return totalTasks;
+        }
+    </script>
+    <script src="https://cdn.gpteng.co/gptengineer.js"></script>
+</body>
+</html>

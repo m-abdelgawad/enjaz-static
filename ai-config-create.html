@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enjaz - Create Configuration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .form-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .form-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        
+        .section-header {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-description {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin: 0;
+        }
+        
+        .story-card {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .story-number {
+            background: #3b82f6;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+        
+        .task-card {
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            margin-left: 2rem;
+            position: relative;
+        }
+        
+        .task-card::before {
+            content: '';
+            position: absolute;
+            left: -1rem;
+            top: 1rem;
+            width: 3px;
+            height: calc(100% - 2rem);
+            background: #d1d5db;
+        }
+        
+        .task-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        
+        .task-number {
+            background: #10b981;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.75rem;
+        }
+        
+        .form-label {
+            color: #374151;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+        
+        .form-control, .form-select {
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 0.75rem;
+            color: #374151;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.15);
+        }
+        
+        .duration-input {
+            width: 100px;
+        }
+        
+        .add-btn {
+            background: #10b981;
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .add-btn:hover {
+            background: #059669;
+            color: white;
+        }
+        
+        .remove-btn {
+            background: #ef4444;
+            border: none;
+            color: white;
+            padding: 0.375rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        
+        .remove-btn:hover {
+            background: #dc2626;
+            color: white;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border: none;
+            padding: 0.75rem 2rem;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3><i class="fas fa-layer-group me-2"></i>Enjaz</h3>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-section">
+                <h6 class="nav-section-title">PAGES</h6>
+                <a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a>
+                <a href="projects.html" class="nav-link"><i class="fas fa-project-diagram"></i><span>Projects</span></a>
+                <a href="stories.html" class="nav-link"><i class="fas fa-bookmark"></i><span>Stories</span></a>
+                <a href="tasks.html" class="nav-link"><i class="fas fa-tasks"></i><span>Tasks</span></a>
+                <a href="completed.html" class="nav-link"><i class="fas fa-check-circle"></i><span>Completed</span></a>
+            </div>
+            <div class="nav-section">
+                <h6 class="nav-section-title">AI PLANNER</h6>
+                <a href="ai-planner.html" class="nav-link"><i class="fas fa-robot"></i><span>AI Planner</span></a>
+                <a href="ai-configurations.html" class="nav-link active"><i class="fas fa-cog"></i><span>Configurations</span></a>
+            </div>
+            <div class="nav-section">
+                <h6 class="nav-section-title">USUAL BUSINESS</h6>
+                <a href="daily-journal.html" class="nav-link"><i class="fas fa-book"></i><span>Daily Journal</span></a>
+                <a href="simple-todo.html" class="nav-link"><i class="fas fa-list-check"></i><span>Simple ToDo</span></a>
+            </div>
+            <div class="nav-section">
+                <h6 class="nav-section-title">AREAS</h6>
+                <a href="work-center.html" class="nav-link"><i class="fas fa-briefcase"></i><span>Work Center</span></a>
+            </div>
+            <div class="nav-section">
+                <h6 class="nav-section-title">QUICK ACTIONS</h6>
+                <a href="login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i><span>Exit</span></a>
+            </div>
+        </nav>
+    </div>
+    
+    <div class="main-content">
+        <header class="main-header">
+            <h1 class="current-category">Create Configuration</h1>
+            <div class="header-actions">
+                <a href="ai-configurations.html" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-2"></i>Back to Configurations
+                </a>
+            </div>
+        </header>
+        
+        <div class="content-area">
+            <div class="form-container">
+                <div class="form-card">
+                    <form id="configForm">
+                        <div class="mb-4">
+                            <label for="configName" class="form-label">Configuration Name</label>
+                            <input type="text" class="form-control" id="configName" placeholder="Enter configuration name" required>
+                        </div>
+                        
+                        <!-- Pre-Stories Section -->
+                        <div class="section-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="section-title">Pre-Stories</div>
+                                    <p class="section-description">Stories added at the beginning of AI-generated project plans</p>
+                                </div>
+                                <button type="button" class="add-btn" onclick="addStory('pre')">
+                                    <i class="fas fa-plus"></i>Add Pre-Story
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div id="preStoriesList" class="mb-5">
+                            <!-- Pre-stories will be added here -->
+                        </div>
+                        
+                        <!-- Post-Stories Section -->
+                        <div class="section-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="section-title">Post-Stories</div>
+                                    <p class="section-description">Stories added at the end of AI-generated project plans</p>
+                                </div>
+                                <button type="button" class="add-btn" onclick="addStory('post')">
+                                    <i class="fas fa-plus"></i>Add Post-Story
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div id="postStoriesList" class="mb-5">
+                            <!-- Post-stories will be added here -->
+                        </div>
+                        
+                        <div class="d-flex gap-3">
+                            <button type="button" class="btn btn-primary" onclick="saveConfiguration()">
+                                <i class="fas fa-save me-2"></i>Save Configuration
+                            </button>
+                            <a href="ai-configurations.html" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let storyCounter = 0;
+        let taskCounter = 0;
+
+        function addStory(type) {
+            const storiesListId = type === 'pre' ? 'preStoriesList' : 'postStoriesList';
+            const storiesList = document.getElementById(storiesListId);
+            
+            const storyId = `${type}_story_${storyCounter++}`;
+            const storyNumber = storiesList.children.length + 1;
+
+            const storyCard = document.createElement('div');
+            storyCard.classList.add('story-card');
+            storyCard.setAttribute('data-story-id', storyId);
+            
+            storyCard.innerHTML = `
+                <div class="story-header">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="story-number">${storyNumber}</div>
+                        <h6 class="mb-0">Story ${storyNumber}</h6>
+                    </div>
+                    <button class="remove-btn" onclick="removeStory(this)" type="button">
+                        <i class="fas fa-trash"></i>Remove
+                    </button>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col-md-8">
+                        <label class="form-label">Story Title</label>
+                        <input type="text" class="form-control story-title" placeholder="Enter story title" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Duration (Days)</label>
+                        <input type="number" class="form-control story-duration duration-input" placeholder="Days" min="1" required>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Story Description</label>
+                    <textarea class="form-control story-description" rows="2" placeholder="Enter story description"></textarea>
+                </div>
+                
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h6 class="mb-0"><i class="fas fa-tasks me-2"></i>Tasks</h6>
+                    <button type="button" class="add-btn btn-sm" onclick="addTask('${storyId}')">
+                        <i class="fas fa-plus"></i>Add Task
+                    </button>
+                </div>
+                
+                <div id="${storyId}_tasks">
+                    <!-- Tasks will be added here -->
+                </div>
+            `;
+
+            storiesList.appendChild(storyCard);
+            updateStoryNumbers(type);
+        }
+
+        function addTask(storyId) {
+            const tasksContainer = document.getElementById(`${storyId}_tasks`);
+            const taskId = `${storyId}_task_${taskCounter++}`;
+            const taskNumber = tasksContainer.children.length + 1;
+
+            const taskCard = document.createElement('div');
+            taskCard.classList.add('task-card');
+            taskCard.setAttribute('data-task-id', taskId);
+            
+            taskCard.innerHTML = `
+                <div class="task-header">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="task-number">${taskNumber}</div>
+                        <h6 class="mb-0">Task ${taskNumber}</h6>
+                    </div>
+                    <button class="remove-btn" onclick="removeTask(this, '${storyId}')" type="button">
+                        <i class="fas fa-trash"></i>Remove
+                    </button>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col-md-8">
+                        <label class="form-label">Task Title</label>
+                        <input type="text" class="form-control task-title" placeholder="Enter task title" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Duration (Days)</label>
+                        <input type="number" class="form-control task-duration duration-input" placeholder="Days" min="1" required onchange="updateStoryDuration('${storyId}')">
+                    </div>
+                </div>
+                
+                <div class="mb-2">
+                    <label class="form-label">Task Description</label>
+                    <textarea class="form-control task-description" rows="2" placeholder="Enter task description"></textarea>
+                </div>
+            `;
+
+            tasksContainer.appendChild(taskCard);
+            updateTaskNumbers(storyId);
+            updateStoryDuration(storyId);
+        }
+
+        function removeStory(button) {
+            const storyCard = button.closest('.story-card');
+            const storiesList = storyCard.parentElement;
+            const type = storiesList.id.includes('pre') ? 'pre' : 'post';
+            
+            storyCard.remove();
+            updateStoryNumbers(type);
+        }
+
+        function removeTask(button, storyId) {
+            const taskCard = button.closest('.task-card');
+            taskCard.remove();
+            updateTaskNumbers(storyId);
+            updateStoryDuration(storyId);
+        }
+
+        function updateStoryNumbers(type) {
+            const storiesListId = type === 'pre' ? 'preStoriesList' : 'postStoriesList';
+            const storiesList = document.getElementById(storiesListId);
+            const storyCards = storiesList.querySelectorAll('.story-card');
+            
+            storyCards.forEach((card, index) => {
+                const storyNumber = index + 1;
+                const numberElement = card.querySelector('.story-number');
+                const titleElement = card.querySelector('.story-header h6');
+                
+                numberElement.textContent = storyNumber;
+                titleElement.textContent = `Story ${storyNumber}`;
+            });
+        }
+
+        function updateTaskNumbers(storyId) {
+            const tasksContainer = document.getElementById(`${storyId}_tasks`);
+            const taskCards = tasksContainer.querySelectorAll('.task-card');
+            
+            taskCards.forEach((card, index) => {
+                const taskNumber = index + 1;
+                const numberElement = card.querySelector('.task-number');
+                const titleElement = card.querySelector('.task-header h6');
+                
+                numberElement.textContent = taskNumber;
+                titleElement.textContent = `Task ${taskNumber}`;
+            });
+        }
+
+        function updateStoryDuration(storyId) {
+            const storyCard = document.querySelector(`[data-story-id="${storyId}"]`);
+            const storyDurationInput = storyCard.querySelector('.story-duration');
+            const tasksContainer = document.getElementById(`${storyId}_tasks`);
+            const taskCards = tasksContainer.querySelectorAll('.task-card');
+
+            if (taskCards.length > 0) {
+                let totalDuration = 0;
+                taskCards.forEach(taskCard => {
+                    const duration = parseInt(taskCard.querySelector('.task-duration').value) || 0;
+                    totalDuration += duration;
+                });
+                storyDurationInput.value = totalDuration;
+                storyDurationInput.readOnly = true;
+                storyDurationInput.style.backgroundColor = '#f3f4f6';
+            } else {
+                storyDurationInput.readOnly = false;
+                storyDurationInput.style.backgroundColor = '';
+            }
+        }
+
+        function saveConfiguration() {
+            const configName = document.getElementById('configName').value.trim();
+            const preStories = getStories('preStoriesList');
+            const postStories = getStories('postStoriesList');
+
+            if (!configName) {
+                alert('Please enter a configuration name.');
+                return;
+            }
+
+            const config = {
+                id: generateId(),
+                name: configName,
+                preStories: preStories,
+                postStories: postStories,
+                createdAt: new Date().toISOString()
+            };
+
+            let configurations = JSON.parse(localStorage.getItem('aiConfigurations') || '[]');
+            configurations.push(config);
+            localStorage.setItem('aiConfigurations', JSON.stringify(configurations));
+
+            window.location.href = 'ai-configurations.html';
+        }
+
+        function getStories(storiesListId) {
+            const storiesList = document.getElementById(storiesListId);
+            const storyCards = storiesList.querySelectorAll('.story-card');
+            const stories = [];
+
+            storyCards.forEach(storyCard => {
+                const title = storyCard.querySelector('.story-title').value.trim();
+                const description = storyCard.querySelector('.story-description').value.trim();
+                const duration = parseInt(storyCard.querySelector('.story-duration').value) || 0;
+                
+                const tasks = [];
+                const taskCards = storyCard.querySelectorAll('.task-card');
+                taskCards.forEach(taskCard => {
+                    const taskTitle = taskCard.querySelector('.task-title').value.trim();
+                    const taskDescription = taskCard.querySelector('.task-description').value.trim();
+                    const taskDuration = parseInt(taskCard.querySelector('.task-duration').value) || 0;
+                    
+                    if (taskTitle) {
+                        tasks.push({
+                            title: taskTitle,
+                            description: taskDescription,
+                            duration: taskDuration
+                        });
+                    }
+                });
+
+                if (title) {
+                    stories.push({
+                        title: title,
+                        description: description,
+                        duration: duration,
+                        tasks: tasks
+                    });
+                }
+            });
+
+            return stories;
+        }
+
+        function generateId() {
+            return Math.random().toString(36).substring(2, 15);
+        }
+    </script>
+    <script src="https://cdn.gpteng.co/gptengineer.js"></script>
+</body>
+</html>

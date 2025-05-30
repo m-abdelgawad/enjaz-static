@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +8,61 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .highlight-box.danger {
+            background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%);
+            border-color: #ef4444;
+        }
+        
+        .highlight-title {
+            font-weight: 600;
+            color: #92400e;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .highlight-box.danger .highlight-title {
+            color: #dc2626;
+        }
+        
+        .highlight-item {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 6px;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: between;
+            align-items: center;
+        }
+        
+        .highlight-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .highlight-content {
+            flex: 1;
+        }
+        
+        .highlight-task-title {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        
+        .highlight-meta {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+    </style>
 </head>
 <body>
     <div class="sidebar">
@@ -25,14 +79,21 @@
                 <a href="completed.html" class="nav-link"><i class="fas fa-check-circle"></i><span>Completed</span></a>
             </div>
             <div class="nav-section">
+                <h6 class="nav-section-title">AI PLANNER</h6>
+                <a href="ai-planner.html" class="nav-link"><i class="fas fa-robot"></i><span>AI Planner</span></a>
+                <a href="ai-configurations.html" class="nav-link"><i class="fas fa-cog"></i><span>Configurations</span></a>
+            </div>
+            <div class="nav-section">
+                <h6 class="nav-section-title">USUAL BUSINESS</h6>
+                <a href="daily-journal.html" class="nav-link"><i class="fas fa-book"></i><span>Daily Journal</span></a>
+                <a href="simple-todo.html" class="nav-link"><i class="fas fa-list-check"></i><span>Simple ToDo</span></a>
+            </div>
+            <div class="nav-section">
                 <h6 class="nav-section-title">AREAS</h6>
                 <a href="work-center.html" class="nav-link active"><i class="fas fa-briefcase"></i><span>Work Center</span></a>
             </div>
             <div class="nav-section">
                 <h6 class="nav-section-title">QUICK ACTIONS</h6>
-                <a href="project-edit.html" class="nav-link"><i class="fas fa-plus"></i><span>New Project</span></a>
-                <a href="story-edit.html" class="nav-link"><i class="fas fa-bookmark"></i><span>New Story</span></a>
-                <a href="task-edit.html" class="nav-link"><i class="fas fa-check-square"></i><span>New Task</span></a>
                 <a href="login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i><span>Exit</span></a>
             </div>
         </nav>
@@ -53,7 +114,7 @@
                     </div>
                     <div class="quick-stat-content">
                         <div class="quick-stat-number">2</div>
-                        <div class="quick-stat-label">In Progress Projects</div>
+                        <div class="quick-stat-label">Work Projects In Progress</div>
                     </div>
                 </div>
                 <div class="quick-stat-item">
@@ -62,7 +123,7 @@
                     </div>
                     <div class="quick-stat-content">
                         <div class="quick-stat-number">5</div>
-                        <div class="quick-stat-label">In Progress Stories</div>
+                        <div class="quick-stat-label">Work Stories In Progress</div>
                     </div>
                 </div>
                 <div class="quick-stat-item">
@@ -71,7 +132,7 @@
                     </div>
                     <div class="quick-stat-content">
                         <div class="quick-stat-number">12</div>
-                        <div class="quick-stat-label">In Progress Tasks</div>
+                        <div class="quick-stat-label">Work Tasks In Progress</div>
                     </div>
                 </div>
                 <div class="quick-stat-item">
@@ -85,7 +146,52 @@
                 </div>
             </div>
 
-            <div class="dashboard-section">
+            <!-- Highlighted Boxes Row -->
+            <div class="row mb-4">
+                <div class="col-lg-6">
+                    <div class="highlight-box danger">
+                        <div class="highlight-title">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Tasks Overdue to Start
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-content">
+                                <div class="highlight-task-title">Server Setup</div>
+                                <div class="highlight-meta">Mobile App Development • Should have started 2 days ago</div>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-content">
+                                <div class="highlight-task-title">Database Design</div>
+                                <div class="highlight-meta">API Integration • Should have started yesterday</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="highlight-box">
+                        <div class="highlight-title">
+                            <i class="fas fa-clock"></i>
+                            Projects Due in Next 2 Weeks
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-content">
+                                <div class="highlight-task-title">Website Redesign</div>
+                                <div class="highlight-meta">Due: June 15, 2025 • 67% complete</div>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-content">
+                                <div class="highlight-task-title">API Integration</div>
+                                <div class="highlight-meta">Due: July 10, 2025 • 63% complete</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Work Projects Section -->
+            <div class="dashboard-section mb-4">
                 <div class="dashboard-section-header">
                     <h2 class="dashboard-section-title">Work Projects</h2>
                     <a href="projects.html" class="btn btn-sm btn-outline-primary">View All</a>
@@ -107,10 +213,51 @@
                         </div>
                         <div class="d-flex gap-2 mt-3">
                             <a href="project-view.html" class="btn btn-sm btn-outline-primary">View</a>
+                            <a href="project-edit.html" class="btn btn-sm btn-outline-secondary">Edit</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">Mobile App Development</h3>
+                            <span class="project-status status-not_started">Not Started</span>
+                        </div>
+                        <p class="project-description">Development of mobile application for iOS and Android platforms</p>
+                        <div class="project-stats">
+                            <span class="stat-item"><i class="fas fa-bookmark me-1"></i>5 stories</span>
+                            <span class="stat-item"><i class="fas fa-tasks me-1"></i>18 tasks</span>
+                            <span class="stat-item"><i class="fas fa-check me-1"></i>0 completed</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <div class="d-flex gap-2 mt-3">
+                            <a href="project-view.html" class="btn btn-sm btn-outline-primary">View</a>
+                            <a href="project-edit.html" class="btn btn-sm btn-outline-secondary">Edit</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3 class="project-title">API Integration</h3>
+                            <span class="project-status status-in_progress">In Progress</span>
+                        </div>
+                        <p class="project-description">Integration with third-party APIs and backend optimization</p>
+                        <div class="project-stats">
+                            <span class="stat-item"><i class="fas fa-bookmark me-1"></i>2 stories</span>
+                            <span class="stat-item"><i class="fas fa-tasks me-1"></i>8 tasks</span>
+                            <span class="stat-item"><i class="fas fa-check me-1"></i>5 completed</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 63%"></div>
+                        </div>
+                        <div class="d-flex gap-2 mt-3">
+                            <a href="project-view.html" class="btn btn-sm btn-outline-primary">View</a>
+                            <a href="project-edit.html" class="btn btn-sm btn-outline-secondary">Edit</a>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- All Work Tasks Section -->
             <div class="dashboard-section">
                 <div class="dashboard-section-header">
                     <h2 class="dashboard-section-title">All Work Tasks</h2>
@@ -157,6 +304,61 @@
                                 <td><span class="badge bg-primary">In Progress</span></td>
                                 <td><span class="priority-low"><i class="fas fa-flag me-1"></i>Low</span></td>
                                 <td>May 20, 2025</td>
+                                <td>
+                                    <a href="task-view.html" class="btn btn-sm btn-outline-primary">View</a>
+                                    <a href="task-edit.html" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Database schema design</td>
+                                <td>API Integration</td>
+                                <td><span class="badge bg-success">Completed</span></td>
+                                <td><span class="priority-high"><i class="fas fa-flag me-1"></i>High</span></td>
+                                <td>May 18, 2025</td>
+                                <td>
+                                    <a href="task-view.html" class="btn btn-sm btn-outline-primary">View</a>
+                                    <a href="task-edit.html" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>API endpoint development</td>
+                                <td>API Integration</td>
+                                <td><span class="badge bg-primary">In Progress</span></td>
+                                <td><span class="priority-high"><i class="fas fa-flag me-1"></i>High</span></td>
+                                <td>May 28, 2025</td>
+                                <td>
+                                    <a href="task-view.html" class="btn btn-sm btn-outline-primary">View</a>
+                                    <a href="task-edit.html" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Security testing</td>
+                                <td>API Integration</td>
+                                <td><span class="badge bg-secondary">Not Started</span></td>
+                                <td><span class="priority-medium"><i class="fas fa-flag me-1"></i>Medium</span></td>
+                                <td>June 2, 2025</td>
+                                <td>
+                                    <a href="task-view.html" class="btn btn-sm btn-outline-primary">View</a>
+                                    <a href="task-edit.html" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>App store submission</td>
+                                <td>Mobile App Development</td>
+                                <td><span class="badge bg-secondary">Not Started</span></td>
+                                <td><span class="priority-low"><i class="fas fa-flag me-1"></i>Low</span></td>
+                                <td>August 25, 2025</td>
+                                <td>
+                                    <a href="task-view.html" class="btn btn-sm btn-outline-primary">View</a>
+                                    <a href="task-edit.html" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>User interface design</td>
+                                <td>Mobile App Development</td>
+                                <td><span class="badge bg-secondary">Not Started</span></td>
+                                <td><span class="priority-high"><i class="fas fa-flag me-1"></i>High</span></td>
+                                <td>June 10, 2025</td>
                                 <td>
                                     <a href="task-view.html" class="btn btn-sm btn-outline-primary">View</a>
                                     <a href="task-edit.html" class="btn btn-sm btn-outline-secondary">Edit</a>

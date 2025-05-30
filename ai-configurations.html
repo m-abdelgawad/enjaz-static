@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,155 +9,152 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        .config-card {
-            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-            border-radius: 12px;
+        .configurations-container {
             padding: 2rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            border-radius: 16px;
             border: 1px solid #e2e8f0;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        
+        .configurations-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .configuration-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 1.5rem;
             transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
         
-        .config-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        .configuration-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
         
-        .config-header {
-            display: flex;
-            justify-content: between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .config-name {
+        .configuration-name {
+            font-size: 1.125rem;
             font-weight: 600;
             color: #1e293b;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
         
-        .story-item, .task-item {
-            background: #f1f5f9;
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-left: 3px solid #3b82f6;
+        .configuration-details {
+            color: #475569;
+            font-size: 0.875rem;
         }
         
-        .task-item {
-            background: #f0f9ff;
-            border-left-color: #06b6d4;
-            margin-left: 1.5rem;
-            margin-top: 0.75rem;
-        }
-        
-        .duration-badge {
-            background: #3b82f6;
-            color: white;
-            padding: 0.3rem 0.75rem;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-        
-        .task-duration-badge {
-            background: #06b6d4;
-            color: white;
-            padding: 0.3rem 0.75rem;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 500;
+        .configuration-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1.5rem;
+            gap: 0.5rem;
         }
         
         .empty-state {
             text-align: center;
-            padding: 4rem 2rem;
-            color: #64748b;
+            padding: 3rem 1rem;
+            color: #6b7280;
         }
         
-        .empty-state i {
-            font-size: 3rem;
-            color: #cbd5e1;
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-section {
-            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-            border-radius: 12px;
-            padding: 2.5rem;
-            border: 1px solid #e2e8f0;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-        }
-        
-        .story-form, .task-form {
-            background: #f8fafc;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border: 1px solid #e2e8f0;
-        }
-        
-        .task-form {
-            margin-left: 1rem;
-            margin-top: 1rem;
-            padding: 1rem;
-        }
-        
-        .duration-input {
-            width: 80px;
-        }
-        
-        .auto-calculated {
-            background: #e2e8f0 !important;
-            color: #64748b !important;
-        }
-        
-        .explanation-box {
-            background: #e0f2fe;
-            border: 1px solid #0891b2;
-            border-radius: 8px;
-            padding: 1rem;
+        .stories-section {
             margin-bottom: 2rem;
-            color: #0c4a6e;
         }
         
-        .explanation-box i {
-            color: #0891b2;
-            margin-right: 0.5rem;
+        .stories-list {
+            margin-bottom: 1rem;
         }
         
-        .form-group {
-            margin-bottom: 1.5rem;
+        .story-item {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
         
-        .btn {
-            margin: 0.25rem;
+        .story-title {
+            flex: 1;
+            margin: 0;
+            color: #374151;
+            font-weight: 500;
         }
         
+        .story-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .form-label {
+            color: #1e293b;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-control, .form-select {
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            padding: 0.75rem;
+            color: #1e293b;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.15);
+            background-color: #ffffff;
+        }
+        
+        .form-text {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+        }
+        
+        .modal-header {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .modal-footer {
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .d-inline-flex {
+            display: inline-flex;
+        }
+        
+        /* Responsive improvements */
         @media (max-width: 768px) {
-            .config-card {
+            .configurations-container {
                 padding: 1.5rem;
-                margin-bottom: 1.5rem;
             }
             
-            .form-section {
-                padding: 1.5rem;
-                margin-bottom: 2rem;
-            }
-            
-            .story-form, .task-form {
+            .configuration-card {
                 padding: 1rem;
-                margin-bottom: 1rem;
             }
             
-            .task-form {
-                margin-left: 0.5rem;
-            }
-            
-            .empty-state {
-                padding: 2rem 1rem;
+            .configuration-actions {
+                flex-direction: column;
+                align-items: stretch;
             }
         }
     </style>
@@ -183,6 +179,11 @@
                 <a href="ai-configurations.html" class="nav-link active"><i class="fas fa-cog"></i><span>Configurations</span></a>
             </div>
             <div class="nav-section">
+                <h6 class="nav-section-title">USUAL BUSINESS</h6>
+                <a href="daily-journal.html" class="nav-link"><i class="fas fa-book"></i><span>Daily Journal</span></a>
+                <a href="simple-todo.html" class="nav-link"><i class="fas fa-list-check"></i><span>Simple ToDo</span></a>
+            </div>
+            <div class="nav-section">
                 <h6 class="nav-section-title">AREAS</h6>
                 <a href="work-center.html" class="nav-link"><i class="fas fa-briefcase"></i><span>Work Center</span></a>
             </div>
@@ -196,69 +197,78 @@
     <div class="main-content">
         <header class="main-header">
             <h1 class="current-category">AI Configurations</h1>
-            <div class="header-actions">
-                <button type="button" class="btn btn-primary" onclick="showConfigForm()">
-                    <i class="fas fa-plus me-2"></i>New Configuration
-                </button>
-            </div>
         </header>
         
         <div class="content-area">
-            <!-- Configuration Form -->
-            <div class="form-section" id="configForm" style="display: none;">
-                <h5><i class="fas fa-cog me-2"></i>Create/Edit Configuration</h5>
-                
-                <div class="explanation-box">
-                    <i class="fas fa-info-circle"></i>
-                    <strong>Duration Management:</strong> When you add tasks to a story, the story duration becomes auto-calculated (sum of all task durations) and cannot be manually edited. Remove all tasks to enable manual duration input.
-                </div>
-                
-                <form id="configurationForm">
-                    <input type="hidden" id="configId" value="">
-                    
-                    <div class="mb-3">
-                        <label for="configName" class="form-label fw-semibold">Configuration Name</label>
-                        <input type="text" id="configName" class="form-control" placeholder="e.g., Standard Web Development" required>
-                    </div>
-                    
-                    <!-- Pre-Stories Section -->
-                    <div class="mb-4">
-                        <h6 class="mb-3"><i class="fas fa-play me-2"></i>Pre-Stories (Execute before AI-generated content)</h6>
-                        <div id="preStoriesContainer"></div>
-                        <button type="button" class="btn btn-outline-primary btn-sm" onclick="addStory('pre')">
-                            <i class="fas fa-plus me-1"></i>Add Pre-Story
-                        </button>
-                    </div>
-                    
-                    <!-- Post-Stories Section -->
-                    <div class="mb-4">
-                        <h6 class="mb-3"><i class="fas fa-stop me-2"></i>Post-Stories (Execute after AI-generated content)</h6>
-                        <div id="postStoriesContainer"></div>
-                        <button type="button" class="btn btn-outline-primary btn-sm" onclick="addStory('post')">
-                            <i class="fas fa-plus me-1"></i>Add Post-Story
-                        </button>
-                    </div>
-                    
-                    <div class="d-flex gap-2">
-                        <button type="submit" class="btn btn-success">
-                            <i class="fas fa-save me-2"></i>Save Configuration
-                        </button>
-                        <button type="button" class="btn btn-secondary" onclick="hideConfigForm()">
-                            Cancel
-                        </button>
-                    </div>
-                </form>
+            <div class="alert alert-info" role="alert">
+                <i class="fas fa-info-circle me-2"></i>
+                <strong>Duration Management:</strong> When you add tasks to a story, the story duration automatically updates to the sum of all task durations and becomes read-only. Remove all tasks to manually set story duration.
             </div>
             
-            <!-- Configurations List -->
-            <div id="configurationsList">
-                <div class="empty-state">
-                    <i class="fas fa-cog"></i>
-                    <h5>No Configurations Found</h5>
-                    <p>Create your first configuration to get started with pre-defined project templates.</p>
-                    <button type="button" class="btn btn-primary" onclick="showConfigForm()">
-                        <i class="fas fa-plus me-2"></i>Create First Configuration
+            <div class="configurations-container">
+                <div id="configurationsList" class="configurations-list">
+                    <!-- Configurations will be loaded here -->
+                </div>
+                
+                <div id="emptyState" class="empty-state text-center py-5">
+                    <i class="fas fa-cog display-1 text-muted mb-4"></i>
+                    <h4 class="text-muted mb-3">No Configurations Yet</h4>
+                    <p class="text-muted mb-4">Create your first configuration to define pre-stories and post-stories for your AI-generated project plans.</p>
+                    <button class="btn btn-primary d-inline-flex align-items-center gap-2" onclick="createNewConfiguration()">
+                        <i class="fas fa-plus"></i>
+                        <span>Create First Configuration</span>
                     </button>
+                </div>
+                
+                <button id="newConfigBtn" class="btn btn-primary mb-4 d-none d-inline-flex align-items-center gap-2" onclick="createNewConfiguration()">
+                    <i class="fas fa-plus"></i>
+                    <span>New Configuration</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Configuration Modal -->
+    <div class="modal fade" id="configModal" tabindex="-1" aria-labelledby="configModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="configModalLabel">Create Configuration</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="configForm">
+                        <div class="mb-4">
+                            <label for="configName" class="form-label fw-semibold">Configuration Name</label>
+                            <input type="text" class="form-control" id="configName" placeholder="Enter configuration name" required>
+                        </div>
+                        
+                        <!-- Pre-Stories Section -->
+                        <div class="stories-section mb-5">
+                            <h6 class="fw-semibold mb-3">Pre-Stories (Added at the beginning of AI plan)</h6>
+                            <div id="preStoriesList" class="stories-list">
+                                <!-- Pre-stories will be added here -->
+                            </div>
+                            <button type="button" class="btn btn-outline-primary btn-sm mt-3" onclick="addStory('pre')">
+                                <i class="fas fa-plus me-2"></i>Add Pre-Story
+                            </button>
+                        </div>
+                        
+                        <!-- Post-Stories Section -->
+                        <div class="stories-section">
+                            <h6 class="fw-semibold mb-3">Post-Stories (Added at the end of AI plan)</h6>
+                            <div id="postStoriesList" class="stories-list">
+                                <!-- Post-stories will be added here -->
+                            </div>
+                            <button type="button" class="btn btn-outline-primary btn-sm mt-3" onclick="addStory('post')">
+                                <i class="fas fa-plus me-2"></i>Add Post-Story
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="saveConfiguration()">Save Configuration</button>
                 </div>
             </div>
         </div>
@@ -266,454 +276,159 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        let currentStoryId = 0;
-        let currentTaskId = 0;
-        let currentConfig = {
-            name: '',
-            preStories: [],
-            postStories: []
-        };
-        
-        // Load configurations on page load
         document.addEventListener('DOMContentLoaded', function() {
             loadConfigurations();
         });
-        
-        function showConfigForm() {
-            document.getElementById('configForm').style.display = 'block';
-            document.getElementById('configId').value = '';
-            document.getElementById('configName').value = '';
-            document.getElementById('preStoriesContainer').innerHTML = '';
-            document.getElementById('postStoriesContainer').innerHTML = '';
-            currentConfig = { name: '', preStories: [], postStories: [] };
-            currentStoryId = 0;
-            currentTaskId = 0;
-        }
-        
-        function hideConfigForm() {
-            document.getElementById('configForm').style.display = 'none';
-        }
-        
-        function addStory(type) {
-            const storyId = ++currentStoryId;
-            const container = document.getElementById(type + 'StoriesContainer');
-            
-            const storyDiv = document.createElement('div');
-            storyDiv.className = 'story-form';
-            storyDiv.id = `story-${type}-${storyId}`;
-            
-            storyDiv.innerHTML = `
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <h6 class="mb-0">Story ${storyId}</h6>
-                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeStory('${type}', ${storyId})">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-                <div class="row mb-2">
-                    <div class="col-md-6">
-                        <input type="text" class="form-control" placeholder="Story Title" 
-                               onchange="updateStoryField('${type}', ${storyId}, 'title', this.value)" required>
-                    </div>
-                    <div class="col-md-4">
-                        <input type="number" class="form-control duration-input" placeholder="Days" min="1" 
-                               id="story-${type}-${storyId}-duration"
-                               onchange="updateStoryField('${type}', ${storyId}, 'days', this.value)">
-                    </div>
-                    <div class="col-md-2 d-flex align-items-center">
-                        <small class="text-muted">days</small>
-                    </div>
-                </div>
-                <div class="mb-2">
-                    <textarea class="form-control" rows="2" placeholder="Story Description"
-                              onchange="updateStoryField('${type}', ${storyId}, 'description', this.value)"></textarea>
-                </div>
-                <div id="tasks-${type}-${storyId}"></div>
-                <button type="button" class="btn btn-outline-info btn-sm" onclick="addTask('${type}', ${storyId})">
-                    <i class="fas fa-plus me-1"></i>Add Task
-                </button>
-            `;
-            
-            container.appendChild(storyDiv);
-            
-            // Add to currentConfig
-            if (type === 'pre') {
-                currentConfig.preStories.push({
-                    id: storyId,
-                    title: '',
-                    description: '',
-                    days: 0,
-                    tasks: []
-                });
-            } else {
-                currentConfig.postStories.push({
-                    id: storyId,
-                    title: '',
-                    description: '',
-                    days: 0,
-                    tasks: []
-                });
-            }
-        }
-        
-        function removeStory(type, storyId) {
-            document.getElementById(`story-${type}-${storyId}`).remove();
-            
-            // Remove from currentConfig
-            if (type === 'pre') {
-                currentConfig.preStories = currentConfig.preStories.filter(s => s.id !== storyId);
-            } else {
-                currentConfig.postStories = currentConfig.postStories.filter(s => s.id !== storyId);
-            }
-        }
-        
-        function addTask(type, storyId) {
-            const taskId = ++currentTaskId;
-            const container = document.getElementById(`tasks-${type}-${storyId}`);
-            
-            const taskDiv = document.createElement('div');
-            taskDiv.className = 'task-form';
-            taskDiv.id = `task-${type}-${storyId}-${taskId}`;
-            
-            taskDiv.innerHTML = `
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <small class="text-muted">Task ${taskId}</small>
-                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="removeTask('${type}', ${storyId}, ${taskId})">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-                <div class="row mb-2">
-                    <div class="col-md-6">
-                        <input type="text" class="form-control form-control-sm" placeholder="Task Title"
-                               onchange="updateTaskField('${type}', ${storyId}, ${taskId}, 'title', this.value)" required>
-                    </div>
-                    <div class="col-md-4">
-                        <input type="number" class="form-control form-control-sm duration-input" placeholder="Days" min="1"
-                               onchange="updateTaskField('${type}', ${storyId}, ${taskId}, 'days', this.value)">
-                    </div>
-                    <div class="col-md-2 d-flex align-items-center">
-                        <small class="text-muted">days</small>
-                    </div>
-                </div>
-                <div class="mb-2">
-                    <textarea class="form-control form-control-sm" rows="1" placeholder="Task Description"
-                              onchange="updateTaskField('${type}', ${storyId}, ${taskId}, 'description', this.value)"></textarea>
-                </div>
-            `;
-            
-            container.appendChild(taskDiv);
-            
-            // Add to currentConfig and update story duration
-            const stories = type === 'pre' ? currentConfig.preStories : currentConfig.postStories;
-            const story = stories.find(s => s.id === storyId);
-            if (story) {
-                story.tasks.push({
-                    id: taskId,
-                    title: '',
-                    description: '',
-                    days: 0
-                });
-                updateStoryDuration(type, storyId);
-            }
-        }
-        
-        function removeTask(type, storyId, taskId) {
-            document.getElementById(`task-${type}-${storyId}-${taskId}`).remove();
-            
-            // Remove from currentConfig and update story duration
-            const stories = type === 'pre' ? currentConfig.preStories : currentConfig.postStories;
-            const story = stories.find(s => s.id === storyId);
-            if (story) {
-                story.tasks = story.tasks.filter(t => t.id !== taskId);
-                updateStoryDuration(type, storyId);
-            }
-        }
-        
-        function updateStoryField(type, storyId, field, value) {
-            const stories = type === 'pre' ? currentConfig.preStories : currentConfig.postStories;
-            const story = stories.find(s => s.id === storyId);
-            if (story) {
-                story[field] = field === 'days' ? parseInt(value) || 0 : value;
-            }
-        }
-        
-        function updateTaskField(type, storyId, taskId, field, value) {
-            const stories = type === 'pre' ? currentConfig.preStories : currentConfig.postStories;
-            const story = stories.find(s => s.id === storyId);
-            if (story) {
-                const task = story.tasks.find(t => t.id === taskId);
-                if (task) {
-                    task[field] = field === 'days' ? parseInt(value) || 0 : value;
-                    if (field === 'days') {
-                        updateStoryDuration(type, storyId);
-                    }
-                }
-            }
-        }
-        
-        function updateStoryDuration(type, storyId) {
-            const stories = type === 'pre' ? currentConfig.preStories : currentConfig.postStories;
-            const story = stories.find(s => s.id === storyId);
-            if (story && story.tasks.length > 0) {
-                const totalDays = story.tasks.reduce((sum, task) => sum + (task.days || 0), 0);
-                story.days = totalDays;
-                
-                // Update the UI
-                const durationInput = document.getElementById(`story-${type}-${storyId}-duration`);
-                if (durationInput) {
-                    durationInput.value = totalDays;
-                    durationInput.classList.add('auto-calculated');
-                    durationInput.disabled = true;
-                }
-            } else if (story) {
-                // Re-enable manual input if no tasks
-                const durationInput = document.getElementById(`story-${type}-${storyId}-duration`);
-                if (durationInput) {
-                    durationInput.classList.remove('auto-calculated');
-                    durationInput.disabled = false;
-                }
-            }
-        }
-        
-        document.getElementById('configurationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const configName = document.getElementById('configName').value.trim();
-            if (!configName) {
-                alert('Please enter a configuration name');
-                return;
-            }
-            
-            currentConfig.name = configName;
-            
-            // Validate that all stories have required fields
-            const allStories = [...currentConfig.preStories, ...currentConfig.postStories];
-            for (let story of allStories) {
-                if (!story.title || story.days <= 0) {
-                    alert('Please fill in all story titles and durations');
-                    return;
-                }
-                for (let task of story.tasks) {
-                    if (!task.title || task.days <= 0) {
-                        alert('Please fill in all task titles and durations');
-                        return;
-                    }
-                }
-            }
-            
-            saveConfiguration();
-        });
-        
-        function saveConfiguration() {
-            const configurations = JSON.parse(localStorage.getItem('aiConfigurations') || '[]');
-            const configId = document.getElementById('configId').value;
-            
-            const configToSave = {
-                id: configId || Date.now().toString(),
-                name: currentConfig.name,
-                preStories: currentConfig.preStories.map(story => ({
-                    title: story.title,
-                    description: story.description,
-                    days: story.days,
-                    tasks: story.tasks.map(task => ({
-                        title: task.title,
-                        description: task.description,
-                        days: task.days
-                    }))
-                })),
-                postStories: currentConfig.postStories.map(story => ({
-                    title: story.title,
-                    description: story.description,
-                    days: story.days,
-                    tasks: story.tasks.map(task => ({
-                        title: task.title,
-                        description: task.description,
-                        days: task.days
-                    }))
-                })),
-                createdAt: new Date().toISOString()
-            };
-            
-            if (configId) {
-                const index = configurations.findIndex(c => c.id === configId);
-                if (index !== -1) {
-                    configurations[index] = configToSave;
-                }
-            } else {
-                configurations.push(configToSave);
-            }
-            
-            localStorage.setItem('aiConfigurations', JSON.stringify(configurations));
-            hideConfigForm();
-            loadConfigurations();
-            
-            alert('Configuration saved successfully!');
-        }
-        
+
         function loadConfigurations() {
             const configurations = JSON.parse(localStorage.getItem('aiConfigurations') || '[]');
-            const container = document.getElementById('configurationsList');
-            
+            const configurationsList = document.getElementById('configurationsList');
+            const emptyState = document.getElementById('emptyState');
+            const newConfigBtn = document.getElementById('newConfigBtn');
+
             if (configurations.length === 0) {
-                container.innerHTML = `
-                    <div class="empty-state">
-                        <i class="fas fa-cog"></i>
-                        <h5>No Configurations Found</h5>
-                        <p>Create your first configuration to get started with pre-defined project templates.</p>
-                        <button type="button" class="btn btn-primary" onclick="showConfigForm()">
-                            <i class="fas fa-plus me-2"></i>Create First Configuration
-                        </button>
-                    </div>
-                `;
+                configurationsList.innerHTML = '';
+                emptyState.classList.remove('d-none');
+                newConfigBtn.classList.add('d-none');
                 return;
             }
-            
-            container.innerHTML = configurations.map(config => `
-                <div class="config-card">
-                    <div class="config-header">
-                        <h5 class="config-name">${config.name}</h5>
-                        <div>
-                            <button type="button" class="btn btn-outline-primary btn-sm me-2" onclick="editConfiguration('${config.id}')">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteConfiguration('${config.id}')">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
+
+            emptyState.classList.add('d-none');
+            newConfigBtn.classList.remove('d-none');
+
+            configurationsList.innerHTML = configurations.map(config => `
+                <div class="configuration-card">
+                    <h5 class="configuration-name">${config.name}</h5>
+                    <p class="configuration-details">
+                        ${config.preStories.length} Pre-Stories, ${config.postStories.length} Post-Stories
+                    </p>
+                    <div class="configuration-actions">
+                        <button class="btn btn-outline-primary btn-sm" onclick="editConfiguration('${config.id}')">
+                            <i class="fas fa-edit me-1"></i>Edit
+                        </button>
+                        <button class="btn btn-outline-danger btn-sm" onclick="deleteConfiguration('${config.id}')">
+                            <i class="fas fa-trash me-1"></i>Delete
+                        </button>
                     </div>
-                    
-                    ${config.preStories.length > 0 ? `
-                        <div class="mb-3">
-                            <h6 class="text-primary"><i class="fas fa-play me-2"></i>Pre-Stories (${config.preStories.length})</h6>
-                            ${config.preStories.map(story => `
-                                <div class="story-item">
-                                    <div class="d-flex justify-content-between align-items-start mb-1">
-                                        <strong>${story.title}</strong>
-                                        <span class="duration-badge">${story.days} days</span>
-                                    </div>
-                                    ${story.description ? `<p class="text-muted small mb-2">${story.description}</p>` : ''}
-                                    ${story.tasks.map(task => `
-                                        <div class="task-item">
-                                            <div class="d-flex justify-content-between align-items-start">
-                                                <div>
-                                                    <strong class="small">${task.title}</strong>
-                                                    ${task.description ? `<br><span class="text-muted small">${task.description}</span>` : ''}
-                                                </div>
-                                                <span class="task-duration-badge">${task.days} days</span>
-                                            </div>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            `).join('')}
-                        </div>
-                    ` : ''}
-                    
-                    ${config.postStories.length > 0 ? `
-                        <div class="mb-3">
-                            <h6 class="text-success"><i class="fas fa-stop me-2"></i>Post-Stories (${config.postStories.length})</h6>
-                            ${config.postStories.map(story => `
-                                <div class="story-item">
-                                    <div class="d-flex justify-content-between align-items-start mb-1">
-                                        <strong>${story.title}</strong>
-                                        <span class="duration-badge">${story.days} days</span>
-                                    </div>
-                                    ${story.description ? `<p class="text-muted small mb-2">${story.description}</p>` : ''}
-                                    ${story.tasks.map(task => `
-                                        <div class="task-item">
-                                            <div class="d-flex justify-content-between align-items-start">
-                                                <div>
-                                                    <strong class="small">${task.title}</strong>
-                                                    ${task.description ? `<br><span class="text-muted small">${task.description}</span>` : ''}
-                                                </div>
-                                                <span class="task-duration-badge">${task.days} days</span>
-                                            </div>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            `).join('')}
-                        </div>
-                    ` : ''}
-                    
-                    <small class="text-muted">Created: ${new Date(config.createdAt).toLocaleDateString()}</small>
                 </div>
             `).join('');
         }
-        
+
+        function createNewConfiguration() {
+            openConfigurationModal();
+        }
+
         function editConfiguration(configId) {
             const configurations = JSON.parse(localStorage.getItem('aiConfigurations') || '[]');
             const config = configurations.find(c => c.id === configId);
-            if (!config) return;
-            
-            // Show form and populate with existing data
-            showConfigForm();
-            document.getElementById('configId').value = config.id;
-            document.getElementById('configName').value = config.name;
-            
-            currentConfig = {
-                name: config.name,
-                preStories: JSON.parse(JSON.stringify(config.preStories)).map((story, index) => ({
-                    ...story,
-                    id: ++currentStoryId
-                })),
-                postStories: JSON.parse(JSON.stringify(config.postStories)).map((story, index) => ({
-                    ...story,
-                    id: ++currentStoryId
-                }))
-            };
-            
-            // Populate pre-stories
-            currentConfig.preStories.forEach(story => {
-                addStory('pre');
-                const storyElement = document.querySelector(`#story-pre-${story.id}`);
-                if (storyElement) {
-                    storyElement.querySelector('input[placeholder="Story Title"]').value = story.title;
-                    storyElement.querySelector('textarea[placeholder="Story Description"]').value = story.description || '';
-                    storyElement.querySelector('input[placeholder="Days"]').value = story.days;
-                    
-                    // Add tasks
-                    story.tasks.forEach(task => {
-                        const taskId = ++currentTaskId;
-                        addTask('pre', story.id);
-                        const taskElement = document.querySelector(`#task-pre-${story.id}-${taskId}`);
-                        if (taskElement) {
-                            taskElement.querySelector('input[placeholder="Task Title"]').value = task.title;
-                            taskElement.querySelector('textarea[placeholder="Task Description"]').value = task.description || '';
-                            taskElement.querySelector('input[placeholder="Days"]').value = task.days;
-                        }
-                    });
-                }
-            });
-            
-            // Populate post-stories
-            currentConfig.postStories.forEach(story => {
-                addStory('post');
-                const storyElement = document.querySelector(`#story-post-${story.id}`);
-                if (storyElement) {
-                    storyElement.querySelector('input[placeholder="Story Title"]').value = story.title;
-                    storyElement.querySelector('textarea[placeholder="Story Description"]').value = story.description || '';
-                    storyElement.querySelector('input[placeholder="Days"]').value = story.days;
-                    
-                    // Add tasks
-                    story.tasks.forEach(task => {
-                        const taskId = ++currentTaskId;
-                        addTask('post', story.id);
-                        const taskElement = document.querySelector(`#task-post-${story.id}-${taskId}`);
-                        if (taskElement) {
-                            taskElement.querySelector('input[placeholder="Task Title"]').value = task.title;
-                            taskElement.querySelector('textarea[placeholder="Task Description"]').value = task.description || '';
-                            taskElement.querySelector('input[placeholder="Days"]').value = task.days;
-                        }
-                    });
-                }
-            });
-        }
-        
-        function deleteConfiguration(configId) {
-            if (confirm('Are you sure you want to delete this configuration? This action cannot be undone.')) {
-                const configurations = JSON.parse(localStorage.getItem('aiConfigurations') || '[]');
-                const filteredConfigs = configurations.filter(c => c.id !== configId);
-                localStorage.setItem('aiConfigurations', JSON.stringify(filteredConfigs));
-                loadConfigurations();
+
+            if (config) {
+                openConfigurationModal(config);
+            } else {
+                alert('Configuration not found.');
             }
+        }
+
+        function deleteConfiguration(configId) {
+            if (!confirm('Are you sure you want to delete this configuration?')) return;
+
+            let configurations = JSON.parse(localStorage.getItem('aiConfigurations') || '[]');
+            configurations = configurations.filter(c => c.id !== configId);
+            localStorage.setItem('aiConfigurations', JSON.stringify(configurations));
+
+            loadConfigurations();
+        }
+
+        function openConfigurationModal(config = null) {
+            const configModal = new bootstrap.Modal(document.getElementById('configModal'));
+            const configForm = document.getElementById('configForm');
+            const configNameInput = document.getElementById('configName');
+            const preStoriesList = document.getElementById('preStoriesList');
+            const postStoriesList = document.getElementById('postStoriesList');
+
+            // Clear existing data
+            configForm.dataset.configId = config ? config.id : '';
+            configNameInput.value = config ? config.name : '';
+            preStoriesList.innerHTML = '';
+            postStoriesList.innerHTML = '';
+
+            // Load stories if editing
+            if (config) {
+                config.preStories.forEach(story => addStory('pre', story));
+                config.postStories.forEach(story => addStory('post', story));
+            }
+
+            configModal.show();
+        }
+
+        function addStory(type, story = null) {
+            const storiesListId = type === 'pre' ? 'preStoriesList' : 'postStoriesList';
+            const storiesList = document.getElementById(storiesListId);
+
+            const storyIndex = storiesList.children.length;
+
+            const storyItem = document.createElement('div');
+            storyItem.classList.add('story-item');
+            storyItem.innerHTML = `
+                <input type="text" class="form-control" placeholder="Enter story title" 
+                       value="${story ? story.title : ''}"
+                       id="${type}StoryTitle${storyIndex}">
+                <div class="story-actions">
+                    <button class="btn btn-outline-danger btn-sm" onclick="deleteStory(this)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `;
+
+            storiesList.appendChild(storyItem);
+        }
+
+        function deleteStory(button) {
+            button.closest('.story-item').remove();
+        }
+
+        function saveConfiguration() {
+            const configId = document.getElementById('configForm').dataset.configId || generateId();
+            const configName = document.getElementById('configName').value.trim();
+            const preStories = getStories('preStoriesList');
+            const postStories = getStories('postStoriesList');
+
+            if (!configName) {
+                alert('Please enter a configuration name.');
+                return;
+            }
+
+            const config = {
+                id: configId,
+                name: configName,
+                preStories: preStories,
+                postStories: postStories
+            };
+
+            let configurations = JSON.parse(localStorage.getItem('aiConfigurations') || '[]');
+            configurations = configurations.filter(c => c.id !== configId); // Remove existing if updating
+            configurations.push(config);
+            localStorage.setItem('aiConfigurations', JSON.stringify(configurations));
+
+            bootstrap.Modal.getInstance(document.getElementById('configModal')).hide();
+            loadConfigurations();
+        }
+
+        function getStories(storiesListId) {
+            const storiesList = document.getElementById(storiesListId);
+            const stories = [];
+
+            for (let i = 0; i < storiesList.children.length; i++) {
+                const storyItem = storiesList.children[i];
+                const titleInput = storyItem.querySelector('.form-control');
+                stories.push({ title: titleInput.value.trim() });
+            }
+
+            return stories;
+        }
+
+        function generateId() {
+            return Math.random().toString(36).substring(2, 15);
         }
     </script>
     <script src="https://cdn.gpteng.co/gptengineer.js"></script>

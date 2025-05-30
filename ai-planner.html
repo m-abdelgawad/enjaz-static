@@ -93,30 +93,27 @@
             100% { transform: rotate(360deg); }
         }
         
-        .field-explanation {
-            background: linear-gradient(135deg, #f1f5f9 0%, #f8fafc 100%);
-            border: 1px solid #cbd5e1;
+        .spacing-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .spacing-row {
+            margin-bottom: 2rem;
+        }
+        
+        /* Configuration selector section */
+        .config-section {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef7cd 100%);
+            border: 1px solid #fbbf24;
             border-radius: 12px;
             padding: 1.5rem;
-            margin-bottom: 2rem;
-            color: #334155;
+            margin-bottom: 2.5rem;
         }
         
-        .field-explanation h6 {
+        .config-section h6 {
             color: #1e293b;
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
             font-weight: 600;
-        }
-        
-        .ai-section h3 {
-            color: #1e293b;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .ai-section p {
-            color: #475569;
-            margin-bottom: 0;
         }
         
         .form-label {
@@ -156,23 +153,6 @@
             margin-left: 0.5rem;
         }
         
-        .spacing-section {
-            margin-bottom: 2.5rem;
-        }
-        
-        .spacing-row {
-            margin-bottom: 2rem;
-        }
-        
-        /* Configuration selector section */
-        .config-section {
-            background: linear-gradient(135deg, #fef3c7 0%, #fef7cd 100%);
-            border: 1px solid #fbbf24;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 2.5rem;
-        }
-        
         /* Responsive improvements */
         @media (max-width: 992px) {
             .ai-section {
@@ -183,10 +163,6 @@
         @media (max-width: 768px) {
             .ai-section {
                 padding: 1.5rem 1rem;
-            }
-            
-            .field-explanation {
-                padding: 1rem;
             }
             
             .spacing-section {
@@ -219,6 +195,11 @@
                 <a href="ai-configurations.html" class="nav-link"><i class="fas fa-cog"></i><span>Configurations</span></a>
             </div>
             <div class="nav-section">
+                <h6 class="nav-section-title">USUAL BUSINESS</h6>
+                <a href="daily-journal.html" class="nav-link"><i class="fas fa-book"></i><span>Daily Journal</span></a>
+                <a href="simple-todo.html" class="nav-link"><i class="fas fa-list-check"></i><span>Simple ToDo</span></a>
+            </div>
+            <div class="nav-section">
                 <h6 class="nav-section-title">AREAS</h6>
                 <a href="work-center.html" class="nav-link"><i class="fas fa-briefcase"></i><span>Work Center</span></a>
             </div>
@@ -232,11 +213,6 @@
     <div class="main-content">
         <header class="main-header">
             <h1 class="current-category">AI Planner</h1>
-            <div class="header-actions">
-                <a href="ai-configurations.html" class="btn btn-outline-secondary btn-sm">
-                    <i class="fas fa-cog me-1"></i>Manage Configurations
-                </a>
-            </div>
         </header>
         
         <div class="content-area">
@@ -255,8 +231,8 @@
                 <!-- Configuration Selection -->
                 <div class="config-section">
                     <h6><i class="fas fa-cog me-2"></i>Project Configuration <span class="optional-badge">Optional</span></h6>
-                    <div class="row">
-                        <div class="col-md-8">
+                    <div class="row align-items-end">
+                        <div class="col-md-8 mb-3 mb-md-0">
                             <select id="configurationSelect" class="form-select">
                                 <option value="">Select a pre-defined configuration (optional)</option>
                             </select>
@@ -265,8 +241,8 @@
                                 Choose a saved configuration to include pre-stories and post-stories in your project plan.
                             </div>
                         </div>
-                        <div class="col-md-4 d-flex align-items-end">
-                            <a href="ai-configurations.html" class="btn btn-outline-primary">
+                        <div class="col-md-4">
+                            <a href="ai-configurations.html" class="btn btn-outline-primary btn-sm">
                                 <i class="fas fa-plus me-2"></i>Manage Configurations
                             </a>
                         </div>
@@ -321,21 +297,6 @@
                             <div class="form-text">
                                 <i class="fas fa-pause me-1"></i>
                                 Extra days for holidays/vacations.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="field-explanation">
-                        <h6><i class="fas fa-info-circle me-2"></i>Planning Parameters (All Optional)</h6>
-                        <div class="row">
-                            <div class="col-md-4 mb-2">
-                                <strong>Delivery Date:</strong> Target completion date for AI planning.
-                            </div>
-                            <div class="col-md-4 mb-2">
-                                <strong>Weekend Days:</strong> Number of non-working days per week (0-7).
-                            </div>
-                            <div class="col-md-4 mb-2">
-                                <strong>Buffer Days:</strong> Additional time for holidays or contingencies.
                             </div>
                         </div>
                     </div>

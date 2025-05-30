@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="style.css">
     <style>
         .ai-section {
-            background: #ffffff;
-            border-radius: 12px;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            border-radius: 16px;
             padding: 2.5rem;
-            border: 1px solid #d1d5db;
+            border: 1px solid #e2e8f0;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
         }
         
         .ai-icon {
@@ -33,23 +33,25 @@
         }
         
         .ai-description {
-            background: #f8fafc;
+            background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
             border-left: 4px solid #3b82f6;
             padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            color: #1f2937;
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+            color: #1e293b;
+            border: 1px solid #bfdbfe;
         }
         
         .ai-btn {
             background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 0.875rem 2rem;
             font-weight: 600;
             color: white;
             transition: all 0.3s ease;
             font-size: 1rem;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
         }
         
         .ai-btn:hover {
@@ -92,59 +94,61 @@
         }
         
         .field-explanation {
-            background: #f1f5f9;
+            background: linear-gradient(135deg, #f1f5f9 0%, #f8fafc 100%);
             border: 1px solid #cbd5e1;
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 1.5rem;
             margin-bottom: 2rem;
-            color: #374151;
+            color: #334155;
         }
         
         .field-explanation h6 {
-            color: #1f2937;
+            color: #1e293b;
             margin-bottom: 0.75rem;
             font-weight: 600;
         }
         
         .ai-section h3 {
-            color: #1f2937;
+            color: #1e293b;
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
         
         .ai-section p {
-            color: #6b7280;
+            color: #475569;
             margin-bottom: 0;
         }
         
         .form-label {
-            color: #374151;
+            color: #1e293b;
             font-weight: 500;
             margin-bottom: 0.5rem;
         }
         
         .form-control, .form-select {
             border: 1px solid #d1d5db;
-            border-radius: 6px;
+            border-radius: 8px;
             padding: 0.75rem;
-            color: #1f2937;
+            color: #1e293b;
             background-color: #ffffff;
+            transition: all 0.3s ease;
         }
         
         .form-control:focus, .form-select:focus {
             border-color: #3b82f6;
-            box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+            box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.15);
+            background-color: #ffffff;
         }
         
         .form-text {
-            color: #6b7280;
+            color: #64748b;
             font-size: 0.875rem;
             margin-top: 0.25rem;
         }
         
         .optional-badge {
-            background: #e5e7eb;
-            color: #6b7280;
+            background: #e2e8f0;
+            color: #64748b;
             padding: 0.2rem 0.5rem;
             border-radius: 12px;
             font-size: 0.75rem;
@@ -153,11 +157,20 @@
         }
         
         .spacing-section {
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
         
         .spacing-row {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Configuration selector section */
+        .config-section {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef7cd 100%);
+            border: 1px solid #fbbf24;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2.5rem;
         }
         
         /* Responsive improvements */
@@ -175,6 +188,14 @@
             .field-explanation {
                 padding: 1rem;
             }
+            
+            .spacing-section {
+                margin-bottom: 2rem;
+            }
+            
+            .spacing-row {
+                margin-bottom: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -191,7 +212,11 @@
                 <a href="stories.html" class="nav-link"><i class="fas fa-bookmark"></i><span>Stories</span></a>
                 <a href="tasks.html" class="nav-link"><i class="fas fa-tasks"></i><span>Tasks</span></a>
                 <a href="completed.html" class="nav-link"><i class="fas fa-check-circle"></i><span>Completed</span></a>
+            </div>
+            <div class="nav-section">
+                <h6 class="nav-section-title">AI PLANNER</h6>
                 <a href="ai-planner.html" class="nav-link active"><i class="fas fa-robot"></i><span>AI Planner</span></a>
+                <a href="ai-configurations.html" class="nav-link"><i class="fas fa-cog"></i><span>Configurations</span></a>
             </div>
             <div class="nav-section">
                 <h6 class="nav-section-title">AREAS</h6>
@@ -220,6 +245,27 @@
                 <div class="ai-description">
                     <h6><i class="fas fa-lightbulb me-2"></i>How it works</h6>
                     <p class="mb-0">Provide a detailed description of your project including goals, requirements, timeline, and team size. Our AI will analyze your input and generate a comprehensive project plan with stories and tasks.</p>
+                </div>
+                
+                <!-- Configuration Selection -->
+                <div class="config-section">
+                    <h6><i class="fas fa-cog me-2"></i>Project Configuration <span class="optional-badge">Optional</span></h6>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <select id="configurationSelect" class="form-select">
+                                <option value="">Select a pre-defined configuration (optional)</option>
+                            </select>
+                            <div class="form-text">
+                                <i class="fas fa-info-circle me-1"></i>
+                                Choose a saved configuration to include pre-stories and post-stories in your project plan.
+                            </div>
+                        </div>
+                        <div class="col-md-4 d-flex align-items-end">
+                            <a href="ai-configurations.html" class="btn btn-outline-primary">
+                                <i class="fas fa-plus me-2"></i>Manage Configurations
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 
                 <form id="aiPlannerForm">
@@ -255,15 +301,10 @@
                                 Weekend Days
                                 <span class="optional-badge">Optional</span>
                             </label>
-                            <select id="weekendDays" class="form-select">
-                                <option value="0">None</option>
-                                <option value="1">1 Day</option>
-                                <option value="2" selected>2 Days</option>
-                                <option value="3">3 Days</option>
-                            </select>
+                            <input type="number" id="weekendDays" class="form-control" value="2" min="0" max="7">
                             <div class="form-text">
                                 <i class="fas fa-calendar-times me-1"></i>
-                                Non-working days per week.
+                                Non-working days per week (0-7).
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6 mb-3">
@@ -286,7 +327,7 @@
                                 <strong>Delivery Date:</strong> Target completion date for AI planning.
                             </div>
                             <div class="col-md-4 mb-2">
-                                <strong>Weekend Days:</strong> Number of non-working days per week (0-3).
+                                <strong>Weekend Days:</strong> Number of non-working days per week (0-7).
                             </div>
                             <div class="col-md-4 mb-2">
                                 <strong>Buffer Days:</strong> Additional time for holidays or contingencies.
@@ -316,6 +357,26 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Load configurations on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadConfigurations();
+        });
+        
+        function loadConfigurations() {
+            const configSelect = document.getElementById('configurationSelect');
+            const configurations = JSON.parse(localStorage.getItem('aiConfigurations') || '[]');
+            
+            // Clear existing options except the first one
+            configSelect.innerHTML = '<option value="">Select a pre-defined configuration (optional)</option>';
+            
+            configurations.forEach(config => {
+                const option = document.createElement('option');
+                option.value = config.id;
+                option.textContent = config.name;
+                configSelect.appendChild(option);
+            });
+        }
+        
         document.getElementById('aiPlannerForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -329,12 +390,21 @@
             // Show loading overlay
             document.getElementById('loadingOverlay').style.display = 'flex';
             
+            // Get selected configuration
+            const selectedConfigId = document.getElementById('configurationSelect').value;
+            let selectedConfig = null;
+            if (selectedConfigId) {
+                const configurations = JSON.parse(localStorage.getItem('aiConfigurations') || '[]');
+                selectedConfig = configurations.find(config => config.id === selectedConfigId);
+            }
+            
             // Store all form data in localStorage for the next page
             const formData = {
                 description: description,
                 deliveryDate: document.getElementById('deliveryDate').value,
                 weekendDays: document.getElementById('weekendDays').value,
-                bufferDays: document.getElementById('bufferDays').value
+                bufferDays: document.getElementById('bufferDays').value,
+                selectedConfiguration: selectedConfig
             };
             
             localStorage.setItem('aiPlannerInput', JSON.stringify(formData));
